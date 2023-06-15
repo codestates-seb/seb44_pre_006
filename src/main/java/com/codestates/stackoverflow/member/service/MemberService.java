@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,7 +73,8 @@ public class MemberService {
         Optional.ofNullable(passwordEncoder.encode(member.getPassword()))
                 .ifPresent(password -> findMember.setPassword(password));
 
-        //System.out.println("new password:"+findMember.getPassword());
+        //수정 시간 업데이트
+        findMember.setModifiedAt(LocalDateTime.now());
 
         return memberRepository.save(findMember);
     }
