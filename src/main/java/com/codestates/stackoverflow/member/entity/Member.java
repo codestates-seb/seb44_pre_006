@@ -1,5 +1,6 @@
 package com.codestates.stackoverflow.member.entity;
 
+import com.codestates.stackoverflow.question.entity.Question;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,7 +38,8 @@ public class Member {
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
     //Question과의 의존관계 설정
-
+    @OneToMany(mappedBy = "member",cascade = CascadeType.REMOVE)
+    List<Question> questions = new ArrayList<>();
 
     // 추가
     @ElementCollection(fetch = FetchType.EAGER)

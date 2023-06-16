@@ -1,5 +1,6 @@
 package com.codestates.stackoverflow.question.entity;
 
+import com.codestates.stackoverflow.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 //@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-// Question 조회 시 조회 수가 올라가 modifiedAt가 계속 변경
+// Question 조회 시 조회 수가 올라가 modifiedAt가 계속 변경됨
 //public class Question extends AuditTable {
 public class Question {
 
@@ -32,9 +33,9 @@ public class Question {
     @Column(nullable = false, columnDefinition = "DATETIME(0)")
     private LocalDateTime modifiedAt = LocalDateTime.now();
     // Member 1:N, 양방향
-//    @ManyToOne
-//    @Column(name = "MEMBER_ID")
-//    Member member;
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
+    Member member;
 
     // Answer N:1, 양방향
 //    @OneToMany(mappedBy = "question")
