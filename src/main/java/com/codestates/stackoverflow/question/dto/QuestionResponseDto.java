@@ -14,8 +14,9 @@ public class QuestionResponseDto {
         private String title;
         private String content;
         private Long viewCount;
-//        private Integer answerCount;
+        private String createBy;
         private LocalDateTime modifiedAt;
+//        private Integer answerCount;
     }
     @Getter
     @Builder
@@ -26,6 +27,8 @@ public class QuestionResponseDto {
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private Long viewCount;
+        private String createBy;
+
 //        private List<AnswerDTO.Response> answers;
     }
 }

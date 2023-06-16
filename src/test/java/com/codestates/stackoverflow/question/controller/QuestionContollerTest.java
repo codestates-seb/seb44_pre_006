@@ -114,7 +114,7 @@ class QuestionContollerTest {
 
         // when
         ResultActions actions = mockMvc.perform(
-                get("/question")
+                get("/questions")
                         .param("size", "10")
                         .param("page", "1")
                         .contentType(MediaType.APPLICATION_JSON));
@@ -159,7 +159,7 @@ class QuestionContollerTest {
 
         // when
         ResultActions actions = mockMvc.perform(
-                get("/question/search")
+                get("/questions/search")
                         .param("size", "10")
                         .param("page", "1")
                         .param("title", "Title")
@@ -205,7 +205,7 @@ class QuestionContollerTest {
                 .willReturn(question);
         // when
         ResultActions actions = mockMvc.perform(
-                get("/question/{id}", 1L)
+                get("/questions/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON));
 
         // then
@@ -249,7 +249,7 @@ class QuestionContollerTest {
 
         // when
         ResultActions actions = mockMvc.perform(
-                MockMvcRequestBuilders.post("/question")
+                MockMvcRequestBuilders.post("/questions")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(str));
 
@@ -287,7 +287,7 @@ class QuestionContollerTest {
 
         // when
         ResultActions actions = mockMvc.perform(
-                patch("/question/{id}", 1L)
+                patch("/questions/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(str));
 
@@ -331,7 +331,7 @@ class QuestionContollerTest {
 
         // when
         ResultActions actions = mockMvc.perform(
-                delete("/question/{id}", 1L)
+                delete("/questions/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON));
 
         // then

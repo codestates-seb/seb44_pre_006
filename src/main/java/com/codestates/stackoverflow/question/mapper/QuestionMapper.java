@@ -16,10 +16,11 @@ public interface QuestionMapper {
     Question requestToQuestion(QuestionDto.PostRequest request);
 
 //    @Mapping(target = "answerCount", expression = "java(question.getAnswers().size())")
+    @Mapping(target = "createBy", expression = "java(question.getMember().getEmail())")
     QuestionResponseDto.Response questionToResponse(Question question);
 
+    @Mapping(target = "createBy", expression = "java(question.getMember().getEmail())")
     QuestionResponseDto.ResponseDetail questionToDetail(Question question);
-
 
 //    @Mapping(target = "answers", expression = "java(questions.getAnswers().size())")
     default List<QuestionResponseDto.Response> questionsToResponses(List<Question> questions)
@@ -30,6 +31,8 @@ public interface QuestionMapper {
                         .content(i.getContent())
                         .viewCount(i.getViewCount())
 //                        .answerCount(i.getAnswers().size())
+                        .modifiedAt(i.getModifiedAt())
+                        .createBy(i.getMember().getEmail())
                         .build())
                 .collect(Collectors.toList());
 
