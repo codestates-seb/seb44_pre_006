@@ -28,46 +28,6 @@ public class QuestionContoller {
     @Autowired
     QuestionMapper questionMapper;
 
-    @GetMapping
-    public ResponseEntity<MultiResponseDto> getQuestions(@RequestParam @Positive int page,
-                                                         @RequestParam @Positive int size) {
-        Page<Question> pageQuestion = questionService.getQuestions(page - 1, size);
-        List<Question> questions = pageQuestion.getContent();
-
-//        return new ResponseEntity<>(questionMapper.questionsToResponses(questions), HttpStatus.OK);
-        return new ResponseEntity<>(
-                new MultiResponseDto<>(
-                        questionMapper.questionsToResponses(questions), pageQuestion),
-                HttpStatus.OK);
-    }
-
-    @GetMapping("{question-id}")
-//    public QuestionResponseDto.ResponseDetail getQuestion(@PathVariable("question-id") @Positive Long id) {
-    public ResponseEntity getQuestion(@PathVariable("question-id") @Positive Long id) {
-         return new ResponseEntity<>(
-                 new SingleResponseDto<>(questionMapper.questionToDetail(questionService.getQuestion(id))), HttpStatus.OK);
-
-//                 return questionMapper.questionToDetail(
-//                questionService.getQuestion(id));
-    }
-
-    @GetMapping("/search")
-    public ResponseEntity<MultiResponseDto> searchTitle(@RequestParam @Positive int page,
-                                                        @RequestParam @Positive int size,
-                                                        @RequestParam String title) {
-        Page<Question> pageQuestion = questionService.searchTitle(page - 1, size, title);
-        List<Question> questions = pageQuestion.getContent();
-
-//        return new ResponseEntity<>(questionMapper.questionsToResponses(questions), HttpStatus.OK);
-        return new ResponseEntity<>(new MultiResponseDto<>(questionMapper.questionsToResponses(questions), pageQuestion), HttpStatus.OK);
-    }
-
-    @DeleteMapping("{question-id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteQuestion(@PathVariable("question-id") Long id) {
-        questionService.deleteQuestion(id);
-    }
-
     @PostMapping
     public ResponseEntity postQuestion(@RequestBody @Valid QuestionDto.PostRequest request) {
         // Location 헤더에 생성된 질문의 정보를 조회할 수 있는 URI를 포함하여 전달한다.
@@ -83,4 +43,42 @@ public class QuestionContoller {
         Question question = questionService.updateQuestion(questionMapper.requestToQuestion(request), questionId);
         return new ResponseEntity<>(new SingleResponseDto(questionMapper.questionToDetail(question)), HttpStatus.OK);
     }
+
+    @GetMapping("{question-id}")
+    public ResponseEntity getQuestion(@PathVariable("question-id") @Positive Long id) {
+         return new ResponseEntity<>(
+                 new SingleResponseDto<>(questionMapper.questionToDetail(questionService.getQuestion(id))), HttpStatus.OK);
+    }
+
+
+    @GetMapping
+    public ResponseEntity<MultiResponseDto> getQuestions(@RequestParam @Positive int page,
+                                                         @RequestParam @Positive int size) {
+        Page<Question> pageQuestion = questionService.getQuestions(page - 1, size);
+        List<Question> questions = pageQuestion.getContent();
+
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(
+                        questionMapper.questionsToResponses(questions), pageQuestion),
+                HttpStatus.OK);
+    }
+
+    //제목으로 질문 검색하는 기능
+    @GetMapping("/search")
+    public ResponseEntity<MultiResponseDto> searchTitle(@RequestParam @Positive int page,
+                                                        @RequestParam @Positive int size,
+                                                        @RequestParam String title) {
+        Page<Question> pageQuestion = questionService.searchTitle(page - 1, size, title);
+        List<Question> questions = pageQuestion.getContent();
+
+        return new ResponseEntity<>(new MultiResponseDto<>(questionMapper.questionsToResponses(questions), pageQuestion), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{question-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteQuestion(@PathVariable("question-id") Long id) {
+        questionService.deleteQuestion(id);
+    }
+
+
 }

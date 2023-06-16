@@ -6,11 +6,12 @@ import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
 import com.codestates.stackoverflow.question.entity.Question;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE) //upmapped 된 필드 무시하도록 추가
 public interface QuestionMapper {
     Question requestToQuestion(QuestionDto.PostRequest request);
 
