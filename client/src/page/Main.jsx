@@ -1,7 +1,7 @@
-import Footer from './component/Footer';
 import Nav from './component/Nav';
+import Footer from './component/Footer';
 
-function App() {
+function Main() {
   return (
     <div>
       <Nav />
@@ -10,4 +10,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;
