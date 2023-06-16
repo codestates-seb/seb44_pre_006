@@ -5,15 +5,15 @@ const SideContainer = styled.div`
 border: 1px solid #CCCCCC;
 flex-direction: column;
 display: flex;
-width: 200px;
-height: 700px;
+width: 164px;
+height: 550px;
 
 
 
 
 .side-container{
     list-style-type: none;
-    width: 300px;
+    width: 240px;
     padding: 32px 12px 12px 20px;
     cursor: pointer;
     line-height: 200%;
