@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/question/search?size=10&page=1&title=Title' \
+    'Content-Type:application/json;charset=UTF-8'
+----

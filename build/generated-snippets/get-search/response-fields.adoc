@@ -1,0 +1,48 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Array+`
+|질문 리스트
+
+|`+data[].title+`
+|`+String+`
+|질문 제목
+
+|`+data[].content+`
+|`+String+`
+|질문 내용
+
+|`+data[].modifiedAt+`
+|`+String+`
+|질문 수정 시간
+
+|`+data[].viewCount+`
+|`+Number+`
+|질문 조회 수
+
+|`+data[].answerCount+`
+|`+Number+`
+|질문에 대한 답변 개수
+
+|`+pageInfo+`
+|`+Object+`
+|페이지 정보
+
+|`+pageInfo.page+`
+|`+Number+`
+|현재 페이지 번호
+
+|`+pageInfo.size+`
+|`+Number+`
+|페이지 사이즈
+
+|`+pageInfo.totalElements+`
+|`+Number+`
+|전체 질문 갯수
+
+|`+pageInfo.totalPages+`
+|`+Number+`
+|전체 페이지 수
+
+|===

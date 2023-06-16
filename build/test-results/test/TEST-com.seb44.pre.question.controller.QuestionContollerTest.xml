@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.seb44.pre.question.controller.QuestionContollerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-06-15T18:41:03" hostname="localhost.local" time="0.779">
+  <properties/>
+  <testcase name="getQuestions Test" classname="com.seb44.pre.question.controller.QuestionContollerTest" time="0.388"/>
+  <testcase name="createQuestion Test" classname="com.seb44.pre.question.controller.QuestionContollerTest" time="0.153"/>
+  <testcase name="searchQuestions Test" classname="com.seb44.pre.question.controller.QuestionContollerTest" time="0.066"/>
+  <testcase name="patchQuestion Test" classname="com.seb44.pre.question.controller.QuestionContollerTest" time="0.076"/>
+  <testcase name="getQuestion Test" classname="com.seb44.pre.question.controller.QuestionContollerTest" time="0.057"/>
+  <testcase name="deleteQuestion Test" classname="com.seb44.pre.question.controller.QuestionContollerTest" time="0.019"/>
+  <system-out><![CDATA[03:40:59.475 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+03:40:59.484 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+03:40:59.537 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.seb44.pre.question.controller.QuestionContollerTest] from class [org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper]
+03:40:59.553 [Test worker] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.seb44.pre.question.controller.QuestionContollerTest], using SpringBootContextLoader
+03:40:59.558 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.seb44.pre.question.controller.QuestionContollerTest]: class path resource [com/seb44/pre/question/controller/QuestionContollerTest-context.xml] does not exist
+03:40:59.558 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.seb44.pre.question.controller.QuestionContollerTest]: class path resource [com/seb44/pre/question/controller/QuestionContollerTestContext.groovy] does not exist
+03:40:59.558 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.seb44.pre.question.controller.QuestionContollerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+03:40:59.559 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.seb44.pre.question.controller.QuestionContollerTest]: QuestionContollerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+03:40:59.650 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.seb44.pre.question.controller.QuestionContollerTest]
+03:40:59.737 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/kim/project/pre/build/classes/java/main/com/seb44/pre/PreApplication.class]
+03:40:59.739 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.seb44.pre.PreApplication for test class com.seb44.pre.question.controller.QuestionContollerTest
+03:40:59.753 [Test worker] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - @TestExecutionListeners is not present for class [com.seb44.pre.question.controller.QuestionContollerTest]: using defaults.
+03:40:59.754 [Test worker] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener]
+03:40:59.768 [Test worker] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1cf2fed4, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3af4e0bf, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@245a26e1, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4d63b624, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@466cf502, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5b800468, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2e185cd7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7e1a1da6, org.springframework.test.context.event.EventPublishingTestExecutionListener@5f7f2382, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@407cf41, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6815c5f2, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@46cc127b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@60094a13, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5aceec94, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1c32886a]
+03:40:59.774 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@62d363ab testClass = QuestionContollerTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7889a1ac testClass = QuestionContollerTest, locations = '{}', classes = '{class com.seb44.pre.PreApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@53f48368, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@71b3bc45, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@6e395a8f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@65d071a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@292d1c71, [ImportsContextCustomizer@3aee3976 key = [@org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc(), @org.springframework.context.annotation.Import(value={org.springframework.boot.test.autoconfigure.restdocs.RestDocumentationContextProviderRegistrar.class}), @org.springframework.boot.test.mock.mockito.MockBean(answer=RETURNS_DEFAULTS, classes={}, name="", extraInterfaces={}, reset=AFTER, value={org.springframework.data.jpa.mapping.JpaMetamodelMappingContext.class}, serializable=false), @org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc(webDriverEnabled=true, print=DEFAULT, webClientEnabled=true, addFilters=true, printOnlyOnFailure=true), @org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest(useDefaultFilters=true, excludeFilters={}, controllers={}, excludeAutoConfiguration={}, includeFilters={}, value={com.seb44.pre.question.controller.QuestionContoller.class}, properties={}), @org.springframework.test.context.BootstrapWith(value=org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper.class), @org.springframework.boot.test.autoconfigure.filter.TypeExcludeFilters(value={org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTypeExcludeFilter.class}), @org.springframework.boot.autoconfigure.ImportAutoConfiguration(value={}, exclude={}, classes={}), @org.springframework.boot.test.autoconfigure.properties.PropertyMapping(value="spring.test.restdocs", skip=NO), @org.springframework.boot.test.autoconfigure.core.AutoConfigureCache(cacheProvider=NONE), @org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs(uriScheme="http", outputDir="", uriPort=8080, value="", uriHost="localhost"), @org.springframework.context.annotation.Import(value={org.springframework.boot.autoconfigure.ImportAutoConfigurationImportSelector.class}), @org.springframework.boot.test.autoconfigure.OverrideAutoConfiguration(enabled=false), @org.springframework.boot.test.autoconfigure.properties.PropertyMapping(value="spring.test.mockmvc", skip=NO)]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@10fde30a, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@346939bf, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@7aa21140, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@0], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map[[empty]]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v2.7.12)
+
+2023-06-16 03:41:00.514  INFO 79724 --- [    Test worker] c.s.p.q.c.QuestionContollerTest          : Starting QuestionContollerTest using Java 11.0.17 on localhost.local with PID 79724 (started by kim in /Users/kim/project/pre)
+2023-06-16 03:41:00.517  INFO 79724 --- [    Test worker] c.s.p.q.c.QuestionContollerTest          : No active profile set, falling back to 1 default profile: "default"
+2023-06-16 03:41:03.362  INFO 79724 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-06-16 03:41:03.363  INFO 79724 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-06-16 03:41:03.367  INFO 79724 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2023-06-16 03:41:03.423  INFO 79724 --- [    Test worker] c.s.p.q.c.QuestionContollerTest          : Started QuestionContollerTest in 3.593 seconds (JVM running for 5.076)
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /question/1
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8"]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.seb44.pre.question.controller.QuestionContoller
+           Method = com.seb44.pre.question.controller.QuestionContoller#getQuestion(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"data":{"id":1,"title":"Title","content":"Content","createdAt":"2023-06-16T03:41:04.147721","modifiedAt":"2023-06-16T03:41:04.14774","viewCount":0,"answers":[{"answerId":1,"body":"body","createdAt":"2023-06-16T03:41:04.147753","modifiedAt":"2023-06-16T03:41:04.147756"}]}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
