@@ -22,14 +22,19 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false, length = 150, unique = true)
     private String title;
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
+
     @Column(nullable = false)
     private Long viewCount = 0L;
+
     @Column(updatable = false, nullable = false, columnDefinition = "DATETIME(0)")
     private LocalDateTime createdAt = LocalDateTime.now();
+
     @Column(nullable = false, columnDefinition = "DATETIME(0)")
     private LocalDateTime modifiedAt = LocalDateTime.now();
     // Member 1:N, 양방향

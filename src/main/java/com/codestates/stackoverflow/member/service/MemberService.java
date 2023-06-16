@@ -29,40 +29,36 @@ import java.util.Optional;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
-    private final ApplicationEventPublisher publisher;
-
-    // 추가
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
 
     public MemberService(MemberRepository memberRepository,
-                         ApplicationEventPublisher publisher,
                          PasswordEncoder passwordEncoder,
                          CustomAuthorityUtils authorityUtils) {
         this.memberRepository = memberRepository;
-        this.publisher = publisher;
         this.passwordEncoder = passwordEncoder;
         this.authorityUtils = authorityUtils;
     }
 
+    //회원 가입
     public Member createMember(Member member) {
         verifyExistsEmail(member.getEmail());
 
-        // 추가: Password 암호화
+        // Password 암호화
         String encryptedPassword = passwordEncoder.encode(member.getPassword());
         member.setPassword(encryptedPassword);
 
-        // 추가: DB에 User Role 저장
+        // DB에 User Role 저장
         List<String> roles = authorityUtils.createRoles(member.getEmail());
         member.setRoles(roles);
 
         Member savedMember = memberRepository.save(member);
 
 
-        //publisher.publishEvent(new MemberRegistrationApplicationEvent(savedMember));
         return savedMember;
     }
 
+    //회원 정보 수정
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
     public Member updateMember(Member member) {
         Member findMember = findVerifiedMember(member.getMemberId());
@@ -79,6 +75,7 @@ public class MemberService {
         return memberRepository.save(findMember);
     }
 
+    //회원 정보 가져오기 - 회원 등록 정보
     @Transactional(readOnly = true)
     public Member findMember(long memberId) {
         return findVerifiedMember(memberId);
@@ -89,21 +86,25 @@ public class MemberService {
         return findVerifiedMember(email);
     }
 
+    //전체 회원 정보 가져오기
     public Page<Member> findMembers(int page, int size) {
         return memberRepository.findAll(PageRequest.of(page, size,
                 Sort.by("memberId").descending()));
     }
 
+    //회원 탈퇴
     public void deleteMember(long memberId) {
         Member findMember = findVerifiedMember(memberId);
 
         memberRepository.delete(findMember);
     }
 
+    //전체 회원 삭제
     public void deleteAll() {
         memberRepository.deleteAll();
     }
 
+    //회원아이디로 등록된 회원인지 검증
     @Transactional(readOnly = true)
     public Member findVerifiedMember(long memberId) {
         Optional<Member> optionalMember =
@@ -114,6 +115,7 @@ public class MemberService {
         return findMember;
     }
 
+    //회원이메일로 등록된 회원인지 검증
     public Member findVerifiedMember(String email){
         Optional<Member> optionalMember =
                 memberRepository.findByEmail(email);
@@ -123,6 +125,7 @@ public class MemberService {
         return findMember;
     }
 
+    //이미 등록된 이메일인지 확인
     private void verifyExistsEmail(String email) {
         Optional<Member> member = memberRepository.findByEmail(email);
         if (member.isPresent())

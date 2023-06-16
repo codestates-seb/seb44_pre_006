@@ -1,6 +1,7 @@
 package com.codestates.stackoverflow.member.entity;
 
 import com.codestates.stackoverflow.question.entity.Question;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,6 +40,7 @@ public class Member {
 
     //Question과의 의존관계 설정
     @OneToMany(mappedBy = "member",cascade = CascadeType.REMOVE)
+    @JsonIgnore
     List<Question> questions = new ArrayList<>();
 
     // 추가

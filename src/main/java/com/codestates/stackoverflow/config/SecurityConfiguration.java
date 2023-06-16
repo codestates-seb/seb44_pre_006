@@ -58,11 +58,16 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers(HttpMethod.POST, "/users").permitAll()
                         .antMatchers(HttpMethod.PATCH, "/users/**").hasRole("USER")
-                        //로그인하지 않아도 모든 사용자 정보를 GET할 수 있다.(우선)
-//                        .antMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
-//                        .antMatchers(HttpMethod.GET, "/users/**").hasAnyRole("USER", "ADMIN")
+                        .antMatchers(HttpMethod.GET,"/users/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/users").permitAll() //전체 user 정보
                         .antMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
                         .antMatchers(HttpMethod.DELETE, "/users/**").hasAnyRole("USER", "ADMIN")
+                        .antMatchers(HttpMethod.POST, "/questions").hasAnyRole("USER","ADMIN")
+                        .antMatchers(HttpMethod.PATCH, "/questions/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/questions").permitAll()
+                        .antMatchers(HttpMethod.GET, "/questions/search").permitAll() //question 검색은 누구나 가능
+                        .antMatchers(HttpMethod.DELETE, "/questions/**").hasAnyRole("USER", "ADMIN")
+
                         .anyRequest().permitAll()
                 );
 

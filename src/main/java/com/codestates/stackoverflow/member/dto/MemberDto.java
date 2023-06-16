@@ -1,5 +1,8 @@
 package com.codestates.stackoverflow.member.dto;
 
+import com.codestates.stackoverflow.question.dto.QuestionDto;
+import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
+import com.codestates.stackoverflow.question.entity.Question;
 import com.codestates.stackoverflow.validator.NotSpace;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +10,7 @@ import lombok.Getter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class MemberDto {
     @Getter
@@ -56,6 +60,12 @@ public class MemberDto {
         private long memberId;
         private String email;
         private String name;
+    }
 
+    @AllArgsConstructor
+    @Getter
+    public static class InfoResponse{
+        private List<QuestionResponseDto.ResponseForMember> questions;
+        private List<String> answers;
     }
 }
