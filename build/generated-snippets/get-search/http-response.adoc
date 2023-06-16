@@ -1,0 +1,28 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 404
+
+{
+  "data" : [ {
+    "title" : "Title",
+    "content" : "Content",
+    "viewCount" : 0,
+    "answerCount" : 0,
+    "modifiedAt" : "2023-06-16T03:41:04"
+  }, {
+    "title" : "Title1",
+    "content" : "Content1",
+    "viewCount" : 0,
+    "answerCount" : 0,
+    "modifiedAt" : "2023-06-16T03:41:04"
+  } ],
+  "pageInfo" : {
+    "page" : 1,
+    "size" : 10,
+    "totalElements" : 2,
+    "totalPages" : 1
+  }
+}
+----

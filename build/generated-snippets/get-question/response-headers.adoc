@@ -1,0 +1,7 @@
+|===
+|Name|Description
+
+|`+Location+`
+|등록된 질문의 URI. /question/{questionId}
+
+|===

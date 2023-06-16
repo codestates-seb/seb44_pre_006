@@ -1,0 +1,23 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 374
+
+{
+  "data" : {
+    "id" : 1,
+    "title" : "Title",
+    "content" : "Content",
+    "createdAt" : "2023-06-16T03:41:04.147721",
+    "modifiedAt" : "2023-06-16T03:41:04.14774",
+    "viewCount" : 0,
+    "answers" : [ {
+      "answerId" : 1,
+      "body" : "body",
+      "createdAt" : "2023-06-16T03:41:04.147753",
+      "modifiedAt" : "2023-06-16T03:41:04.147756"
+    } ]
+  }
+}
+----
