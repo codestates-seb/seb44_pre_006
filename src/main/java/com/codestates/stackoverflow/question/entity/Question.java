@@ -1,12 +1,12 @@
 package com.codestates.stackoverflow.question.entity;
 
-import com.codestates.stackoverflow.answer.entity.Answer;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -38,6 +38,6 @@ public class Question {
 
     // Answer N:1, 양방향
 //    @OneToMany(mappedBy = "question")
-    @OneToMany(mappedBy = "question",cascade = CascadeType.REMOVE)
-    List<Answer> answers = new ArrayList<>();
+//    @OneToMany(mappedBy = "question",cascade = CascadeType.REMOVE)
+//    List<Answer> answers = new ArrayList<>();
 }

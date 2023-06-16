@@ -6,12 +6,11 @@ import org.springframework.restdocs.operation.preprocess.OperationResponsePrepro
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 
 public interface ApiDocumentUtils {
-    static OperationRequestPreprocessor getRequestPreProcessor() {
-
+    static OperationRequestPreprocessor getRequestPreProcessor(){
         return preprocessRequest(prettyPrint());
     }
 
-    static OperationResponsePreprocessor getResponsePreProcessor() {
+    static OperationResponsePreprocessor getResponsePreProcessor(){
         return preprocessResponse(prettyPrint());
     }
 }

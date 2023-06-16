@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public interface QuestionMapper {
     Question requestToQuestion(QuestionDto.PostRequest request);
 
-    @Mapping(target = "answerCount", expression = "java(question.getAnswers().size())")
+//    @Mapping(target = "answerCount", expression = "java(question.getAnswers().size())")
     QuestionResponseDto.Response questionToResponse(Question question);
 
     QuestionResponseDto.ResponseDetail questionToDetail(Question question);
@@ -28,7 +28,7 @@ public interface QuestionMapper {
                         .title(i.getTitle())
                         .content(i.getContent())
                         .viewCount(i.getViewCount())
-                        .answerCount(i.getAnswers().size())
+//                        .answerCount(i.getAnswers().size())
                         .build())
                 .collect(Collectors.toList());
 

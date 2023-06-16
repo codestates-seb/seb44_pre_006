@@ -1,6 +1,5 @@
 package com.codestates.stackoverflow.question.dto;
 
-import com.codestates.stackoverflow.answer.dto.AnswerDTO;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -15,7 +14,7 @@ public class QuestionResponseDto {
         private String title;
         private String content;
         private Long viewCount;
-        private Integer answerCount;
+//        private Integer answerCount;
         private LocalDateTime modifiedAt;
     }
     @Getter
@@ -27,6 +26,6 @@ public class QuestionResponseDto {
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private Long viewCount;
-        private List<AnswerDTO.Response> answers;
+//        private List<AnswerDTO.Response> answers;
     }
 }

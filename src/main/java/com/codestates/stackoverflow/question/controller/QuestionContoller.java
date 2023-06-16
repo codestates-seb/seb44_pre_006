@@ -6,7 +6,7 @@ import com.codestates.stackoverflow.question.dto.QuestionDto;
 import com.codestates.stackoverflow.question.entity.Question;
 import com.codestates.stackoverflow.question.mapper.QuestionMapper;
 import com.codestates.stackoverflow.question.service.QuestionService;
-import com.codestates.stackoverflow.util.UriCreator;
+import com.codestates.stackoverflow.utils.UriCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

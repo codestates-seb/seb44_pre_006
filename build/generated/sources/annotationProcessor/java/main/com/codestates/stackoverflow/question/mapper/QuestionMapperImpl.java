@@ -1,20 +1,15 @@
 package com.codestates.stackoverflow.question.mapper;
 
-import com.codestates.stackoverflow.answer.dto.AnswerDTO;
-import com.codestates.stackoverflow.answer.entity.Answer;
 import com.codestates.stackoverflow.question.dto.QuestionDto;
 import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
 import com.codestates.stackoverflow.question.entity.Question;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-16T02:38:37+0900",
-    comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 11.0.17 (Oracle Corporation)"
+    date = "2023-06-16T14:00:03+0900",
+    comments = "version: 1.5.1.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 11.0.17 (Oracle Corporation)"
 )
 @Component
 public class QuestionMapperImpl implements QuestionMapper {
@@ -46,8 +41,6 @@ public class QuestionMapperImpl implements QuestionMapper {
         response.viewCount( question.getViewCount() );
         response.modifiedAt( question.getModifiedAt() );
 
-        response.answerCount( question.getAnswers().size() );
-
         return response.build();
     }
 
@@ -65,43 +58,7 @@ public class QuestionMapperImpl implements QuestionMapper {
         responseDetail.createdAt( question.getCreatedAt() );
         responseDetail.modifiedAt( question.getModifiedAt() );
         responseDetail.viewCount( question.getViewCount() );
-        responseDetail.answers( answerListToResponseList( question.getAnswers() ) );
 
         return responseDetail.build();
-    }
-
-    protected AnswerDTO.Response answerToResponse(Answer answer) {
-        if ( answer == null ) {
-            return null;
-        }
-
-        long answerId = 0L;
-        String body = null;
-        LocalDateTime createdAt = null;
-        LocalDateTime modifiedAt = null;
-
-        if ( answer.getAnswerId() != null ) {
-            answerId = answer.getAnswerId();
-        }
-        body = answer.getBody();
-        createdAt = answer.getCreatedAt();
-        modifiedAt = answer.getModifiedAt();
-
-        AnswerDTO.Response response = new AnswerDTO.Response( answerId, body, createdAt, modifiedAt );
-
-        return response;
-    }
-
-    protected List<AnswerDTO.Response> answerListToResponseList(List<Answer> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<AnswerDTO.Response> list1 = new ArrayList<AnswerDTO.Response>( list.size() );
-        for ( Answer answer : list ) {
-            list1.add( answerToResponse( answer ) );
-        }
-
-        return list1;
     }
 }
