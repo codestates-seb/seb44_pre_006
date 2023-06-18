@@ -9,6 +9,8 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -61,7 +63,13 @@ public class MemberService {
     //회원 정보 수정
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
     public Member updateMember(Member member) {
+        //현재 수정하려는 member와 로그인 중인 member의 id가 같은지 확인
+        if(member.getMemberId()!= authenticationMember().getMemberId()){
+            throw new BusinessLogicException(ExceptionCode.MEMBER_UNAUTHORIZED);
+        }
+
         Member findMember = findVerifiedMember(member.getMemberId());
+
 
         Optional.ofNullable(member.getName())
                 .ifPresent(name -> findMember.setName(name));
@@ -94,6 +102,11 @@ public class MemberService {
 
     //회원 탈퇴
     public void deleteMember(long memberId) {
+
+        if(memberId!= authenticationMember().getMemberId()){
+            throw new BusinessLogicException(ExceptionCode.MEMBER_UNAUTHORIZED);
+        }
+
         Member findMember = findVerifiedMember(memberId);
 
         memberRepository.delete(findMember);
@@ -130,6 +143,15 @@ public class MemberService {
         Optional<Member> member = memberRepository.findByEmail(email);
         if (member.isPresent())
             throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
+    }
+
+    private Member authenticationMember() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        //현재 로그인한 사용자 이메일
+        String username = (String) authentication.getPrincipal();
+
+        // 로그인한 ID(이매일)로 Member를 찾아서 반환
+        return findVerifiedMember(username);
     }
 
 

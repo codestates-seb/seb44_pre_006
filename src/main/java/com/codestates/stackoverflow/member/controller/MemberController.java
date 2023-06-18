@@ -1,5 +1,7 @@
 package com.codestates.stackoverflow.member.controller;
 
+import com.codestates.stackoverflow.answer.dto.AnswerResponseDtoForMember;
+import com.codestates.stackoverflow.answer.service.AnswerService;
 import com.codestates.stackoverflow.dto.MultiResponseDto;
 import com.codestates.stackoverflow.dto.SingleResponseDto;
 import com.codestates.stackoverflow.member.dto.MemberDto;
@@ -7,8 +9,6 @@ import com.codestates.stackoverflow.member.entity.Member;
 import com.codestates.stackoverflow.member.mapper.MemberMapper;
 import com.codestates.stackoverflow.member.service.MemberService;
 import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
-import com.codestates.stackoverflow.question.entity.Question;
-import com.codestates.stackoverflow.question.mapper.QuestionMapper;
 import com.codestates.stackoverflow.question.service.QuestionService;
 import com.codestates.stackoverflow.utils.UriCreator;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,11 +37,13 @@ public class MemberController {
     private final static String MEMBER_DEFAULT_URL = "/users";
     private final MemberService memberService;
     private final QuestionService questionService;
+    private final AnswerService answerService;
     private final MemberMapper mapper;
 
-    public MemberController(MemberService memberService, QuestionService questionService, MemberMapper mapper) {
+    public MemberController(MemberService memberService, QuestionService questionService, AnswerService answerService, MemberMapper mapper) {
         this.memberService = memberService;
         this.questionService = questionService;
+        this.answerService = answerService;
         this.mapper = mapper;
     }
 
@@ -63,6 +64,7 @@ public class MemberController {
             @PathVariable("member-id") @Positive long memberId,
             @Valid @RequestBody MemberDto.Patch requestBody) {
         requestBody.setMemberId(memberId);
+
 
         Member member =
                 memberService.updateMember(mapper.memberPatchToMember(requestBody));
@@ -101,9 +103,7 @@ public class MemberController {
         List<QuestionResponseDto.ResponseForMember> questions= questionService.getQuestionByMemberId(memberId);
 
         //Answer 정보
-        List<String> answers = new ArrayList<>();
-        answers.add("a");
-        answers.add("b");
+        List<AnswerResponseDtoForMember> answers = answerService.getAnswerByMemberId(memberId);
 
         MemberDto.InfoResponse infoResponse = new MemberDto.InfoResponse(questions, answers);
 

@@ -33,10 +33,9 @@ public class QuestionService {
 
     //로그인한 회원 질문 등록
     public Question createQuestion(Question request) {
-        // 로그인한 사용자의 ID로 조회하여 해당 ID를 가진 사람이 존재하는 검증 -> Security에서 로그인하지 않으면 post할 수 없도록 하고 있긴 하나, 이중 검증 좋은 것 같습니다.
+        // 로그인한 사용자의 ID로 조회하여 해당 ID를 가진 사람이 존재하는 검증
         request.setMember(authenticationMember());
 
-        //TODO title을 unique하게 하신 이유가 궁금해요!
 
         // 동일한 Title이 있는지 검증
         verifyExistsTitle(request.getTitle());

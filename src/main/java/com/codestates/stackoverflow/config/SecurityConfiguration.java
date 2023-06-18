@@ -56,17 +56,24 @@ public class SecurityConfiguration {
                 .apply(new CustomFilterConfigurer())//커스터마이징된 Configuration 추가
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
-                        .antMatchers(HttpMethod.POST, "/users").permitAll()
-                        .antMatchers(HttpMethod.PATCH, "/users/**").hasRole("USER")
-                        .antMatchers(HttpMethod.GET,"/users/**").hasRole("USER")
+                        .antMatchers(HttpMethod.POST, "/users/signup").permitAll()//회원 가입은 누구나 가능
+                        .antMatchers(HttpMethod.PATCH, "/users/**").hasRole("USER")//회원 정보 수정은 로그인해야
                         .antMatchers(HttpMethod.GET, "/users").permitAll() //전체 user 정보
-                        .antMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
-                        .antMatchers(HttpMethod.DELETE, "/users/**").hasAnyRole("USER", "ADMIN")
-                        .antMatchers(HttpMethod.POST, "/questions").hasAnyRole("USER","ADMIN")
-                        .antMatchers(HttpMethod.PATCH, "/questions/**").hasRole("USER")
-                        .antMatchers(HttpMethod.GET, "/questions").permitAll()
+                        .antMatchers(HttpMethod.GET,"/users/**").hasRole("USER")//회원 정보 조회는 로그인해야
+                        .antMatchers(HttpMethod.GET,"/users/getInfo/**").hasAnyRole("USER","ADMIN") //회원 질문, 답변 정보 조회
+                        .antMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN") //전체 회원 삭제는 관리자만 가능
+                        .antMatchers(HttpMethod.DELETE, "/users/**").hasAnyRole("USER", "ADMIN") //회원 탈퇴는 관리자, 회원 모두 가능
+                        .antMatchers(HttpMethod.POST, "/questions").hasAnyRole("USER","ADMIN") //질문 등록은 로그인하면 가능
+                        .antMatchers(HttpMethod.PATCH, "/questions/**").hasRole("USER")//질문 수정도 로그인하면 가능->현재 로그인한 회원이 질문을 작성한 회원인지는 service에서 처리
+                        .antMatchers(HttpMethod.GET, "/questions").permitAll()//question 모두 조회 누구나 가능
+                        .antMatchers(HttpMethod.GET, "/questions/**").permitAll()//question 1개 조회 누구나 가능
                         .antMatchers(HttpMethod.GET, "/questions/search").permitAll() //question 검색은 누구나 가능
-                        .antMatchers(HttpMethod.DELETE, "/questions/**").hasAnyRole("USER", "ADMIN")
+                        .antMatchers(HttpMethod.DELETE, "/questions/**").hasAnyRole("USER", "ADMIN")//질문 삭제는 로그인한 회원만 가능 -> 현재 로그인한 회원이 질문을 작성한 회원인지는 service에서 처리
+                        .antMatchers(HttpMethod.POST, "/answers").hasAnyRole("USER","ADMIN") //답변 등록은 로그인한 회원만 가능
+                        .antMatchers(HttpMethod.PATCH, "/answers/**").hasRole("USER")//답변 수정도 로그인하면 가능->현재 로그인한 회원이 질문을 작성한 회원인지는 service에서 처리
+                        .antMatchers(HttpMethod.GET, "/answers").permitAll()//answer 모두 조회 누구나 가능
+                        .antMatchers(HttpMethod.GET, "/answers/**").permitAll()//answer 하나 조회 누구나 가능
+                        .antMatchers(HttpMethod.DELETE, "/answers/**").hasAnyRole("USER", "ADMIN") //답변 삭제는 로그인한 회원만 가능 -> 현재 로그인한 회원이 질문을 작성한 회원인지는 service에서 처리
 
                         .anyRequest().permitAll()
                 );

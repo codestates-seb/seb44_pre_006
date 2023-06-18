@@ -9,11 +9,9 @@ group = 'com.codestates.stackoverflow'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-
 repositories {
 	mavenCentral()
 }
-
 
 ext {
 	set('snippetsDir', file("build/generated-snippets"))
@@ -70,10 +68,10 @@ build {
 	dependsOn copyDocument
 }
 
-// (10)
+
 bootJar {
-	dependsOn copyDocument    // (10-1)
-	from ("${asciidoctor.outputDir}") {  // (10-2)
-		into 'static/docs'     // (10-3)
+	dependsOn copyDocument
+	from ("${asciidoctor.outputDir}") {
+		into 'static/docs'
 	}
 }
