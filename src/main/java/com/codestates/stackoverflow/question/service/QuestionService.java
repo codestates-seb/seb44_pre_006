@@ -36,10 +36,6 @@ public class QuestionService {
         // 로그인한 사용자의 ID로 조회하여 해당 ID를 가진 사람이 존재하는 검증
         request.setMember(authenticationMember());
 
-
-        // 동일한 Title이 있는지 검증
-        verifyExistsTitle(request.getTitle());
-
         return questionRepository.save(request);
     }
 
@@ -131,14 +127,6 @@ public class QuestionService {
 
         // 로그인한 ID(이매일)로 Member를 찾아서 반환
         return memberService.findVerifiedMember(username);
-    }
-
-    //등록된 Title인지 확인
-    private void verifyExistsTitle(String title) {
-        // Question의 Title 값을 기준으로 DB에 조회하며 해당 Title을 가진 Question이 없다면 QUESTION_DUPLICATED_TITLE 예외 발생
-        questionRepository.findByTitle(title)
-                .ifPresent(i -> {
-                    throw new BusinessLogicException(ExceptionCode.QUESTION_DUPLICATED_TITLE);});
     }
 
     //등록된 질문 리턴
