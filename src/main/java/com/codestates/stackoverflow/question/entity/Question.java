@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-//@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 // Question 조회 시 조회 수가 올라가 modifiedAt가 계속 변경됨

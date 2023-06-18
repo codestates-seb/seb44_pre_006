@@ -28,7 +28,7 @@ public class QuestionContoller {
     @Autowired
     QuestionMapper questionMapper;
 
-    @PostMapping
+    @PostMapping("/ask")
     public ResponseEntity postQuestion(@RequestBody @Valid QuestionDto.PostRequest request) {
         // Location 헤더에 생성된 질문의 정보를 조회할 수 있는 URI를 포함하여 전달한다.
         Question question = questionService.createQuestion(questionMapper.requestToQuestion(request));

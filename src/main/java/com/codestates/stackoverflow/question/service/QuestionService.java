@@ -99,8 +99,8 @@ public class QuestionService {
     @Transactional(readOnly = true)
     public Page<Question> getQuestions(int page, int size) {
         // 전체 질문 조회 시 수정된 날짜를 기준으로 정렬
-         return questionRepository.
-                 findAll(PageRequest.of(page, size, Sort.Direction.DESC, "modifiedAt"));
+        return questionRepository.
+                findAll(PageRequest.of(page, size, Sort.Direction.DESC, "modifiedAt"));
     }
 
     //제목으로 질문 조회

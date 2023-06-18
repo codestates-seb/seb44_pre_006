@@ -63,7 +63,7 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.GET,"/users/getInfo/**").hasAnyRole("USER","ADMIN") //회원 질문, 답변 정보 조회
                         .antMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN") //전체 회원 삭제는 관리자만 가능
                         .antMatchers(HttpMethod.DELETE, "/users/**").hasAnyRole("USER", "ADMIN") //회원 탈퇴는 관리자, 회원 모두 가능
-                        .antMatchers(HttpMethod.POST, "/questions").hasAnyRole("USER","ADMIN") //질문 등록은 로그인하면 가능
+                        .antMatchers(HttpMethod.POST, "/questions/ask").hasAnyRole("USER","ADMIN") //질문 등록은 로그인하면 가능
                         .antMatchers(HttpMethod.PATCH, "/questions/**").hasRole("USER")//질문 수정도 로그인하면 가능->현재 로그인한 회원이 질문을 작성한 회원인지는 service에서 처리
                         .antMatchers(HttpMethod.GET, "/questions").permitAll()//question 모두 조회 누구나 가능
                         .antMatchers(HttpMethod.GET, "/questions/**").permitAll()//question 1개 조회 누구나 가능
