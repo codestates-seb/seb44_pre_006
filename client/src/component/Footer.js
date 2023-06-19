@@ -7,7 +7,8 @@ const FooterContainer = styled.div`
   background-image: none;
   background-position: top left;
   background-size: auto;
-  position: fixed;
+  position: relative;
+  transform: translatY(-100%);
   width: 100%;
 
   .footer-container {
