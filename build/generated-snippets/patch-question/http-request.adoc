@@ -1,6 +1,6 @@
 [source,http,options="nowrap"]
 ----
-PATCH /question/1 HTTP/1.1
+PATCH /questions/posts/1/edit HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Content-Length: 53
 Host: localhost:8080

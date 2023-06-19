@@ -1,22 +1,33 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 374
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json;charset=UTF-8
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: SAMEORIGIN
+Content-Length: 424
 
 {
   "data" : {
     "id" : 1,
     "title" : "Title",
     "content" : "Content",
-    "createdAt" : "2023-06-16T03:41:04.147721",
-    "modifiedAt" : "2023-06-16T03:41:04.14774",
+    "createdAt" : "2023-06-20T00:21:32",
+    "modifiedAt" : "2023-06-20T00:21:32",
     "viewCount" : 0,
+    "createBy" : "user@gmail.com",
     "answers" : [ {
       "answerId" : 1,
-      "body" : "body",
-      "createdAt" : "2023-06-16T03:41:04.147753",
-      "modifiedAt" : "2023-06-16T03:41:04.147756"
+      "content" : "body",
+      "createdAt" : "2023-06-20T00:21:32",
+      "modifiedAt" : "2023-06-20T00:21:32",
+      "createdBy" : "kevin@gmail.com"
     } ]
   }
 }

@@ -5,14 +5,16 @@
     "title" : "Title",
     "content" : "Content",
     "viewCount" : 0,
-    "answerCount" : 0,
-    "modifiedAt" : "2023-06-16T03:41:04"
+    "createBy" : "user@gamil.com",
+    "modifiedAt" : "2023-06-20T00:21:32",
+    "answerCount" : 0
   }, {
     "title" : "Title1",
     "content" : "Content1",
     "viewCount" : 0,
-    "answerCount" : 0,
-    "modifiedAt" : "2023-06-16T03:41:04"
+    "createBy" : "user@gamil.com",
+    "modifiedAt" : "2023-06-20T00:21:32",
+    "answerCount" : 0
   } ],
   "pageInfo" : {
     "page" : 1,

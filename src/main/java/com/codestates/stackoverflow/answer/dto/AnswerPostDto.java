@@ -15,5 +15,6 @@ import javax.validation.constraints.NotBlank;
 public class AnswerPostDto {
     @NotBlank
     private String content;
+    private Long questionId;
 
 }

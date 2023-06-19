@@ -9,6 +9,7 @@ import com.codestates.stackoverflow.member.entity.Member;
 import com.codestates.stackoverflow.member.service.MemberService;
 import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
 import com.codestates.stackoverflow.question.entity.Question;
+import com.codestates.stackoverflow.question.service.QuestionService;
 import com.codestates.stackoverflow.utils.CustomBeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,16 +26,18 @@ import java.util.Optional;
 public class AnswerService {
     private final AnswerRepository answerRepository;
     private final CustomBeanUtils<Answer> beanUtils;
-
     private final MemberService memberService;
+    private final QuestionService questionService;
 
-    public AnswerService(AnswerRepository answerRepository, CustomBeanUtils beanUtils, MemberService memberService) {
+    public AnswerService(AnswerRepository answerRepository, CustomBeanUtils beanUtils, MemberService memberService, QuestionService questionService) {
         this.answerRepository = answerRepository;
         this.beanUtils = beanUtils;
         this.memberService = memberService;
+        this.questionService = questionService;
     }
 
-    public Answer createAnswer(Answer answer) {
+    public Answer createAnswer(Answer answer, Long questionId) {
+        answer.setQuestion(questionService.findverifyQuestion(questionId));
         answer.setMember(authenticationMember());
         return answerRepository.save(answer);
     }
@@ -88,7 +91,8 @@ public class AnswerService {
                     answer.getAnswerId(),
                     answer.getContent(),
                     answer.getCreatedAt(),
-                    answer.getModifiedAt()
+                    answer.getModifiedAt(),
+                    answer.getCreatedBy()
             );
             answerDtos.add(answerDto);
         }

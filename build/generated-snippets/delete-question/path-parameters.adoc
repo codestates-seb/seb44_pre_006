@@ -1,8 +1,8 @@
-.+/question/{id}+
+.+/questions/{question-id}+
 |===
 |Parameter|Description
 
-|`+id+`
+|`+question-id+`
 |질문 식별자 ID
 
 |===

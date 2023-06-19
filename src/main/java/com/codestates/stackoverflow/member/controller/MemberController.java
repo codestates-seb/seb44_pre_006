@@ -3,6 +3,7 @@ package com.codestates.stackoverflow.member.controller;
 import com.codestates.stackoverflow.answer.dto.AnswerResponseDtoForMember;
 import com.codestates.stackoverflow.answer.service.AnswerService;
 import com.codestates.stackoverflow.dto.MultiResponseDto;
+import com.codestates.stackoverflow.dto.MultiResponseDtoWithOutPage;
 import com.codestates.stackoverflow.dto.SingleResponseDto;
 import com.codestates.stackoverflow.member.dto.MemberDto;
 import com.codestates.stackoverflow.member.entity.Member;
@@ -21,7 +22,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -104,10 +107,13 @@ public class MemberController {
         //Answer 정보
         List<AnswerResponseDtoForMember> answers = answerService.getAnswerByMemberId(memberId);
 
-        MemberDto.InfoResponse infoResponse = new MemberDto.InfoResponse(questions, answers);
+        Map<String, Object> responseData = new HashMap<>();
+        responseData.put("questions", questions);
+        responseData.put("answers", answers);
 
         return new ResponseEntity<>(
-                infoResponse, HttpStatus.FOUND
+                new MultiResponseDtoWithOutPage<>(responseData),
+                HttpStatus.FOUND
         );
 
     }

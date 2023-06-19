@@ -36,10 +36,6 @@ public class QuestionService {
         // 로그인한 사용자의 ID로 조회하여 해당 ID를 가진 사람이 존재하는 검증
         request.setMember(authenticationMember());
 
-
-        // 동일한 Title이 있는지 검증
-        verifyExistsTitle(request.getTitle());
-
         return questionRepository.save(request);
     }
 
@@ -60,7 +56,7 @@ public class QuestionService {
         question.setViewCount(0L);
 
         // Question 업데이트 시 수정 시간 업데이트
-        question.setModifiedAt(LocalDateTime.now());
+        question.setModifiedAt(LocalDateTime.now().withNano(0));
 
         return questionRepository.save(question);
     }
@@ -86,7 +82,8 @@ public class QuestionService {
                     question.getContent(),
                     question.getCreatedAt(),
                     question.getModifiedAt(),
-                    question.getViewCount()
+                    question.getViewCount(),
+                    question.getCreateBy()
             );
             questionDtos.add(questionDto);
         }
@@ -99,8 +96,8 @@ public class QuestionService {
     @Transactional(readOnly = true)
     public Page<Question> getQuestions(int page, int size) {
         // 전체 질문 조회 시 수정된 날짜를 기준으로 정렬
-         return questionRepository.
-                 findAll(PageRequest.of(page, size, Sort.Direction.DESC, "modifiedAt"));
+        return questionRepository.
+                findAll(PageRequest.of(page, size, Sort.Direction.DESC, "modifiedAt"));
     }
 
     //제목으로 질문 조회
@@ -133,16 +130,8 @@ public class QuestionService {
         return memberService.findVerifiedMember(username);
     }
 
-    //등록된 Title인지 확인
-    private void verifyExistsTitle(String title) {
-        // Question의 Title 값을 기준으로 DB에 조회하며 해당 Title을 가진 Question이 없다면 QUESTION_DUPLICATED_TITLE 예외 발생
-        questionRepository.findByTitle(title)
-                .ifPresent(i -> {
-                    throw new BusinessLogicException(ExceptionCode.QUESTION_DUPLICATED_TITLE);});
-    }
-
     //등록된 질문 리턴
-    private Question findverifyQuestion(Long id) {
+    public Question findverifyQuestion(Long id) {
         Question question = questionRepository.findById(id)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
         return question;

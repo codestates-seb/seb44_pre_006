@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Main-Class: org.springframework.boot.loader.JarLauncher
-Start-Class: com.seb44.pre.PreApplication
+Start-Class: com.codestates.stackoverflow.StackoverflowApplication
 Spring-Boot-Version: 2.7.12
 Spring-Boot-Classes: BOOT-INF/classes/
 Spring-Boot-Lib: BOOT-INF/lib/

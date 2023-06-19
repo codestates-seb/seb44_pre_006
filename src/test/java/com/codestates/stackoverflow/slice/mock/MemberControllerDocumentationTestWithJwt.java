@@ -3,6 +3,7 @@ package com.codestates.stackoverflow.slice.mock;
 import com.codestates.stackoverflow.answer.dto.AnswerResponseDtoForMember;
 import com.codestates.stackoverflow.answer.entity.Answer;
 import com.codestates.stackoverflow.answer.service.AnswerService;
+import com.codestates.stackoverflow.audit.Auditable;
 import com.codestates.stackoverflow.member.dto.MemberDto;
 import com.codestates.stackoverflow.member.entity.Member;
 import com.codestates.stackoverflow.member.mapper.MemberMapper;
@@ -19,10 +20,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -42,6 +40,7 @@ import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import static com.codestates.stackoverflow.util.ApiDocumentUtils.getRequestPreProcessor;
@@ -360,12 +359,16 @@ class MemberControllerDocumentationTestWithJwt {
         member.setMemberId(memberId);
 
         List<Question> questions = new ArrayList<>();
-        questions.add(new Question(1L, "question1", "question1", 1L, LocalDateTime.now(), LocalDateTime.now(), member));
-        questions.add(new Question(2L, "question2", "question2", 0L, LocalDateTime.now(), LocalDateTime.now(), member));
+        Question question1 = new Question(1L, "question1", "question1", 1L, LocalDateTime.now(), LocalDateTime.now(), member.getEmail());
+        questions.add(question1);
 
         List<Answer> answers = new ArrayList<>();
-        answers.add(new Answer(1L,"answer1",LocalDateTime.now(),LocalDateTime.now(),member));
-        answers.add(new Answer(2L,"answer2",LocalDateTime.now(),LocalDateTime.now(),member));
+        Answer answer1 = new Answer(1L, "answer1", member, question1);
+        answer1.setCreatedAt(LocalDateTime.now());
+        answer1.setModifiedAt(LocalDateTime.now());
+        answer1.setCreatedBy(member.getEmail());
+
+        answers.add(answer1);
 
         List<QuestionResponseDto.ResponseForMember> questionDtos = new ArrayList<>();
 
@@ -376,7 +379,8 @@ class MemberControllerDocumentationTestWithJwt {
                     question.getContent(),
                     question.getCreatedAt(),
                     question.getModifiedAt(),
-                    question.getViewCount()
+                    question.getViewCount(),
+                    question.getCreateBy()
             );
             questionDtos.add(questionDto);
         }
@@ -388,7 +392,8 @@ class MemberControllerDocumentationTestWithJwt {
                     answer.getAnswerId(),
                     answer.getContent(),
                     answer.getCreatedAt(),
-                    answer.getModifiedAt()
+                    answer.getModifiedAt(),
+                    answer.getCreatedBy()
             );
             answerDtos.add(answerDto);
         }
@@ -412,29 +417,45 @@ class MemberControllerDocumentationTestWithJwt {
         );
 
         //then
-        actions.andExpect(status().isOk())
-                .andExpect(jsonPath("$.data.email").value(member.getEmail()))
-                .andExpect(jsonPath("$.data.name").value(member.getName()))
+        MvcResult result = actions
+                .andExpect(status().isFound())
                 .andDo(
-                        document("get-member",
+                        document(
+                                "get-memberInfo",
                                 preprocessRequest(prettyPrint()),
                                 preprocessResponse(prettyPrint()),
                                 pathParameters(
                                         List.of(parameterWithName("member-id").description("회원 식별자 ID"))
                                 ),
-                                requestHeaders(
-                                        HeaderDocumentation.headerWithName("Authorization").description("JWT Token")
-                                ),
                                 responseFields(
                                         List.of(
-                                                fieldWithPath("data").type(JsonFieldType.OBJECT).description("결과 데이터").optional(),
-                                                fieldWithPath("data.memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
-                                                fieldWithPath("data.email").type(JsonFieldType.STRING).description("이메일"),
-                                                fieldWithPath("data.name").type(JsonFieldType.STRING).description("이름")
-                                        )
-                                )
+                                                fieldWithPath("data").type(JsonFieldType.OBJECT).description("결과데이터").optional(),
+                                                fieldWithPath("data.questions").type(JsonFieldType.ARRAY).description("작성한 질문").optional(),
+                                                fieldWithPath("data.questions[].id").type(JsonFieldType.NUMBER).description("질문 식별자"),
+                                                fieldWithPath("data.questions[].title").type(JsonFieldType.STRING).description("이메일"),
+                                                fieldWithPath("data.questions[].content").type(JsonFieldType.STRING).description("제목"),
+                                                fieldWithPath("data.questions[].createdAt").type(JsonFieldType.STRING).description("생성날짜"),
+                                                fieldWithPath("data.questions[].modifiedAt").type(JsonFieldType.STRING).description("수정날짜"),
+                                                fieldWithPath("data.questions[].viewCount").type(JsonFieldType.NUMBER).description("조회수"),
+                                                fieldWithPath("data.questions[].createdBy").type(JsonFieldType.STRING).description("작성자"),
+                                                fieldWithPath("data.answers").type(JsonFieldType.ARRAY).description("작성한 답변").optional(),
+                                                fieldWithPath("data.answers[].answerId").type(JsonFieldType.NUMBER).description("답변 식별자"),
+                                                fieldWithPath("data.answers[].content").type(JsonFieldType.STRING).description("내용"),
+                                                fieldWithPath("data.answers[].createdAt").type(JsonFieldType.STRING).description("생성날짜"),
+                                                fieldWithPath("data.answers[].modifiedAt").type(JsonFieldType.STRING).description("수정날짜"),
+                                                fieldWithPath("data.answers[].createdBy").type(JsonFieldType.STRING).description("작성자")
 
-                        ));
+                                        )
+
+                                )
+                        )
+
+                )
+                .andReturn();
+
+        LinkedHashMap list = JsonPath.parse(result.getResponse().getContentAsString()).read("$.data");
+
+        assertThat(list.size(), is(2));
     }
 
     @Test

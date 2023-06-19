@@ -1,14 +1,18 @@
 package com.codestates.stackoverflow.question.mapper;
 
+import com.codestates.stackoverflow.answer.dto.AnswerResponseDto;
+import com.codestates.stackoverflow.answer.entity.Answer;
 import com.codestates.stackoverflow.question.dto.QuestionDto;
 import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
 import com.codestates.stackoverflow.question.entity.Question;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-18T11:57:12+0900",
+    date = "2023-06-19T23:57:15+0900",
     comments = "version: 1.5.1.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 11.0.19 (Oracle Corporation)"
 )
 @Component
@@ -39,9 +43,8 @@ public class QuestionMapperImpl implements QuestionMapper {
         response.title( question.getTitle() );
         response.content( question.getContent() );
         response.viewCount( question.getViewCount() );
+        response.createBy( question.getCreateBy() );
         response.modifiedAt( question.getModifiedAt() );
-
-        response.createBy( question.getMember().getEmail() );
 
         return response.build();
     }
@@ -60,9 +63,40 @@ public class QuestionMapperImpl implements QuestionMapper {
         responseDetail.createdAt( question.getCreatedAt() );
         responseDetail.modifiedAt( question.getModifiedAt() );
         responseDetail.viewCount( question.getViewCount() );
-
-        responseDetail.createBy( question.getMember().getEmail() );
+        responseDetail.createBy( question.getCreateBy() );
+        responseDetail.answers( answerListToAnswerResponseDtoList( question.getAnswers() ) );
 
         return responseDetail.build();
+    }
+
+    protected AnswerResponseDto answerToAnswerResponseDto(Answer answer) {
+        if ( answer == null ) {
+            return null;
+        }
+
+        AnswerResponseDto.AnswerResponseDtoBuilder answerResponseDto = AnswerResponseDto.builder();
+
+        if ( answer.getAnswerId() != null ) {
+            answerResponseDto.answerId( answer.getAnswerId() );
+        }
+        answerResponseDto.content( answer.getContent() );
+        answerResponseDto.createdAt( answer.getCreatedAt() );
+        answerResponseDto.modifiedAt( answer.getModifiedAt() );
+        answerResponseDto.createdBy( answer.getCreatedBy() );
+
+        return answerResponseDto.build();
+    }
+
+    protected List<AnswerResponseDto> answerListToAnswerResponseDtoList(List<Answer> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<AnswerResponseDto> list1 = new ArrayList<AnswerResponseDto>( list.size() );
+        for ( Answer answer : list ) {
+            list1.add( answerToAnswerResponseDto( answer ) );
+        }
+
+        return list1;
     }
 }

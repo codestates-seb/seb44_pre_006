@@ -25,6 +25,10 @@
 |`+Number+`
 |질문에 대한 답변 개수
 
+|`+data[].createBy+`
+|`+String+`
+|질문 작성자
+
 |`+pageInfo+`
 |`+Object+`
 |페이지 정보

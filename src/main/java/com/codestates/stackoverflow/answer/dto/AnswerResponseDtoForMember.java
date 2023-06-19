@@ -13,4 +13,5 @@ public class AnswerResponseDtoForMember {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
+    private String createdBy;
 }

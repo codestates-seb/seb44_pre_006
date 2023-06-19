@@ -29,6 +29,10 @@
 |`+Number+`
 |질문 조회 수
 
+|`+data.createBy+`
+|`+String+`
+|질문 작성자
+
 |`+data.answers+`
 |`+Array+`
 |질문에 대한 답변 리스트
@@ -37,16 +41,20 @@
 |`+Number+`
 |답변 식별자 ID
 
-|`+data.answers[].body+`
+|`+data.answers[].content+`
 |`+String+`
 |답변 내용
 
 |`+data.answers[].createdAt+`
 |`+String+`
-|전체 생성 날짜
+|답변 생성 날짜
 
 |`+data.answers[].modifiedAt+`
 |`+String+`
-|전체 수정 날짜
+|답변 수정 날짜
+
+|`+data.answers[].createdBy+`
+|`+String+`
+|답변 작성자
 
 |===
