@@ -7,22 +7,18 @@ const FooterContainer = styled.div`
   background-image: none;
   background-position: top left;
   background-size: auto;
-  position: relative;
-  transform: translatY(-100%);
   width: 100%;
 
   .footer-container {
     width: 100%;
-    margin: 0 auto;
-    padding: 32px 12px 12px 12px;
+    padding: 2vh 100px;
     display: flex;
     flex-flow: row wrap;
   }
 `;
 
 const Logoimg = styled.img`
-  width: 32px;
-  height: 37px;
+  height: 35px;
 `;
 
 const FooterNav = styled.nav`
@@ -37,7 +33,7 @@ const FooterNav = styled.nav`
 `;
 
 const DesignBy = styled.div`
-  flex: 1 1 150px;
+  flex: 1 1 100px;
   flex-direction: column;
   text-align: center;
 
