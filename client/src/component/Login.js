@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
 import logoIcon from '../asset/logo-icon.png'
 import { Link } from "react-router-dom";
+import GoogleButton from "./GoogleButton";
+
 
 function Login () {
     
@@ -51,9 +53,17 @@ function Login () {
         }
     `
 
+
+
+
+
     return(
         <LoginContainer className="LoginContainer">
+
+       
             <img src={logoIcon} alt='logoIcon'/>
+
+            <GoogleButton/>
             <LoginForm>
                 <LoginInputForm className="LoginInputForm">
                     <h3>Email</h3>
