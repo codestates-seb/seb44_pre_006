@@ -3,9 +3,7 @@ import logoIcon from '../asset/logo-icon.png'
 import { Link } from "react-router-dom";
 import GoogleButton from "./GoogleButton";
 
-
 function Login () {
-    
     const LoginContainer = styled.section`
         width: 400px;
         height: 500px;
@@ -17,7 +15,6 @@ function Login () {
             width: 40px
         }
     `
-
     const LoginForm = styled.div`
         height: 250px;
         padding: 20px;
@@ -27,10 +24,9 @@ function Login () {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
         border-radius: 5px;
         border: 1px solid #B1B1B1;
-    
         > button {
-            width: 310px;
-            height: 45px;
+            width: 300px;
+            height: 40px;
             background-color: #0A95FF;
             color: white;
             font-size: 100%;
@@ -41,10 +37,9 @@ function Login () {
     const LoginInputForm = styled.div`
         display: flex;
         flex-direction: column;
-        
         > input {
             width: 300px;
-            height: 35px;
+            height: 40px;
             border-radius: 5px;
             border: 1px solid #B1B1B1;
         }
@@ -53,16 +48,9 @@ function Login () {
         }
     `
 
-
-
-
-
     return(
         <LoginContainer className="LoginContainer">
-
-       
             <img src={logoIcon} alt='logoIcon'/>
-
             <GoogleButton/>
             <LoginForm>
                 <LoginInputForm className="LoginInputForm">

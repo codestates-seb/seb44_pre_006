@@ -33,7 +33,7 @@ function GoogleButton() {
                 data-size="large"
                 data-locale="en-GB"
                 data-logo_alignment="center"
-                data-width="310">
+                data-width="300">
             </div>
             </>)
             : (<>
@@ -54,7 +54,7 @@ function GoogleButton() {
                 data-size="large"
                 data-locale="en-GB"
                 data-logo_alignment="center"
-                data-width="310">
+                data-width="300">
             </div>
             </>)}
         </div>

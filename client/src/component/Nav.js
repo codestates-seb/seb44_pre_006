@@ -11,17 +11,14 @@ const NavContainer = styled.header`
     display: flex ;
     align-items: center;
 `
-
 const LogoImag = styled.img`
     width: 150px;
     margin-left: 200px;
 `
-
 const NavLink = styled.div`
     color: #656565;
     margin-left: 50px;
 `
-
 const NavSreachBar = styled.div`
     display: flex;
     align-items: center;
@@ -31,12 +28,10 @@ const NavSreachBar = styled.div`
     height: 70%;
     width: 600px;
     margin-left: 50px;
-
     > button {
         background: none;
         border: none;
     }
-
     > input {
         flex-grow: 1;
         border: none;
@@ -51,20 +46,15 @@ const NavLogBtn = styled.button`
     background-color: ${props => props.backgroundColor};
     margin-left: 20px;
 `
-
 const NavUserLink = styled.img`
     height: 70%;
     border: 1px solid #CCCCCC;
     border: none;
     margin-left: 20px;
 `
-
 function Nav() {
     //임시? jwt토큰 유무 판단용 변수
     let jwt = true
-
-
-    
 
     return (
       <NavContainer>
@@ -72,7 +62,7 @@ function Nav() {
         <NavLink>About</NavLink>
         <NavSreachBar>
             <button>
-                <img src={sreachLogo}/>
+                <img src={sreachLogo} alt='sreachLogo'/>
             </button>
             <input placeholder="Search..."/>
         </NavSreachBar>
