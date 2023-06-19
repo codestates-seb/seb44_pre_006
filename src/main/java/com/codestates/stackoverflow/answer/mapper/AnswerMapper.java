@@ -16,7 +16,6 @@ public interface AnswerMapper {
     Answer answerPostDtoToAnswer(AnswerPostDto requestBody);
     Answer answerPatchDtoToAnswer(AnswerPatchDto requestBody);
 
-    @Mapping(target="createdBy", expression="java(answer.getMember().getEmail())")
     AnswerResponseDto answerToAnswerResponseDto(Answer answer);
     default List<AnswerResponseDto> answersToAnswerResponseDtos(List<Answer> answers){
         List<AnswerResponseDto> response=answers.stream()

@@ -37,11 +37,15 @@ public class QuestionContoller {
         return ResponseEntity.created(location).build();
     }
 
-    @PatchMapping("{question-id}")
+    @PatchMapping("/posts/{question-id}/edit")
     public ResponseEntity updateQuestion(@RequestBody @Valid QuestionDto.PostRequest request,
                                          @PathVariable("question-id") Long questionId) {
         Question question = questionService.updateQuestion(questionMapper.requestToQuestion(request), questionId);
-        return new ResponseEntity<>(new SingleResponseDto(questionMapper.questionToDetail(question)), HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.SEE_OTHER)
+                .location(URI.create("/questions/" + question.getId()))
+                .build();
+
+//        return new ResponseEntity<>(new SingleResponseDto(questionMapper.questionToDetail(question)), HttpStatus.OK);
     }
 
     @GetMapping("{question-id}")

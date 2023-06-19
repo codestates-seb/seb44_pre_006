@@ -6,8 +6,10 @@ import com.codestates.stackoverflow.answer.dto.AnswerResponseDto;
 import com.codestates.stackoverflow.answer.entity.Answer;
 import com.codestates.stackoverflow.answer.mapper.AnswerMapper;
 import com.codestates.stackoverflow.answer.service.AnswerService;
+import com.codestates.stackoverflow.question.service.QuestionService;
 import com.codestates.stackoverflow.response.SingleResponseDto;
 import com.codestates.stackoverflow.utils.UriCreator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,15 +29,17 @@ public class AnswerController {
     private final AnswerService answerService;
     private final AnswerMapper answerMapper;
 
+
     public AnswerController(AnswerService answerService, AnswerMapper answerMapper) {
         this.answerService = answerService;
         this.answerMapper = answerMapper;
     }
 
-    @PostMapping
-    public ResponseEntity postAnswer(@Valid @RequestBody AnswerPostDto answerPostDto) {
+    @PostMapping("{question-id}")
+    public ResponseEntity postAnswer(@Valid @RequestBody AnswerPostDto answerPostDto,
+                                     @PathVariable("question-id") Long questionId) {
         Answer answer = answerMapper.answerPostDtoToAnswer(answerPostDto);
-        Answer response = answerService.createAnswer(answer);
+        Answer response = answerService.createAnswer(answer, questionId);
         URI location = UriCreator.createUri(ANSWER_DEFAULT_URL, answer.getAnswerId());
 
         return ResponseEntity.created(location).build();

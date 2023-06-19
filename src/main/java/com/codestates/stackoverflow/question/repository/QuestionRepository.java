@@ -11,8 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-    Optional<Question> findByTitle(String title);
-
     List<Question> findByMemberMemberId(Long memberId);
     Page<Question> findByTitleContainingIgnoreCase(Pageable pageable, String title);
     // SELECT * FROM Question q WHERE LOWER(q.title) LIKE LOWER(CONCAT('%', :title, '%'))

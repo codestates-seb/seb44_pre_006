@@ -56,7 +56,7 @@ public class QuestionService {
         question.setViewCount(0L);
 
         // Question 업데이트 시 수정 시간 업데이트
-        question.setModifiedAt(LocalDateTime.now());
+        question.setModifiedAt(LocalDateTime.now().withNano(0));
 
         return questionRepository.save(question);
     }
@@ -130,7 +130,7 @@ public class QuestionService {
     }
 
     //등록된 질문 리턴
-    private Question findverifyQuestion(Long id) {
+    public Question findverifyQuestion(Long id) {
         Question question = questionRepository.findById(id)
                 .orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
         return question;

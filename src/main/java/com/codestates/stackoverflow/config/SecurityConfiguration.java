@@ -69,7 +69,7 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.GET, "/questions/**").permitAll()//question 1개 조회 누구나 가능
                         .antMatchers(HttpMethod.GET, "/questions/search").permitAll() //question 검색은 누구나 가능
                         .antMatchers(HttpMethod.DELETE, "/questions/**").hasAnyRole("USER", "ADMIN")//질문 삭제는 로그인한 회원만 가능 -> 현재 로그인한 회원이 질문을 작성한 회원인지는 service에서 처리
-                        .antMatchers(HttpMethod.POST, "/answers").hasAnyRole("USER","ADMIN") //답변 등록은 로그인한 회원만 가능
+                        .antMatchers(HttpMethod.POST, "/answers/*").hasAnyRole("USER","ADMIN") //답변 등록은 로그인한 회원만 가능
                         .antMatchers(HttpMethod.PATCH, "/answers/**").hasRole("USER")//답변 수정도 로그인하면 가능->현재 로그인한 회원이 질문을 작성한 회원인지는 service에서 처리
                         .antMatchers(HttpMethod.GET, "/answers").permitAll()//answer 모두 조회 누구나 가능
                         .antMatchers(HttpMethod.GET, "/answers/**").permitAll()//answer 하나 조회 누구나 가능

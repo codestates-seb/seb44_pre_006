@@ -1,6 +1,6 @@
 [source,bash]
 ----
-$ curl 'http://localhost:8080/question/1' -i -X PATCH \
+$ curl 'http://localhost:8080/questions/posts/1/edit' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "title" : "hello",

@@ -1,5 +1,6 @@
 package com.codestates.stackoverflow.question.dto;
 
+import com.codestates.stackoverflow.answer.dto.AnswerResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +18,7 @@ public class QuestionResponseDto {
         private Long viewCount;
         private String createBy;
         private LocalDateTime modifiedAt;
-//        private Integer answerCount;
+        private Integer answerCount;
     }
     @Getter
     @Builder
@@ -30,8 +31,7 @@ public class QuestionResponseDto {
         private LocalDateTime modifiedAt;
         private Long viewCount;
         private String createBy;
-
-//        private List<AnswerDTO.Response> answers;
+        private List<AnswerResponseDto> answers;
     }
 
     //회원이 등록한 Question 정보 조회할 경우

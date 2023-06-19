@@ -89,4 +89,90 @@ include::{snippets}/delete-members/http-response.adoc[]
 
 
 
+== Question Controller
+=== 질문 등록
+.http-request
+include::{snippets}/post-question/http-request.adoc[]
+
+.request-body
+include::{snippets}/post-question/request-body.adoc[]
+
+.request-fields
+include::{snippets}/post-question/request-fields.adoc[]
+
+.http-response
+include::{snippets}/post-question/http-response.adoc[]
+
+.response-fields
+include::{snippets}/post-question/response-headers.adoc[]
+
+=== 질문 수정
+.http-request
+include::{snippets}/patch-question/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/patch-question/path-parameters.adoc[]
+
+.request-body
+include::{snippets}/patch-question/request-body.adoc[]
+
+.request-fields
+include::{snippets}/patch-question/request-fields.adoc[]
+
+.http-response
+include::{snippets}/patch-question/http-response.adoc[]
+
+.response-fields
+include::{snippets}/patch-question/response-headers.adoc[]
+
+=== 질문 삭제
+.http-request
+include::{snippets}/delete-question/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-question/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/delete-question/http-response.adoc[]
+
+
+=== 단일 질문 조회
+.http-request
+include::{snippets}/get-question/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/get-question/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-question/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-question/response-fields.adoc[]
+
+
+=== 전체 질문 조회
+.http-request
+include::{snippets}/get-questions/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-questions/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-questions/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-questions/response-fields.adoc[]
+
+=== 제목 검색
+.http-request
+include::{snippets}/get-search/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-search/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-search/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-search/response-fields.adoc[]
 

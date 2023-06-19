@@ -1,19 +1,4 @@
 [source,options="nowrap"]
 ----
-{
-  "data" : {
-    "id" : 1,
-    "title" : "Title",
-    "content" : "Content",
-    "createdAt" : "2023-06-16T03:41:04.070892",
-    "modifiedAt" : "2023-06-16T03:41:04.070925",
-    "viewCount" : 0,
-    "answers" : [ {
-      "answerId" : 1,
-      "body" : "body",
-      "createdAt" : "2023-06-16T03:41:04.070937",
-      "modifiedAt" : "2023-06-16T03:41:04.070939"
-    } ]
-  }
-}
+
 ----
