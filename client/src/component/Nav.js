@@ -6,14 +6,13 @@ import '../Global.css';
 
 const NavContainer = styled.header`
     width: 100%;
-    height: 8vh;
+    height: 50px;
     border: 1px solid var(--silver);
     border-top: 3px solid var(--orange);
     background-color: var(--white);
     display: flex ;
     align-items: center;
     position: fixed;
-    z-index: 100;
 `
 const LogoImag = styled.img`
     width: 150px;

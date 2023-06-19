@@ -2,23 +2,16 @@ import { styled } from 'styled-components';
 import logo from '../asset/logo-icon.png';
 
 const FooterContainer = styled.div`
-  box-sizing: border-box;
   background-color: hsl(210, 8%, 15%);
-  background-image: none;
-  background-position: top left;
-  background-size: auto;
   width: 100%;
-
-  .footer-container {
-    width: 100%;
-    padding: 2vh 100px;
-    display: flex;
-    flex-flow: row wrap;
-  }
+  height: 70px;
+  padding: 10px 100px;
+  display: flex;
 `;
 
 const Logoimg = styled.img`
-  height: 35px;
+  height: 40px;
+  width: auto;
 `;
 
 const FooterNav = styled.nav`
@@ -33,10 +26,8 @@ const FooterNav = styled.nav`
 `;
 
 const DesignBy = styled.div`
-  flex: 1 1 100px;
   flex-direction: column;
   text-align: center;
-
   > p {
     color: hsl(210, 8%, 60%);
   }
@@ -44,8 +35,7 @@ const DesignBy = styled.div`
 
 function Footer() {
   return (
-    <FooterContainer>
-      <div className="footer-container">
+    <FooterContainer className='Footer'>
         <Logoimg src={logo} />
         <FooterNav>
           <ul>
@@ -61,7 +51,6 @@ function Footer() {
         <DesignBy>
           <p>Site design / Team 낭만코더</p>
         </DesignBy>
-      </div>
     </FooterContainer>
   );
 }
