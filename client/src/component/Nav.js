@@ -2,12 +2,13 @@ import { styled } from "styled-components";
 import SOF from "../asset/SOF_Logo.png"
 import UserNull from "../asset/User_null.png"
 import sreachLogo from "../asset/sreach_logo.svg"
+import '../Global.css';
 
 const NavContainer = styled.header`
     width: 100%;
     height: 50px;
-    border: 1px solid #CCCCCC;
-    background-color: #F8F9F9;
+    border: 1px solid var(--silver);
+    background-color: var(--black-050);
     display: flex ;
     align-items: center;
 `
@@ -16,7 +17,7 @@ const LogoImag = styled.img`
     margin-left: 200px;
 `
 const NavLink = styled.div`
-    color: #656565;
+    color: var(--black-500);
     margin-left: 50px;
 `
 const NavSreachBar = styled.div`
@@ -24,7 +25,7 @@ const NavSreachBar = styled.div`
     align-items: center;
     justify-content: center;
     background-color: white;
-    border: 1px solid #CCCCCC;
+    border: 1px solid var(--silver);
     height: 70%;
     width: 600px;
     margin-left: 50px;
@@ -42,13 +43,14 @@ const NavSreachBar = styled.div`
 
 const NavLogBtn = styled.button`
     height: 70%;
-    border: 1px solid #CCCCCC;
+    border: 1px solid var(--silver);
+    color: ${props => props.color};
     background-color: ${props => props.backgroundColor};
     margin-left: 20px;
 `
 const NavUserLink = styled.img`
     height: 70%;
-    border: 1px solid #CCCCCC;
+    border: 1px solid var(--silver);
     border: none;
     margin-left: 20px;
 `
@@ -69,13 +71,13 @@ function Nav() {
         {jwt  //jwt토큰 유무에 따른 분기.
         ? (
         <>
-            <NavLogBtn backgroundColor="#E1ECF4">Log in</NavLogBtn>
-            <NavLogBtn backgroundColor="#0A95FF">Sign up</NavLogBtn>
+            <NavLogBtn backgroundColor="var(--powder-300)" color="var(--powder-100)">Log in</NavLogBtn>
+            <NavLogBtn backgroundColor="var(--blue-500)" color="var(--blue-050)">Sign up</NavLogBtn>
         </>)
         : (
         <>  
             <NavUserLink src={UserNull}></NavUserLink>
-            <NavLogBtn backgroundColor="#EA1E1E">Log out</NavLogBtn>
+            <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)">Log out</NavLogBtn>
         </>    
         )}
       </NavContainer>
