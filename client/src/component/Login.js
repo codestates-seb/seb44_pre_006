@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 import logoIcon from '../asset/logo-icon.png'
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import GoogleButton from "./GoogleButton";
+
 
 function Login () {
     
@@ -54,37 +55,15 @@ function Login () {
 
 
 
-    useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://accounts.google.com/gsi/client";
-    script.async = true;
-    document.body.appendChild(script);
-  });
+
 
     return(
         <LoginContainer className="LoginContainer">
 
        
             <img src={logoIcon} alt='logoIcon'/>
-            <div id="g_id_onload"
-     data-client_id="http://localhost:3000"
-     data-context="signin"
-     data-ux_mode="popup"
-     data-login_uri="http://localhost:3000/users/login"
-     data-auto_select="true"
-     data-itp_support="true">
-</div>
 
-<div class="g_id_signin"
-     data-type="standard"
-     data-shape="rectangular"
-     data-theme="outline"
-     data-text="signin_with"
-     data-size="large"
-     data-locale="en-GB"
-     data-logo_alignment="center"
-     data-width="310">
-</div>
+            <GoogleButton/>
             <LoginForm>
                 <LoginInputForm className="LoginInputForm">
                     <h3>Email</h3>

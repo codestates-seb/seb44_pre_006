@@ -63,6 +63,9 @@ function Nav() {
     //임시? jwt토큰 유무 판단용 변수
     let jwt = true
 
+
+    
+
     return (
       <NavContainer>
         <LogoImag src={SOF}/>
