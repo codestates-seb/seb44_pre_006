@@ -1,7 +1,9 @@
+import SignUpCompo from "../component/SighUp";
+
 function SignUp() {
   return (
     <div>
-      <h1>SignUp</h1>
+      <SignUpCompo/>
     </div>
   );
 }
