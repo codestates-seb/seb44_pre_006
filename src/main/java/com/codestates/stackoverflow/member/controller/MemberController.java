@@ -101,7 +101,6 @@ public class MemberController {
     public ResponseEntity getMemberActivities(@PathVariable("member-id") @Positive long memberId) {
         //Question 정보
         List<QuestionResponseDto.ResponseForMember> questions= questionService.getQuestionByMemberId(memberId);
-
         //Answer 정보
         List<AnswerResponseDtoForMember> answers = answerService.getAnswerByMemberId(memberId);
 

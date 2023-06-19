@@ -1,9 +1,15 @@
 package com.codestates.stackoverflow.slice.mock;
 
+import com.codestates.stackoverflow.answer.dto.AnswerResponseDtoForMember;
+import com.codestates.stackoverflow.answer.entity.Answer;
+import com.codestates.stackoverflow.answer.service.AnswerService;
 import com.codestates.stackoverflow.member.dto.MemberDto;
 import com.codestates.stackoverflow.member.entity.Member;
 import com.codestates.stackoverflow.member.mapper.MemberMapper;
 import com.codestates.stackoverflow.member.service.MemberService;
+import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
+import com.codestates.stackoverflow.question.entity.Question;
+import com.codestates.stackoverflow.question.service.QuestionService;
 import com.google.gson.Gson;
 import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Test;
@@ -33,6 +39,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -67,6 +75,12 @@ class MemberControllerDocumentationTestWithJwt {
 
     @MockBean
     private MemberService memberService;
+
+    @MockBean
+    private QuestionService questionService; //추가
+
+    @MockBean
+    private AnswerService answerService; //추가
 
     @MockBean
     private MemberMapper mapper;
@@ -335,6 +349,92 @@ class MemberControllerDocumentationTestWithJwt {
         List list = JsonPath.parse(result.getResponse().getContentAsString()).read("$.data");
 
         assertThat(list.size(), is(2));
+    }
+
+    @Test
+    @WithMockUser(username = "user@gmail.com",password="1234",roles="USER")
+    void getMemberActivities() throws Exception{
+        //given
+        long memberId = 1L;
+        Member member = new Member("jeein@gmail.com", "1234", "jeein Park");
+        member.setMemberId(memberId);
+
+        List<Question> questions = new ArrayList<>();
+        questions.add(new Question(1L, "question1", "question1", 1L, LocalDateTime.now(), LocalDateTime.now(), member));
+        questions.add(new Question(2L, "question2", "question2", 0L, LocalDateTime.now(), LocalDateTime.now(), member));
+
+        List<Answer> answers = new ArrayList<>();
+        answers.add(new Answer(1L,"answer1",LocalDateTime.now(),LocalDateTime.now(),member));
+        answers.add(new Answer(2L,"answer2",LocalDateTime.now(),LocalDateTime.now(),member));
+
+        List<QuestionResponseDto.ResponseForMember> questionDtos = new ArrayList<>();
+
+        for(Question question:questions){
+            QuestionResponseDto.ResponseForMember questionDto = new QuestionResponseDto.ResponseForMember(
+                    question.getId(),
+                    question.getTitle(),
+                    question.getContent(),
+                    question.getCreatedAt(),
+                    question.getModifiedAt(),
+                    question.getViewCount()
+            );
+            questionDtos.add(questionDto);
+        }
+
+        List<AnswerResponseDtoForMember> answerDtos = new ArrayList<>();
+
+        for (Answer answer : answers) {
+            AnswerResponseDtoForMember answerDto = new AnswerResponseDtoForMember(
+                    answer.getAnswerId(),
+                    answer.getContent(),
+                    answer.getCreatedAt(),
+                    answer.getModifiedAt()
+            );
+            answerDtos.add(answerDto);
+        }
+
+        given(questionService.getQuestionByMemberId(Mockito.anyLong())).willReturn(questionDtos);
+        given(answerService.getAnswerByMemberId(Mockito.anyLong())).willReturn(answerDtos);
+
+        MemberDto.InfoResponse infoResponse = new MemberDto.InfoResponse(questionDtos, answerDtos);
+
+
+        String jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + jwtToken);
+
+        //when
+        ResultActions actions = mockMvc.perform(
+                get("/users/getInfo/{member-id}",memberId)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .headers(headers)
+        );
+
+        //then
+        actions.andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.email").value(member.getEmail()))
+                .andExpect(jsonPath("$.data.name").value(member.getName()))
+                .andDo(
+                        document("get-member",
+                                preprocessRequest(prettyPrint()),
+                                preprocessResponse(prettyPrint()),
+                                pathParameters(
+                                        List.of(parameterWithName("member-id").description("회원 식별자 ID"))
+                                ),
+                                requestHeaders(
+                                        HeaderDocumentation.headerWithName("Authorization").description("JWT Token")
+                                ),
+                                responseFields(
+                                        List.of(
+                                                fieldWithPath("data").type(JsonFieldType.OBJECT).description("결과 데이터").optional(),
+                                                fieldWithPath("data.memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
+                                                fieldWithPath("data.email").type(JsonFieldType.STRING).description("이메일"),
+                                                fieldWithPath("data.name").type(JsonFieldType.STRING).description("이름")
+                                        )
+                                )
+
+                        ));
     }
 
     @Test
