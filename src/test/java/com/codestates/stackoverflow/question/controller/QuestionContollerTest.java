@@ -1,12 +1,13 @@
 package com.codestates.stackoverflow.question.controller;
 
-import com.google.gson.Gson;
-import com.codestates.stackoverflow.answer.dto.AnswerDTO;
+import com.codestates.stackoverflow.answer.dto.AnswerResponseDto;
 import com.codestates.stackoverflow.question.dto.QuestionDto;
 import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
 import com.codestates.stackoverflow.question.entity.Question;
 import com.codestates.stackoverflow.question.mapper.QuestionMapper;
+import com.codestates.stackoverflow.question.repository.QuestionRepository;
 import com.codestates.stackoverflow.question.service.QuestionService;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,8 @@ import org.junit.jupiter.api.TestInfo;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -24,6 +26,7 @@ import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -45,9 +48,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(QuestionContoller.class)
+//@WebMvcTest(QuestionContoller.class)
+@SpringBootTest
 @MockBean(JpaMetamodelMappingContext.class)
 @AutoConfigureRestDocs
+@AutoConfigureMockMvc
 class QuestionContollerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -55,6 +60,8 @@ class QuestionContollerTest {
     private Gson gson;
     @MockBean
     private QuestionService questionService;
+    @MockBean
+    private QuestionRepository questionRepository;
     @MockBean
     private QuestionMapper mapper;
 
@@ -70,8 +77,8 @@ class QuestionContollerTest {
             // searchQuestions, getQuestions 테스트 메서드에 대한 전처리 작업 수행
             this.mockPage = new PageImpl<>(
                     Arrays.asList(
-                            new Question(1L, "Title", "Content", 0L, LocalDateTime.now(), LocalDateTime.now(), null),
-                            new Question(2L, "Title1", "Content1", 0L, LocalDateTime.now(), LocalDateTime.now(), null)),
+                            new Question(1L, "Title", "Content", 0L, LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0), "user@gmail.com",null, null),
+                            new Question(2L, "Title1", "Content1", 0L, LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0),"user@gmail.com", null, null)),
                     PageRequest.of(0, 10, Sort.Direction.DESC, "modifiedAt"), 2
             );
 
@@ -83,12 +90,14 @@ class QuestionContollerTest {
                             .viewCount(i.getViewCount())
                             .answerCount(0)
                             .modifiedAt(LocalDateTime.now().withNano(0))
+                            .createBy("user@gamil.com")
                             .build())
                     .collect(Collectors.toList());
         } else if (str.equals("getQuestion") || str.equals("patchQuestion") || str.equals("createQuestion")) {
             // getQuestion, patchQuestion, createQuestion 테스트 메서드에 대한 전처리 작업 수행
-            this.question = new Question(1L, "Title", "Content", 0L, LocalDateTime.now(), LocalDateTime.now(), null);
+            this.question = new Question(1L, "Title", "Content", 0L, LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0),"user@gmail.com", null, null);
 
+            System.out.println("question : " + question);
             this.response = QuestionResponseDto.ResponseDetail.builder()
                     .id(question.getId())
                     .title(question.getTitle())
@@ -96,8 +105,9 @@ class QuestionContollerTest {
                     .viewCount(0L)
                     .createdAt(question.getCreatedAt())
                     .modifiedAt(question.getModifiedAt())
+                    .createBy("user@gmail.com")
                     .answers(new ArrayList<>()).build();
-            response.getAnswers().add(new AnswerDTO.Response(1L, "body", LocalDateTime.now(), LocalDateTime.now()));
+            response.getAnswers().add(new AnswerResponseDto(1L, "body", LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0), "kevin@gmail.com"));
         }
     }
 
@@ -137,6 +147,7 @@ class QuestionContollerTest {
                                         fieldWithPath("data[].modifiedAt").type(JsonFieldType.STRING).description("질문 수정 시간"),
                                         fieldWithPath("data[].viewCount").type(JsonFieldType.NUMBER).description("질문 조회 수"),
                                         fieldWithPath("data[].answerCount").type(JsonFieldType.NUMBER).description("질문에 대한 답변 개수"),
+                                        fieldWithPath("data[].createBy").type(JsonFieldType.STRING).description("질문 작성자"),
                                         fieldWithPath("pageInfo").type(JsonFieldType.OBJECT).description("페이지 정보"),
                                         fieldWithPath("pageInfo.page").type(JsonFieldType.NUMBER).description("현재 페이지 번호"),
                                         fieldWithPath("pageInfo.size").type(JsonFieldType.NUMBER).description("페이지 사이즈"),
@@ -186,6 +197,7 @@ class QuestionContollerTest {
                                         fieldWithPath("data[].modifiedAt").type(JsonFieldType.STRING).description("질문 수정 시간"),
                                         fieldWithPath("data[].viewCount").type(JsonFieldType.NUMBER).description("질문 조회 수"),
                                         fieldWithPath("data[].answerCount").type(JsonFieldType.NUMBER).description("질문에 대한 답변 개수"),
+                                        fieldWithPath("data[].createBy").type(JsonFieldType.STRING).description("질문 작성자"),
                                         fieldWithPath("pageInfo").type(JsonFieldType.OBJECT).description("페이지 정보"),
                                         fieldWithPath("pageInfo.page").type(JsonFieldType.NUMBER).description("현재 페이지 번호"),
                                         fieldWithPath("pageInfo.size").type(JsonFieldType.NUMBER).description("페이지 사이즈"),
@@ -227,17 +239,20 @@ class QuestionContollerTest {
                                         fieldWithPath("data.createdAt").type(JsonFieldType.STRING).description("질문 생성 시간"),
                                         fieldWithPath("data.modifiedAt").type(JsonFieldType.STRING).description("질문 수정 시간"),
                                         fieldWithPath("data.viewCount").type(JsonFieldType.NUMBER).description("질문 조회 수"),
+                                        fieldWithPath("data.createBy").type(JsonFieldType.STRING).description("질문 작성자"),
                                         fieldWithPath("data.answers").type(JsonFieldType.ARRAY).description("질문에 대한 답변 리스트"),
                                         fieldWithPath("data.answers[].answerId").type(JsonFieldType.NUMBER).description("답변 식별자 ID"),
-                                        fieldWithPath("data.answers[].body").type(JsonFieldType.STRING).description("답변 내용"),
+                                        fieldWithPath("data.answers[].content").type(JsonFieldType.STRING).description("답변 내용"),
                                         fieldWithPath("data.answers[].createdAt").type(JsonFieldType.STRING).description("답변 생성 날짜"),
-                                        fieldWithPath("data.answers[].modifiedAt").type(JsonFieldType.STRING).description("답변 수정 날짜")
+                                        fieldWithPath("data.answers[].modifiedAt").type(JsonFieldType.STRING).description("답변 수정 날짜"),
+                                        fieldWithPath("data.answers[].createdBy").type(JsonFieldType.STRING).description("답변 작성자")
                                 )
                         )));
     }
 
     @Test
     @DisplayName("createQuestion Test")
+    @WithMockUser(username = "user@gmail.com",password="1234",roles="USER")
     void createQuestion() throws Exception {
         // given
         String str = createJson();
@@ -249,13 +264,14 @@ class QuestionContollerTest {
 
         // when
         ResultActions actions = mockMvc.perform(
-                MockMvcRequestBuilders.post("/questions")
+                MockMvcRequestBuilders.post("/questions/ask")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(str));
 
         // then
         actions.andExpect(status().isCreated())
-                .andExpect(header().string("Location", "/question/1"))
+                .andExpect(header().string("Location", "/questions/1"))
+                .andDo(print())
                 .andDo(document(
                         "post-question",
                         getRequestPreProcessor(),
@@ -274,6 +290,7 @@ class QuestionContollerTest {
 
     @Test
     @DisplayName("patchQuestion Test")
+    @WithMockUser(username = "user@gmail.com",password="1234",roles="USER")
     void patchQuestion() throws Exception {
         // given
         String str = createJson();
@@ -282,17 +299,19 @@ class QuestionContollerTest {
                 .willReturn(question);
         given(questionService.updateQuestion(Mockito.any(Question.class), Mockito.anyLong()))
                 .willReturn(question);
+        given(questionRepository.findById(Mockito.anyLong()))
+                .willReturn((Optional.ofNullable(question)));
         given(mapper.questionToDetail(Mockito.any(Question.class)))
                 .willReturn(response);
 
         // when
         ResultActions actions = mockMvc.perform(
-                patch("/questions/{id}", 1L)
+                patch("/questions/posts/{question-id}/edit", 1L)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(str));
 
         // then
-        actions.andExpect(status().isOk())
+        actions.andExpect(status().isSeeOther())
                 .andDo(document(
                         "patch-question",
                         getRequestPreProcessor(),
@@ -304,34 +323,22 @@ class QuestionContollerTest {
                                 )
                         ),
                         pathParameters(
-                                parameterWithName("id").description("질문 식별자 ID")
+                                parameterWithName("question-id").description("질문 식별자 ID")
                         ),
-                        responseFields(
-                                List.of(
-                                        fieldWithPath("data").type(JsonFieldType.OBJECT).description("질문 리스트"),
-                                        fieldWithPath("data.id").type(JsonFieldType.NUMBER).description("질문 식별자 ID"),
-                                        fieldWithPath("data.title").type(JsonFieldType.STRING).description("질문 제목"),
-                                        fieldWithPath("data.content").type(JsonFieldType.STRING).description("질문 내용"),
-                                        fieldWithPath("data.createdAt").type(JsonFieldType.STRING).description("질문 생성 시간"),
-                                        fieldWithPath("data.modifiedAt").type(JsonFieldType.STRING).description("질문 수정 시간"),
-                                        fieldWithPath("data.viewCount").type(JsonFieldType.NUMBER).description("질문 조회 수"),
-                                        fieldWithPath("data.answers").type(JsonFieldType.ARRAY).description("질문에 대한 답변 리스트"),
-                                        fieldWithPath("data.answers[].answerId").type(JsonFieldType.NUMBER).description("답변 식별자 ID"),
-                                        fieldWithPath("data.answers[].body").type(JsonFieldType.STRING).description("답변 내용"),
-                                        fieldWithPath("data.answers[].createdAt").type(JsonFieldType.STRING).description("답변 생성 날짜"),
-                                        fieldWithPath("data.answers[].modifiedAt").type(JsonFieldType.STRING).description("답변 수정 날짜")
-                                )
+                        responseHeaders(
+                                headerWithName(HttpHeaders.LOCATION).description("리다이렉트 URL /question/{questionId}")
                         )));
     }
 
     @Test
     @DisplayName("deleteQuestion Test")
+    @WithMockUser(username = "user@gmail.com",password="1234",roles="USER")
     void deleteQuestion() throws Exception {
         // given
 
         // when
         ResultActions actions = mockMvc.perform(
-                delete("/questions/{id}", 1L)
+                delete("/questions/{question-id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON));
 
         // then
@@ -341,7 +348,7 @@ class QuestionContollerTest {
                         getRequestPreProcessor(),
                         getResponsePreProcessor(),
                         pathParameters(
-                                parameterWithName("id").description("질문 식별자 ID")
+                                parameterWithName("question-id").description("질문 식별자 ID")
                         )));
     }
 

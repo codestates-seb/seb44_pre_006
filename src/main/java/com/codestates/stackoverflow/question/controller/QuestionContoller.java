@@ -28,7 +28,7 @@ public class QuestionContoller {
     @Autowired
     QuestionMapper questionMapper;
 
-    @PostMapping
+    @PostMapping("/ask")
     public ResponseEntity postQuestion(@RequestBody @Valid QuestionDto.PostRequest request) {
         // Location 헤더에 생성된 질문의 정보를 조회할 수 있는 URI를 포함하여 전달한다.
         Question question = questionService.createQuestion(questionMapper.requestToQuestion(request));
@@ -37,11 +37,15 @@ public class QuestionContoller {
         return ResponseEntity.created(location).build();
     }
 
-    @PatchMapping("{question-id}")
+    @PatchMapping("/posts/{question-id}/edit")
     public ResponseEntity updateQuestion(@RequestBody @Valid QuestionDto.PostRequest request,
                                          @PathVariable("question-id") Long questionId) {
         Question question = questionService.updateQuestion(questionMapper.requestToQuestion(request), questionId);
-        return new ResponseEntity<>(new SingleResponseDto(questionMapper.questionToDetail(question)), HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.SEE_OTHER)
+                .location(URI.create("/questions/" + question.getId()))
+                .build();
+
+//        return new ResponseEntity<>(new SingleResponseDto(questionMapper.questionToDetail(question)), HttpStatus.OK);
     }
 
     @GetMapping("{question-id}")

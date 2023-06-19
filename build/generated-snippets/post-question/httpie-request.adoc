@@ -3,6 +3,6 @@
 $ echo '{
   "title" : "hello",
   "content" : "Hello World!"
-}' | http POST 'http://localhost:8080/question' \
+}' | http POST 'http://localhost:8080/questions/ask' \
     'Content-Type:application/json;charset=UTF-8'
 ----

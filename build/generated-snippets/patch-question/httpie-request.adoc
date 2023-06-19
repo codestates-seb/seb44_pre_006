@@ -3,6 +3,6 @@
 $ echo '{
   "title" : "hello",
   "content" : "Hello World!"
-}' | http PATCH 'http://localhost:8080/question/1' \
+}' | http PATCH 'http://localhost:8080/questions/posts/1/edit' \
     'Content-Type:application/json;charset=UTF-8'
 ----
