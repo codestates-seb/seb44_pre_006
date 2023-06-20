@@ -55,11 +55,28 @@ const MainBarHeaderAsK = styled.div`
   box-sizing: border-box;
 `;
 
+const SecondContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  column-gap: 6px;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const TotalQuestions = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 18px;
+  float: left;
+  font-size: 12px;
+`;
+
 const SortBtnContainer = styled.div`
   display: flex;
-  justify-items: end;
-
-  margin-left: 100px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: auto;
   font-size: 17px;
   color: var(--black-600);
 `;
@@ -92,13 +109,17 @@ function AllQuestion() {
               <AskBtn>Ask Question</AskBtn>
             </MainBarHeaderAsK>
           </MainBarHeader>
-
-          <SortBtnContainer>
-            <div>
-              <SortBtn>Newest</SortBtn>
-              <SortBtn>Unanswered</SortBtn>
-            </div>
-          </SortBtnContainer>
+          <SecondContainer>
+            <TotalQuestions>
+              <h2>total questions</h2>
+            </TotalQuestions>
+            <SortBtnContainer>
+              <div>
+                <SortBtn>Newest</SortBtn>
+                <SortBtn>Unanswered</SortBtn>
+              </div>
+            </SortBtnContainer>
+          </SecondContainer>
           <FooterBtnContainer>
             <div>
               <BottomBtn>Prev</BottomBtn>
