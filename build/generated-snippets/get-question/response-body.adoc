@@ -5,15 +5,15 @@
     "id" : 1,
     "title" : "Title",
     "content" : "Content",
-    "createdAt" : "2023-06-20T14:13:05",
-    "modifiedAt" : "2023-06-20T14:13:05",
+    "createdAt" : "2023-06-20T15:36:28",
+    "modifiedAt" : "2023-06-20T15:36:28",
     "viewCount" : 0,
     "createBy" : "user@gmail.com",
     "answers" : [ {
       "answerId" : 1,
       "content" : "body",
-      "createdAt" : "2023-06-20T14:13:05",
-      "modifiedAt" : "2023-06-20T14:13:05",
+      "createdAt" : "2023-06-20T15:36:28",
+      "modifiedAt" : "2023-06-20T15:36:28",
       "createdBy" : "kevin@gmail.com"
     } ]
   }
