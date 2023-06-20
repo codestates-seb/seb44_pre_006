@@ -8,17 +8,20 @@ const NavContainer = styled.header`
     width: 100%;
     height: 50px;
     border: 1px solid var(--silver);
-    background-color: var(--black-050);
+    border-top: 3px solid var(--orange);
+    background-color: var(--white);
     display: flex ;
     align-items: center;
+    position: fixed;
+    z-index: 100;
 `
 const LogoImag = styled.img`
     width: 150px;
-    margin-left: 200px;
+    margin-left: 100px;
 `
 const NavLink = styled.div`
     color: var(--black-500);
-    margin-left: 50px;
+    margin-left: 30px;
 `
 const NavSreachBar = styled.div`
     display: flex;
@@ -27,8 +30,8 @@ const NavSreachBar = styled.div`
     background-color: white;
     border: 1px solid var(--silver);
     height: 70%;
-    width: 600px;
-    margin-left: 50px;
+    width: 700px;
+    margin-left: 30px;
     > button {
         background: none;
         border: none;
@@ -46,13 +49,15 @@ const NavLogBtn = styled.button`
     border: 1px solid var(--silver);
     color: ${props => props.color};
     background-color: ${props => props.backgroundColor};
-    margin-left: 20px;
+    margin-left: 10px;
+    border-radius: 10%;
+    padding: 0px 10px;
 `
 const NavUserLink = styled.img`
     height: 70%;
     border: 1px solid var(--silver);
     border: none;
-    margin-left: 20px;
+    margin-left: 10px;
 `
 function Nav() {
     //임시? jwt토큰 유무 판단용 변수
@@ -71,7 +76,7 @@ function Nav() {
         {jwt  //jwt토큰 유무에 따른 분기.
         ? (
         <>
-            <NavLogBtn backgroundColor="var(--powder-300)" color="var(--powder-100)">Log in</NavLogBtn>
+            <NavLogBtn backgroundColor="var(--powder-200)" color="var(--powder-700)">Log in</NavLogBtn>
             <NavLogBtn backgroundColor="var(--blue-500)" color="var(--blue-050)">Sign up</NavLogBtn>
         </>)
         : (
