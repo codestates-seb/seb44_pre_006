@@ -17,6 +17,17 @@ spring:
         use_sql_comments: true
     defer-datasource-initialization: true  # 데이터소스 초기화 지연 설정. JPA의 초기화 설정을 마칠때까지 데이터소스 사용을 지연시킨다.
   #    open-in-view: true
+  security:     #JWT와 Oauth2를 함께 사용하기 위한 설정
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${G_CLIENT_ID}
+            clientSecret: ${G_CLIENT_SECRET}
+            scope:
+              -email
+              -profile
+
   output:
     ansi:
       enabled: ALWAYS
