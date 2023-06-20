@@ -102,7 +102,7 @@ public class AnswerControllerTestWithJWT {
         // when
         ResultActions actions =
                 mockMvc.perform(
-                        post("/answers/{question-id}",questionId)
+                        post("/answers/{question-id}",1L)
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .headers(headers)
