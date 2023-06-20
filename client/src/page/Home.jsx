@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import SideBar from '../component/SideBar';
+import QuestionItem from '../component/QuestionItem';
 
 const Container = styled.div`
   max-width: 1264px;
@@ -14,9 +15,10 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
+  width: 100%;
   display: flex;
   padding: 24px 16px;
-  max-width: 727px;
+  max-width: 751px;
   background-color: #ffffff;
   border: 1px solid #d6d9dc;
   min-height: 100%;
@@ -24,24 +26,25 @@ const Content = styled.div`
 `;
 
 const MainBar = styled.main`
+  width: 100%;
   margin: 0;
   padding: 0;
   min-height: 100%;
   display: flex;
   box-sizing: inherit;
+  flex-direction: column;
 `;
 
 const MainBarHeader = styled.div`
   display: flex;
   width: 100%;
-  max-width: 727px;
+  /* max-width: 727px; */
   height: 50px;
 
   .mainbar-headline {
     font-size: 1.7rem !important;
     flex: 1 auto !important;
     line-height: 1.3;
-    max-width: 727px;
     margin: 0 0 1rem;
     display: flex;
   }
@@ -88,6 +91,7 @@ function Home() {
               <AskBtn>Ask Question</AskBtn>
             </MainBarHeaderAsK>
           </MainBarHeader>
+          <QuestionItem />
         </MainBar>
       </Content>
     </Container>
