@@ -1,12 +1,14 @@
-package com.codestates.stackoverflow.slice.mock;
+package com.codestates.stackoverflow.member;
 
 import com.codestates.stackoverflow.answer.dto.AnswerResponseDtoForMember;
 import com.codestates.stackoverflow.answer.entity.Answer;
 import com.codestates.stackoverflow.answer.service.AnswerService;
-import com.codestates.stackoverflow.audit.Auditable;
+import com.codestates.stackoverflow.auth.dto.LoginDto;
+import com.codestates.stackoverflow.auth.utils.CustomAuthorityUtils;
 import com.codestates.stackoverflow.member.dto.MemberDto;
 import com.codestates.stackoverflow.member.entity.Member;
 import com.codestates.stackoverflow.member.mapper.MemberMapper;
+import com.codestates.stackoverflow.member.repository.MemberRepository;
 import com.codestates.stackoverflow.member.service.MemberService;
 import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
 import com.codestates.stackoverflow.question.entity.Question;
@@ -28,6 +30,7 @@ import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.headers.HeaderDocumentation;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -75,6 +78,15 @@ class MemberControllerDocumentationTestWithJwt {
     @MockBean
     private MemberService memberService;
 
+    @Autowired
+    private MemberRepository memberRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private CustomAuthorityUtils authorityUtils;
+
     @MockBean
     private QuestionService questionService; //추가
 
@@ -85,7 +97,6 @@ class MemberControllerDocumentationTestWithJwt {
     private MemberMapper mapper;
 
     @Test
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     void postMemberTest() throws Exception {
         // given
         MemberDto.Post post = new MemberDto.Post("jeein@gmail.com", "1234", "jeein Park");
@@ -130,6 +141,55 @@ class MemberControllerDocumentationTestWithJwt {
                         )
                 ));
 
+    }
+
+    @Test
+    @WithMockUser(username = "jeein@gmail.com",password="1234",roles="USER")
+    void loginTest() throws Exception{
+
+        Member member = new Member("jeein@gmail.com", "1234", "jeein Park");
+        member.setMemberId(1L);
+
+        MemberService realMemberService = new MemberService(memberRepository,passwordEncoder,authorityUtils);
+        realMemberService.createMember(member);
+        System.out.println(realMemberService.findMember(1).getEmail());
+
+        LoginDto loginDto = new LoginDto();
+        loginDto.setUsername("jeein@gmail.com");
+        loginDto.setPassword("1234");
+
+        String content2 = gson.toJson(loginDto);
+
+        //JWT Authorization api 추가
+        String jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~";
+
+        // when
+        ResultActions actions =
+                mockMvc.perform(
+                        post("/users/login")
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(content2)
+                                );
+
+        // then
+        actions
+                .andExpect(status().isOk())
+                .andExpect(header().exists(HttpHeaders.AUTHORIZATION))
+                .andDo(document(
+                        "login-user",
+                        getRequestPreProcessor(),
+                        getResponsePreProcessor(),
+                        requestFields(
+                                List.of(
+                                        fieldWithPath("username").type(JsonFieldType.STRING).description("아이디(이메일)"),
+                                        fieldWithPath("password").type(JsonFieldType.STRING).description("패스워드")
+                                )
+                        ),
+                        responseHeaders(
+                                headerWithName(HttpHeaders.AUTHORIZATION).description("발급된 JWT")
+                        )
+                ));
     }
 
     @Test

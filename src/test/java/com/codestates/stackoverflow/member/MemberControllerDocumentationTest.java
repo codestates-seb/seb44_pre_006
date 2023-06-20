@@ -1,4 +1,4 @@
-package com.codestates.stackoverflow.slice.mock;
+package com.codestates.stackoverflow.member;
 
 import com.codestates.stackoverflow.member.dto.MemberDto;
 import com.codestates.stackoverflow.member.entity.Member;

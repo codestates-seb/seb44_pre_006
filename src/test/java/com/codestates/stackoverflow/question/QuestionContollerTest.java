@@ -1,4 +1,4 @@
-package com.codestates.stackoverflow.question.controller;
+package com.codestates.stackoverflow.question;
 
 import com.codestates.stackoverflow.answer.dto.AnswerResponseDto;
 import com.codestates.stackoverflow.question.dto.QuestionDto;
@@ -25,6 +25,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.headers.HeaderDocumentation;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -38,8 +39,7 @@ import java.util.stream.Collectors;
 import static com.codestates.stackoverflow.util.ApiDocumentUtils.getRequestPreProcessor;
 import static com.codestates.stackoverflow.util.ApiDocumentUtils.getResponsePreProcessor;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
-import static org.springframework.restdocs.headers.HeaderDocumentation.responseHeaders;
+import static org.springframework.restdocs.headers.HeaderDocumentation.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
@@ -262,10 +262,17 @@ class QuestionContollerTest {
         given(questionService.createQuestion(Mockito.any(Question.class)))
                 .willReturn(question);
 
+        //JWT Authorization api 추가
+        String jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + jwtToken);
+
         // when
         ResultActions actions = mockMvc.perform(
                 MockMvcRequestBuilders.post("/questions/ask")
                         .contentType(MediaType.APPLICATION_JSON)
+                        .headers(headers)
                         .content(str));
 
         // then
@@ -281,6 +288,9 @@ class QuestionContollerTest {
                                         fieldWithPath("title").type(JsonFieldType.STRING).description("질문 제목"),
                                         fieldWithPath("content").type(JsonFieldType.STRING).description("질문 내용")
                                 )
+                        ),
+                        requestHeaders(
+                                HeaderDocumentation.headerWithName("Authorization").description("JWT Token")
                         ),
                         responseHeaders(
                                 headerWithName(HttpHeaders.LOCATION).description("등록된 질문의 URI. /question/{questionId}")
@@ -304,10 +314,17 @@ class QuestionContollerTest {
         given(mapper.questionToDetail(Mockito.any(Question.class)))
                 .willReturn(response);
 
+        //JWT Authorization api 추가
+        String jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + jwtToken);
+
         // when
         ResultActions actions = mockMvc.perform(
                 patch("/questions/posts/{question-id}/edit", 1L)
                         .contentType(MediaType.APPLICATION_JSON)
+                        .headers(headers)
                         .content(str));
 
         // then
@@ -321,6 +338,9 @@ class QuestionContollerTest {
                                         fieldWithPath("title").type(JsonFieldType.STRING).description("질문 제목"),
                                         fieldWithPath("content").type(JsonFieldType.STRING).description("질문 내용")
                                 )
+                        ),
+                        requestHeaders(
+                                HeaderDocumentation.headerWithName("Authorization").description("JWT Token")
                         ),
                         pathParameters(
                                 parameterWithName("question-id").description("질문 식별자 ID")
@@ -336,10 +356,17 @@ class QuestionContollerTest {
     void deleteQuestion() throws Exception {
         // given
 
+        String jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + jwtToken);
+
         // when
         ResultActions actions = mockMvc.perform(
                 delete("/questions/{question-id}", 1L)
-                        .contentType(MediaType.APPLICATION_JSON));
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .headers(headers))
+                ;
 
         // then
         actions.andExpect(status().isNoContent())
@@ -349,7 +376,11 @@ class QuestionContollerTest {
                         getResponsePreProcessor(),
                         pathParameters(
                                 parameterWithName("question-id").description("질문 식별자 ID")
-                        )));
+                        ),
+                        requestHeaders(
+                                HeaderDocumentation.headerWithName("Authorization").description("JWT Token")
+                        )
+                ));
     }
 
 

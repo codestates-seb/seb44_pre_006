@@ -1,5 +1,6 @@
 [source,bash]
 ----
 $ curl 'http://localhost:8080/questions/1' -i -X DELETE \
-    -H 'Content-Type: application/json;charset=UTF-8'
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~'
 ----

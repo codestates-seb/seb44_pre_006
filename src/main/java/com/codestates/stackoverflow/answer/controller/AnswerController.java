@@ -6,6 +6,7 @@ import com.codestates.stackoverflow.answer.dto.AnswerResponseDto;
 import com.codestates.stackoverflow.answer.entity.Answer;
 import com.codestates.stackoverflow.answer.mapper.AnswerMapper;
 import com.codestates.stackoverflow.answer.service.AnswerService;
+import com.codestates.stackoverflow.dto.MultiResponseDto;
 import com.codestates.stackoverflow.question.service.QuestionService;
 import com.codestates.stackoverflow.response.SingleResponseDto;
 import com.codestates.stackoverflow.utils.UriCreator;
@@ -67,7 +68,8 @@ public class AnswerController {
         Page<Answer> pageAnswers = answerService.findAnswers(page-1, size);
         List<Answer> answers = pageAnswers.getContent();
 
-        return new ResponseEntity<>(answerMapper.answersToAnswerResponseDtos(answers), HttpStatus.OK);
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(answerMapper.answersToAnswerResponseDtos(answers),pageAnswers), HttpStatus.OK);
     }
 
     @DeleteMapping("/{answer-id}")
