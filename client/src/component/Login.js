@@ -68,7 +68,7 @@ function Login () {
             </LoginForm>
             <p>
                 Don’t have an account? &nbsp; 
-                <Link to='/users/signup'>Sign up</Link>
+                <Link to='/users/sighup'>Sign up</Link>
             </p>
         </LoginContainer>
     )

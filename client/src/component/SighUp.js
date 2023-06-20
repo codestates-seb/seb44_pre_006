@@ -1,5 +1,3 @@
-import { styled } from "styled-components";
-import logoIcon from '../asset/logo-icon.png'
 import { Link } from "react-router-dom";
 import GoogleButton from "./GoogleButton";
 import { 
@@ -28,7 +26,7 @@ function SignUp() {
             </SighUpForm>
             <p>
             Already have an account? &nbsp; 
-            <Link to='/users/signup'>Log in</Link>
+            <Link to='/users/login'>Log in</Link>
         </p>
         </SighUpContaner>
     )

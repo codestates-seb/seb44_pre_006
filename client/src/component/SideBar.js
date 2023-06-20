@@ -6,10 +6,7 @@ border: 1px solid #CCCCCC;
 flex-direction: column;
 display: flex;
 width: 164px;
-height: 550px;
-
-
-
+height: calc(100vh - 50px - 70px);
 
 .side-container{
     list-style-type: none;
@@ -17,7 +14,6 @@ height: 550px;
     padding: 32px 12px 12px 20px;
     cursor: pointer;
     line-height: 200%;
-    
     
 }
 li{
