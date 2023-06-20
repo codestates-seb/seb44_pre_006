@@ -2,20 +2,23 @@ import styled from 'styled-components';
 import QuestionIcon from '../asset/question.svg';
 
 const SideContainer = styled.div`
-  border-right: 1px solid #cccccc;
-  flex-direction: column;
-  display: flex;
-  width: 164px;
-  height: 550px;
 
-  .side-container {
+border: 1px solid #CCCCCC;
+flex-direction: column;
+display: flex;
+width: 164px;
+height: calc(100vh - 50px - 70px);
+
+.side-container{
     list-style-type: none;
     width: 240px;
     padding: 32px 12px 12px 20px;
     cursor: pointer;
     line-height: 200%;
   }
-  li {
+
+li{
+
     font-size: 14px;
     color: gray;
   }
