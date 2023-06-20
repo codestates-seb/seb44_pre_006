@@ -13,6 +13,7 @@ const NavContainer = styled.header`
     display: flex ;
     align-items: center;
     position: fixed;
+    z-index: 100;
 `
 const LogoImag = styled.img`
     width: 150px;
