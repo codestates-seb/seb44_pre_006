@@ -20,6 +20,14 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 44daf7dcc86e7d86ffdc
+            client-secret: 32ecdf39d395df1666df06e4ca9e0ea44de39009
+
 logging:
   level:
     org:
@@ -30,6 +38,8 @@ logging:
             sql:
               BasicBinder: trace
 server:
+  address: 0.0.0.0
+  port: 8081
   servlet:
     encoding:
       force-response: true

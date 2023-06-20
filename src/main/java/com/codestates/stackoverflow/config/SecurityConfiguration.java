@@ -76,7 +76,10 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.DELETE, "/answers/**").hasAnyRole("USER", "ADMIN") //답변 삭제는 로그인한 회원만 가능 -> 현재 로그인한 회원이 질문을 작성한 회원인지는 service에서 처리
 
                         .anyRequest().permitAll()
-                );
+                )
+                .oauth2Login()
+                .authorizationEndpoint()
+                .baseUri("/login");
 
 
         return http.build();
