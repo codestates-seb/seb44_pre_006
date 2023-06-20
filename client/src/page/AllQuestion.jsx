@@ -55,9 +55,13 @@ const MainBarHeaderAsK = styled.div`
   box-sizing: border-box;
 `;
 
-const SortButtonContainer = styled.div`
-  height: 30px;
-  margin-top: 5px;
+const SortBtnContainer = styled.div`
+  display: flex;
+  justify-items: end;
+
+  margin-left: 100px;
+  font-size: 17px;
+  color: var(--black-600);
 `;
 
 const FooterBtnContainer = styled.div`
@@ -87,13 +91,14 @@ function AllQuestion() {
             >
               <AskBtn>Ask Question</AskBtn>
             </MainBarHeaderAsK>
-            <SortButtonContainer>
-              <div>
-                <SortBtn>Newest</SortBtn>
-                <SortBtn>Unanswered</SortBtn>
-              </div>
-            </SortButtonContainer>
           </MainBarHeader>
+
+          <SortBtnContainer>
+            <div>
+              <SortBtn>Newest</SortBtn>
+              <SortBtn>Unanswered</SortBtn>
+            </div>
+          </SortBtnContainer>
           <FooterBtnContainer>
             <div>
               <BottomBtn>Prev</BottomBtn>

@@ -42,7 +42,6 @@ export const BottomBtn = styled.button`
 
   &:active {
     background-color: var(--orange-500);
-    color: white;
   }
 `;
 
@@ -62,6 +61,7 @@ export const SortBtn = styled.button`
   color: var(--black-800);
   &:hover {
     background-color: var(--black-025);
+    cursor: pointer;
   }
   &:focus {
     background-color: var(--black-050);
