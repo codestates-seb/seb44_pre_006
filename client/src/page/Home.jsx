@@ -8,7 +8,6 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   margin: 0 auto;
-  box-sizing: border-box;
   position: relative;
   text-align: left;
   font-size: 100%;
@@ -22,23 +21,18 @@ const Content = styled.div`
   background-color: #ffffff;
   border: 1px solid #d6d9dc;
   min-height: 100%;
-  box-sizing: inherit;
 `;
 
-const MainBar = styled.main`
+const MainBar = styled.div`
   width: 100%;
-  margin: 0;
-  padding: 0;
   min-height: 100%;
   display: flex;
-  box-sizing: inherit;
   flex-direction: column;
 `;
 
 const MainBarHeader = styled.div`
   display: flex;
   width: 100%;
-  /* max-width: 727px; */
   height: 50px;
 
   .mainbar-headline {
@@ -51,9 +45,9 @@ const MainBarHeader = styled.div`
 `;
 
 const MainBarHeaderAsK = styled.div`
+  display: flex;
   margin-left: 12px;
   font-size: 15px;
-  box-sizing: border-box;
 `;
 
 const AskBtn = styled.a`
