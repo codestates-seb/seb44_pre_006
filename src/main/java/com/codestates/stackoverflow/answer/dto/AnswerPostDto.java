@@ -10,11 +10,12 @@ import javax.validation.constraints.NotBlank;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class AnswerPostDto {
     @NotBlank
     private String content;
-    private Long questionId;
 
+    public AnswerPostDto(String content) {
+        this.content = content;
+    }
 }
