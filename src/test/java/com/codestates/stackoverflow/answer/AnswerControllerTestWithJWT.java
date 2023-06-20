@@ -86,13 +86,13 @@ public class AnswerControllerTestWithJWT {
     @WithMockUser(username = "user@gmail.com",password="1234",roles="USER")
     void postAnswerTest() throws Exception {
         // given
-        AnswerPostDto post = new AnswerPostDto("answer1", 1L);
+        AnswerPostDto post = new AnswerPostDto("answer1");
         String content = gson.toJson(post);
 
         Answer answer = new Answer();
         answer.setAnswerId(1L);
 
-        Long questionId = post.getQuestionId();
+//        Long questionId = post.getQuestionId();
 
         given(mapper.answerPostDtoToAnswer(Mockito.any(AnswerPostDto.class)))
                 .willReturn(answer);
@@ -109,7 +109,7 @@ public class AnswerControllerTestWithJWT {
         // when
         ResultActions actions =
                 mockMvc.perform(
-                        post("/answers/{question-id}",questionId)
+                        post("/answers/{question-id}",1L)
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .headers(headers)
@@ -129,8 +129,8 @@ public class AnswerControllerTestWithJWT {
                         ),
                         requestFields(
                                 List.of(
-                                        fieldWithPath("content").type(JsonFieldType.STRING).description("답변 내용"),
-                                        fieldWithPath("questionId").type(JsonFieldType.NUMBER).description("질문 번호")
+                                        fieldWithPath("content").type(JsonFieldType.STRING).description("답변 내용")
+//                                        fieldWithPath("questionId").type(JsonFieldType.NUMBER).description("질문 번호")
                                 )
                         ),
                         requestHeaders(
