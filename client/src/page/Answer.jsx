@@ -3,6 +3,8 @@ import SideBar from "../component/SideBar"
 import '../Global.css';
 import {AskBtn} from "../component/Buttons"
 import { useNavigate } from "react-router-dom";
+import AskBox from "../component/AskBox";
+import AnswerBox from "../component/AnswerBox";
 
 const Main = styled.div`
   display: flex;
@@ -18,6 +20,7 @@ const AnswerHeader = styled.section`
   flex-direction: column;
   border-bottom: 1px solid var(--silver-darker);
   width: 70vw;
+  
   
   > .topDiv{
     flex-grow: 1;
@@ -42,6 +45,9 @@ const AnswerHeader = styled.section`
     }
   }
 `
+const AnswerContentBody = styled.section`
+
+`
 
 
 function Answer() {
@@ -60,7 +66,7 @@ function Answer() {
         <div className="bottomDiv">
           <div className="infoBox">
             <p>Asked  &nbsp;</p>
-            <p>today</p> 
+            <p>today</p>  
           </div>
           <div className="infoBox">
             <p>Modified  &nbsp;</p>
@@ -72,7 +78,13 @@ function Answer() {
           </div>
         </div>
       </AnswerHeader>
-      
+      <AnswerContentBody>
+        <AskBox />
+        <h2>2 Answers</h2>
+        <AnswerBox/>
+        <AnswerBox/>
+        <h2>Your Answer</h2>
+      </AnswerContentBody>
     </AnswertContainer>
     </Main>
   );
