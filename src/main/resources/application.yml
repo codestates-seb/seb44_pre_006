@@ -24,9 +24,14 @@ spring:
     oauth2:
       client:
         registration:
-          github:
-            client-id: 44daf7dcc86e7d86ffdc
-            client-secret: 32ecdf39d395df1666df06e4ca9e0ea44de39009
+          github: #localhost:8080/login/github
+            redirect-uri: http://localhost:8080/login/oauth2/code/github
+            client-id: 21d3161013611958e11d
+            client-secret: d728d9f3e01f3079a8c69d9debbd15aac009f6b3
+            scope:
+              - "login"
+              - "id"
+              - "email"
 
 logging:
   level:
@@ -39,7 +44,7 @@ logging:
               BasicBinder: trace
 server:
   address: 0.0.0.0
-  port: 8081 #포트 변경
+  port: 8080 #포트 변경
   servlet:
     encoding:
       force-response: true

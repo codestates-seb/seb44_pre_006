@@ -9,9 +9,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -33,13 +35,23 @@ public class MemberDetailsService implements UserDetailsService {
     }
 
 
-    public final class MemberDetails extends Member implements UserDetails{
+    public final class MemberDetails extends Member implements UserDetails, OAuth2User {
         MemberDetails(Member member){
             setMemberId(member.getMemberId());
             setEmail(member.getEmail());
             setName(member.getName());
             setPassword(member.getPassword());
             setRoles(member.getRoles());
+        }
+
+        @Override
+        public <A> A getAttribute(String name) {
+            return OAuth2User.super.getAttribute(name);
+        }
+
+        @Override
+        public Map<String, Object> getAttributes() {
+            return null;
         }
 
         @Override
