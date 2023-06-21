@@ -2,7 +2,8 @@ import { styled } from "styled-components";
 import logoIcon from '../asset/logo-icon.png'
 import { Link } from "react-router-dom";
 import GoogleButton from "./GoogleButton";
-import '../Global.css';
+import { useRef, useState } from 'react';
+
 
 export const LoginContainer = styled.section`
 width: 400px;
