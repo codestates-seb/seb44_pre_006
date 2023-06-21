@@ -4,6 +4,7 @@ import '../Global.css';
 import {AskBtn} from "../component/Buttons"
 import { useNavigate } from "react-router-dom";
 import AskBox from "../component/AskBox";
+import AnswerBox from "../component/AnswerBox";
 
 const Main = styled.div`
   display: flex;
@@ -79,7 +80,10 @@ function Answer() {
       </AnswerHeader>
       <AnswerContentBody>
         <AskBox />
-        <h2>0 Answers</h2>
+        <h2>2 Answers</h2>
+        <AnswerBox/>
+        <AnswerBox/>
+        <h2>Your Answer</h2>
       </AnswerContentBody>
     </AnswertContainer>
     </Main>
