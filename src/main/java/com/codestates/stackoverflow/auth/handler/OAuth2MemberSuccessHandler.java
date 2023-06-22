@@ -45,20 +45,22 @@ public class OAuth2MemberSuccessHandler extends SimpleUrlAuthenticationSuccessHa
 
         System.out.println("email : " +email);
 
-        saveMember(email);  // Resource Owner의 이메일 주소를 DB에 저장한다.
-        redirect(request, response, email, authorities);  //Access Token과 Refresh Token을 생성해서 Front에 전달하기 위한 메서드
+        Member savedMember=saveMember(email);  // Resource Owner의 이메일 주소를 DB에 저장한다.
+        Long memberId = savedMember.getMemberId();
+        redirect(request, response, email, authorities,memberId);  //Access Token과 Refresh Token을 생성해서 Front에 전달하기 위한 메서드
     }
 
-    private void saveMember(String email) {
+    private Member saveMember(String email) {
         Member member = new Member(email,"1234",email);
-        memberService.createMember(member);
+        Member savedMember = memberService.createMember(member);
+        return savedMember;
     }
 
-    private void redirect(HttpServletRequest request, HttpServletResponse response, String username, List<String> authorities) throws IOException {
+    private void redirect(HttpServletRequest request, HttpServletResponse response, String username, List<String> authorities, Long memberId) throws IOException {
         String accessToken = delegateAccessToken(username, authorities);
         String refreshToken = delegateRefreshToken(username);
 
-        String uri = createURI(accessToken, refreshToken).toString();
+        String uri = createURI(accessToken, refreshToken,memberId).toString();
         getRedirectStrategy().sendRedirect(request, response, uri);
     }
 
@@ -87,13 +89,15 @@ public class OAuth2MemberSuccessHandler extends SimpleUrlAuthenticationSuccessHa
         return refreshToken;
     }
 
-    private URI createURI(String accessToken, String refreshToken) {
+    private URI createURI(String accessToken, String refreshToken, Long memberId) {
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
         queryParams.add("access_token", accessToken);
         queryParams.add("refresh_token", refreshToken);
+        queryParams.add("member_id", memberId+"");
 
         System.out.println("access_token:"+accessToken);
         System.out.println("refresh_token:"+refreshToken);
+        System.out.println("member_id:" + memberId);
 
         return UriComponentsBuilder
                 .newInstance()
