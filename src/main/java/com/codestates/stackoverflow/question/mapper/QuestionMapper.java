@@ -1,6 +1,8 @@
 package com.codestates.stackoverflow.question.mapper;
 
 
+import com.codestates.stackoverflow.answer.dto.AnswerResponseDto;
+import com.codestates.stackoverflow.answer.entity.Answer;
 import com.codestates.stackoverflow.answer.mapper.AnswerMapper;
 import com.codestates.stackoverflow.question.dto.QuestionDto;
 import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
@@ -21,7 +23,15 @@ public interface QuestionMapper {
 
     @Mapping(target = "viewCount", expression = "java(question.getViewCount() + 1)")
     @Mapping(target = "createdBy", expression = "java(question.getMember().getName())")
+    @Mapping(target = "answers", expression = "java(mapAnswers(question.getAnswers()))")
     QuestionResponseDto.ResponseDetail questionToDetail(Question question);
+
+    default List<AnswerResponseDto> mapAnswers(List<Answer> answers) {
+        return answers.stream()
+                .map(i -> new AnswerResponseDto(i.getAnswerId(), i.getContent(), i.getCreatedAt(), i.getModifiedAt(), i.getMember().getName()))
+                .collect(Collectors.toList());
+    }
+
 
     default List<QuestionResponseDto.Response> questionsToResponses(List<Question> questions)
         {

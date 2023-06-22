@@ -1,18 +1,14 @@
 package com.codestates.stackoverflow.question.mapper;
 
-import com.codestates.stackoverflow.answer.dto.AnswerResponseDto;
-import com.codestates.stackoverflow.answer.entity.Answer;
 import com.codestates.stackoverflow.question.dto.QuestionDto;
 import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
 import com.codestates.stackoverflow.question.entity.Question;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-22T19:30:50+0900",
+    date = "2023-06-22T19:59:36+0900",
     comments = "version: 1.5.1.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 11.0.17 (Oracle Corporation)"
 )
 @Component
@@ -62,41 +58,11 @@ public class QuestionMapperImpl implements QuestionMapper {
         responseDetail.content( question.getContent() );
         responseDetail.createdAt( question.getCreatedAt() );
         responseDetail.modifiedAt( question.getModifiedAt() );
-        responseDetail.answers( answerListToAnswerResponseDtoList( question.getAnswers() ) );
 
         responseDetail.viewCount( question.getViewCount() + 1 );
         responseDetail.createdBy( question.getMember().getName() );
+        responseDetail.answers( mapAnswers(question.getAnswers()) );
 
         return responseDetail.build();
-    }
-
-    protected AnswerResponseDto answerToAnswerResponseDto(Answer answer) {
-        if ( answer == null ) {
-            return null;
-        }
-
-        AnswerResponseDto.AnswerResponseDtoBuilder answerResponseDto = AnswerResponseDto.builder();
-
-        if ( answer.getAnswerId() != null ) {
-            answerResponseDto.answerId( answer.getAnswerId() );
-        }
-        answerResponseDto.content( answer.getContent() );
-        answerResponseDto.createdAt( answer.getCreatedAt() );
-        answerResponseDto.modifiedAt( answer.getModifiedAt() );
-
-        return answerResponseDto.build();
-    }
-
-    protected List<AnswerResponseDto> answerListToAnswerResponseDtoList(List<Answer> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<AnswerResponseDto> list1 = new ArrayList<AnswerResponseDto>( list.size() );
-        for ( Answer answer : list ) {
-            list1.add( answerToAnswerResponseDto( answer ) );
-        }
-
-        return list1;
     }
 }
