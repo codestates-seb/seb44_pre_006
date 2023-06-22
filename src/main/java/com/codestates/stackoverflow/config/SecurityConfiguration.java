@@ -2,14 +2,14 @@ package com.codestates.stackoverflow.config;
 
 import com.codestates.stackoverflow.auth.filter.JwtAuthenticationFilter;
 import com.codestates.stackoverflow.auth.filter.JwtVerificationFilter;
-import com.codestates.stackoverflow.auth.handler.MemberAccessDeniedHandler;
-import com.codestates.stackoverflow.auth.handler.MemberAuthenticationEntryPoint;
-import com.codestates.stackoverflow.auth.handler.MemberAuthenticationFailureHandler;
-import com.codestates.stackoverflow.auth.handler.MemberAuthenticationSuccessHandler;
+import com.codestates.stackoverflow.auth.handler.*;
 import com.codestates.stackoverflow.auth.jwt.JwtTokenizer;
 import com.codestates.stackoverflow.auth.utils.CustomAuthorityUtils;
+import com.codestates.stackoverflow.member.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
@@ -31,10 +31,14 @@ public class SecurityConfiguration {
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
 
+    private final MemberService memberService;
 
-    public SecurityConfiguration(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils) {
+
+    @Autowired
+    public SecurityConfiguration(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils, @Lazy  MemberService memberService) {
         this.jwtTokenizer = jwtTokenizer;
         this.authorityUtils = authorityUtils;
+        this.memberService = memberService;
     }
 
     @Bean
@@ -76,12 +80,8 @@ public class SecurityConfiguration {
 
                         .anyRequest().permitAll()
                 )
-                .oauth2Login()
-                .authorizationEndpoint()
-                .baseUri("/login")
-                .and()
-                .redirectionEndpoint()
-                .baseUri("/login/oauth2/code/github");
+                .oauth2Login(oauth2 -> oauth2
+                        .successHandler(new OAuth2MemberSuccessHandler(jwtTokenizer, authorityUtils,memberService)));
 
         return http.build();
     }

@@ -24,14 +24,12 @@ spring:
     oauth2:
       client:
         registration:
-          github: #localhost:8080/login/github
-            redirect-uri: http://localhost:8080/login/oauth2/code/github
-            client-id: 21d3161013611958e11d
-            client-secret: d728d9f3e01f3079a8c69d9debbd15aac009f6b3
+          google: #http://localhost:8080/oauth2/authorization/google
+            clientId: 1095169467808-vs73msug4rg5tigoaj8i8uogpeia2k1l.apps.googleusercontent.com
+            clientSecret: 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
             scope:
-              - "login"
-              - "id"
-              - "email"
+              - email
+              - profile
 
 logging:
   level:

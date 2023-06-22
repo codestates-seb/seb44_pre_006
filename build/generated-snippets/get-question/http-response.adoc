@@ -18,15 +18,15 @@ Content-Length: 424
     "id" : 1,
     "title" : "Title",
     "content" : "Content",
-    "createdAt" : "2023-06-22T11:20:39",
-    "modifiedAt" : "2023-06-22T11:20:39",
+    "createdAt" : "2023-06-22T11:23:05",
+    "modifiedAt" : "2023-06-22T11:23:05",
     "viewCount" : 0,
     "createBy" : "user@gmail.com",
     "answers" : [ {
       "answerId" : 1,
       "content" : "body",
-      "createdAt" : "2023-06-22T11:20:39",
-      "modifiedAt" : "2023-06-22T11:20:39",
+      "createdAt" : "2023-06-22T11:23:05",
+      "modifiedAt" : "2023-06-22T11:23:05",
       "createdBy" : "kevin@gmail.com"
     } ]
   }

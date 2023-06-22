@@ -19,14 +19,14 @@ Content-Length: 474
     "content" : "Content",
     "viewCount" : 0,
     "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-22T11:20:39",
+    "modifiedAt" : "2023-06-22T11:23:04",
     "answerCount" : 0
   }, {
     "title" : "Title1",
     "content" : "Content1",
     "viewCount" : 0,
     "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-22T11:20:39",
+    "modifiedAt" : "2023-06-22T11:23:04",
     "answerCount" : 0
   } ],
   "pageInfo" : {
