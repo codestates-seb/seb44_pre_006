@@ -5,7 +5,7 @@ import GoogleButton from "./GoogleButton";
 import { useRef } from 'react';
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import fetchUser from '../api/user'
+import {fetchUser} from '../api/user'
 
 
 export const LoginContainer = styled.section`
@@ -60,7 +60,7 @@ function Login () {
     const navigate = useNavigate();
     const nameRef = useRef(null);
     const passwordRef = useRef(null);
-
+    
 
     const onLogInHandler = async () => {
         const name = nameRef.current.value;
@@ -72,8 +72,8 @@ function Login () {
                 console.log(response);
                 localStorage.setItem("jwtToken", response.headers.authorization);
                 localStorage.setItem("refreshToken", response.headers.refresh);
-                dispatch(fetchUser(10))
-                navigate('/home');
+                dispatch(fetchUser(response.data.memberId))
+                
             })
             .catch(err => {
                 console.log(err);
