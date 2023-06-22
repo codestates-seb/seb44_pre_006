@@ -3,6 +3,7 @@ import SOF from "../asset/SOF_Logo.png"
 import UserNull from "../asset/User_null.png"
 import sreachLogo from "../asset/sreach_logo.svg"
 import '../Global.css';
+import { useNavigate } from "react-router-dom";
 
 const NavContainer = styled.header`
     width: 100%;
@@ -59,13 +60,15 @@ const NavUserLink = styled.img`
     border: none;
     margin-left: 10px;
 `
+
 function Nav() {
     //임시? jwt토큰 유무 판단용 변수
     let jwt = true
+    const navigate = useNavigate()
 
     return (
       <NavContainer>
-        <LogoImag src={SOF}/>
+        <LogoImag src={SOF} onClick={()=>{navigate('/')}}/>
         <NavLink>About</NavLink>
         <NavSreachBar>
             <button>
@@ -76,8 +79,12 @@ function Nav() {
         {jwt  //jwt토큰 유무에 따른 분기.
         ? (
         <>
-            <NavLogBtn backgroundColor="var(--powder-200)" color="var(--powder-700)">Log in</NavLogBtn>
-            <NavLogBtn backgroundColor="var(--blue-500)" color="var(--blue-050)">Sign up</NavLogBtn>
+            <NavLogBtn backgroundColor="var(--powder-200)" color="var(--powder-700)" onClick={()=>{navigate('/users/login')}}>
+                Log in
+            </NavLogBtn>
+            <NavLogBtn backgroundColor="var(--blue-500)" color="var(--blue-050)" onClick={()=>{navigate('/users/sighup')}}>
+                Sign up
+            </NavLogBtn>
         </>)
         : (
         <>  
