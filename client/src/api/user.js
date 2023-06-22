@@ -4,14 +4,15 @@ import axios from 'axios';
 const URL = process.env.REACT_APP_EC2_URL;
 
 export  const fetchUser = createAsyncThunk('users/fetchUser', async (userid) => {
-  const url = `${URL}/user/${userid}`;
+  const url = `${URL}/users/${userid}`;
   const token = localStorage.getItem('jwtToken');
+
   const response = await axios.get(url, {
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: token, 
+      Authorization: token
     },
-  });
+  }).catch(error => {console.error("실패",error);});
+
   return response.data;
 });
 
