@@ -50,7 +50,8 @@ const SummaryContent = styled.div`
 `;
 
 const ContentTitle = styled.h3`
-  display: inline-block;
+  display: flex;
+  margin: 0 0 0.4rem;
   padding-right: 24px;
   font-size: 17px;
   hyphens: auto;
@@ -66,6 +67,15 @@ const TitleLink = styled.a`
   &:hover {
     color: var(--blue-500);
   }
+`;
+
+const ContentExcerpt = styled.div`
+  display: -webkit-box;
+  margin: 0 0 0.5rem;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const SummaryMeta = styled.div`
@@ -220,6 +230,7 @@ function QuestionItem({
           <ContentTitle>
             <TitleLink>{title}</TitleLink>
           </ContentTitle>
+          <ContentExcerpt>{content}</ContentExcerpt>
           <SummaryMeta>
             <MetaTages>
               <ul className="tag-list-wrapper">
