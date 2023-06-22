@@ -44,8 +44,6 @@ public class QuestionContoller {
         return ResponseEntity.status(HttpStatus.SEE_OTHER)
                 .location(URI.create("/questions/" + question.getId()))
                 .build();
-
-//        return new ResponseEntity<>(new SingleResponseDto(questionMapper.questionToDetail(question)), HttpStatus.OK);
     }
 
     @GetMapping("{question-id}")

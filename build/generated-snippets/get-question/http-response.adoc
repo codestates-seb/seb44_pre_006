@@ -11,23 +11,23 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 424
+Content-Length: 405
 
 {
   "data" : {
     "id" : 1,
     "title" : "Title",
     "content" : "Content",
-    "createdAt" : "2023-06-22T11:20:39",
-    "modifiedAt" : "2023-06-22T11:20:39",
+    "createdAt" : "2023-06-22T18:26:37",
+    "modifiedAt" : "2023-06-22T18:26:37",
     "viewCount" : 0,
-    "createBy" : "user@gmail.com",
+    "createdBy" : "user",
     "answers" : [ {
       "answerId" : 1,
       "content" : "body",
-      "createdAt" : "2023-06-22T11:20:39",
-      "modifiedAt" : "2023-06-22T11:20:39",
-      "createdBy" : "kevin@gmail.com"
+      "createdAt" : "2023-06-22T18:26:37",
+      "modifiedAt" : "2023-06-22T18:26:37",
+      "createdBy" : "kevin"
     } ]
   }
 }

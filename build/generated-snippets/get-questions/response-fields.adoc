@@ -5,6 +5,10 @@
 |`+Array+`
 |질문 리스트
 
+|`+data[].id+`
+|`+Number+`
+|질문 식별자 ID
+
 |`+data[].title+`
 |`+String+`
 |질문 제목

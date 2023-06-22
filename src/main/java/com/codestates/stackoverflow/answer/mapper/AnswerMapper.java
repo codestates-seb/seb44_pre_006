@@ -16,6 +16,7 @@ public interface AnswerMapper {
     Answer answerPostDtoToAnswer(AnswerPostDto requestBody);
     Answer answerPatchDtoToAnswer(AnswerPatchDto requestBody);
 
+    @Mapping(target = "createdBy", expression = "java(answer.getMember().getName())")
     AnswerResponseDto answerToAnswerResponseDto(Answer answer);
     default List<AnswerResponseDto> answersToAnswerResponseDtos(List<Answer> answers){
         List<AnswerResponseDto> response=answers.stream()
@@ -24,7 +25,7 @@ public interface AnswerMapper {
                         .content(answer.getContent())
                         .createdAt(answer.getCreatedAt())
                         .modifiedAt(answer.getModifiedAt())
-                        .createdBy(answer.getMember().getEmail())
+                        .createdBy(answer.getMember().getName())
                         .build())
                 .collect(Collectors.toList());
         return response;

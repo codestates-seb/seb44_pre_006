@@ -425,14 +425,13 @@ class MemberControllerDocumentationTestWithJwt {
         member.setMemberId(memberId);
 
         List<Question> questions = new ArrayList<>();
-        Question question1 = new Question(1L, "question1", "question1", 1L, LocalDateTime.now(), LocalDateTime.now(), member.getEmail());
+        Question question1 = new Question(1L, "question1", "question1", 1L, LocalDateTime.now(), LocalDateTime.now(), member, null);
         questions.add(question1);
 
         List<Answer> answers = new ArrayList<>();
         Answer answer1 = new Answer(1L, "answer1", member, question1);
         answer1.setCreatedAt(LocalDateTime.now());
         answer1.setModifiedAt(LocalDateTime.now());
-        answer1.setCreatedBy(member.getEmail());
 
         answers.add(answer1);
 
@@ -446,7 +445,7 @@ class MemberControllerDocumentationTestWithJwt {
                     question.getCreatedAt(),
                     question.getModifiedAt(),
                     question.getViewCount(),
-                    question.getCreateBy()
+                    question.getMember().getName()
             );
             questionDtos.add(questionDto);
         }
@@ -459,7 +458,7 @@ class MemberControllerDocumentationTestWithJwt {
                     answer.getContent(),
                     answer.getCreatedAt(),
                     answer.getModifiedAt(),
-                    answer.getCreatedBy()
+                    answer.getMember().getName()
             );
             answerDtos.add(answerDto);
         }

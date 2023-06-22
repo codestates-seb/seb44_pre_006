@@ -19,20 +19,21 @@ public interface QuestionMapper {
 //    @Mapping(target = "createBy", expression = "java(question.getMember().getEmail())")
     QuestionResponseDto.Response questionToResponse(Question question);
 
-//    @Mapping(target = "answerCount", expression = "java(question.getAnswers().size())")
-//    @Mapping(target = "createBy", expression = "java(question.getMember().getEmail())")
+    @Mapping(target = "viewCount", expression = "java(question.getViewCount() + 1)")
+    @Mapping(target = "createdBy", expression = "java(question.getMember().getName())")
     QuestionResponseDto.ResponseDetail questionToDetail(Question question);
 
     default List<QuestionResponseDto.Response> questionsToResponses(List<Question> questions)
         {
         List<QuestionResponseDto.Response> response = questions.stream()
                 .map(i -> QuestionResponseDto.Response.builder()
+                        .id(i.getId())
                         .title(i.getTitle())
                         .content(i.getContent())
                         .viewCount(i.getViewCount())
                         .answerCount(i.getAnswers().size())
                         .modifiedAt(i.getModifiedAt())
-                        .createBy(i.getMember().getEmail())
+                        .createBy(i.getMember().getName())
                         .build())
                 .collect(Collectors.toList());
 

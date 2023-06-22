@@ -11,22 +11,24 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 474
+Content-Length: 482
 
 {
   "data" : [ {
+    "id" : 1,
     "title" : "Title",
     "content" : "Content",
     "viewCount" : 0,
-    "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-22T11:20:39",
+    "createBy" : "user",
+    "modifiedAt" : "2023-06-22T18:26:37",
     "answerCount" : 0
   }, {
+    "id" : 2,
     "title" : "Title1",
     "content" : "Content1",
     "viewCount" : 0,
-    "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-22T11:20:39",
+    "createBy" : "user",
+    "modifiedAt" : "2023-06-22T18:26:37",
     "answerCount" : 0
   } ],
   "pageInfo" : {
