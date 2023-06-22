@@ -12,13 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2023-06-22T18:18:11+0900",
-    comments = "version: 1.5.1.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 11.0.18 (Azul Systems, Inc.)"
-=======
-    date = "2023-06-22T18:16:18+0900",
+    date = "2023-06-22T19:30:50+0900",
     comments = "version: 1.5.1.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 11.0.17 (Oracle Corporation)"
->>>>>>> be-feature/question
 )
 @Component
 public class QuestionMapperImpl implements QuestionMapper {
