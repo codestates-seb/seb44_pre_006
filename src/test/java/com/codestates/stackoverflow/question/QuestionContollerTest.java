@@ -1,6 +1,7 @@
 package com.codestates.stackoverflow.question;
 
 import com.codestates.stackoverflow.answer.dto.AnswerResponseDto;
+import com.codestates.stackoverflow.member.entity.Member;
 import com.codestates.stackoverflow.question.dto.QuestionDto;
 import com.codestates.stackoverflow.question.dto.QuestionResponseDto;
 import com.codestates.stackoverflow.question.entity.Question;
@@ -73,29 +74,31 @@ class QuestionContollerTest {
     @BeforeEach
     void beforeEach(TestInfo testInfo) {
         String str = testInfo.getTestMethod().orElse(null).getName();
+        Member member = new Member("user@gmail.com", "1234", "user");
         if (str.equals("searchQuestions") || str.equals("getQuestions")) {
             // searchQuestions, getQuestions 테스트 메서드에 대한 전처리 작업 수행
             this.mockPage = new PageImpl<>(
                     Arrays.asList(
-                            new Question(1L, "Title", "Content", 0L, LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0), "user@gmail.com",null, null),
-                            new Question(2L, "Title1", "Content1", 0L, LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0),"user@gmail.com", null, null)),
+                            new Question(1L, "Title", "Content", 0L, LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0), member, null),
+                            new Question(2L, "Title1", "Content1", 0L, LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0), member, null)),
                     PageRequest.of(0, 10, Sort.Direction.DESC, "modifiedAt"), 2
             );
 
             this.multiquestion = mockPage.getContent()
                     .stream()
                     .map(i -> QuestionResponseDto.Response.builder()
+                            .id(i.getId())
                             .title(i.getTitle())
                             .content(i.getContent())
                             .viewCount(i.getViewCount())
                             .answerCount(0)
                             .modifiedAt(LocalDateTime.now().withNano(0))
-                            .createBy("user@gamil.com")
+                            .createBy(i.getMember().getName())
                             .build())
                     .collect(Collectors.toList());
         } else if (str.equals("getQuestion") || str.equals("patchQuestion") || str.equals("createQuestion")) {
             // getQuestion, patchQuestion, createQuestion 테스트 메서드에 대한 전처리 작업 수행
-            this.question = new Question(1L, "Title", "Content", 0L, LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0),"user@gmail.com", null, null);
+            this.question = new Question(1L, "Title", "Content", 0L, LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0), member, null);
 
             System.out.println("question : " + question);
             this.response = QuestionResponseDto.ResponseDetail.builder()
@@ -105,9 +108,9 @@ class QuestionContollerTest {
                     .viewCount(0L)
                     .createdAt(question.getCreatedAt())
                     .modifiedAt(question.getModifiedAt())
-                    .createBy("user@gmail.com")
+                    .createdBy(question.getMember().getName())
                     .answers(new ArrayList<>()).build();
-            response.getAnswers().add(new AnswerResponseDto(1L, "body", LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0), "kevin@gmail.com"));
+            response.getAnswers().add(new AnswerResponseDto(1L, "body", LocalDateTime.now().withNano(0), LocalDateTime.now().withNano(0), "kevin"));
         }
     }
 
@@ -142,6 +145,7 @@ class QuestionContollerTest {
                         responseFields(
                                 List.of(
                                         fieldWithPath("data").type(JsonFieldType.ARRAY).description("질문 리스트"),
+                                        fieldWithPath("data[].id").type(JsonFieldType.NUMBER).description("질문 식별자 ID"),
                                         fieldWithPath("data[].title").type(JsonFieldType.STRING).description("질문 제목"),
                                         fieldWithPath("data[].content").type(JsonFieldType.STRING).description("질문 내용"),
                                         fieldWithPath("data[].modifiedAt").type(JsonFieldType.STRING).description("질문 수정 시간"),
@@ -192,6 +196,7 @@ class QuestionContollerTest {
                         responseFields(
                                 List.of(
                                         fieldWithPath("data").type(JsonFieldType.ARRAY).description("질문 리스트"),
+                                        fieldWithPath("data[].id").type(JsonFieldType.NUMBER).description("질문 식별자 ID"),
                                         fieldWithPath("data[].title").type(JsonFieldType.STRING).description("질문 제목"),
                                         fieldWithPath("data[].content").type(JsonFieldType.STRING).description("질문 내용"),
                                         fieldWithPath("data[].modifiedAt").type(JsonFieldType.STRING).description("질문 수정 시간"),
@@ -217,7 +222,7 @@ class QuestionContollerTest {
                 .willReturn(question);
         // when
         ResultActions actions = mockMvc.perform(
-                get("/questions/{id}", 1L)
+                get("/questions/{question-id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON));
 
         // then
@@ -228,7 +233,7 @@ class QuestionContollerTest {
                         getRequestPreProcessor(),
                         getResponsePreProcessor(),
                         pathParameters(
-                                parameterWithName("id").description("질문 식별자 ID")
+                                parameterWithName("question-id").description("질문 식별자 ID")
                         ),
                         responseFields(
                                 List.of(
@@ -239,7 +244,7 @@ class QuestionContollerTest {
                                         fieldWithPath("data.createdAt").type(JsonFieldType.STRING).description("질문 생성 시간"),
                                         fieldWithPath("data.modifiedAt").type(JsonFieldType.STRING).description("질문 수정 시간"),
                                         fieldWithPath("data.viewCount").type(JsonFieldType.NUMBER).description("질문 조회 수"),
-                                        fieldWithPath("data.createBy").type(JsonFieldType.STRING).description("질문 작성자"),
+                                        fieldWithPath("data.createdBy").type(JsonFieldType.STRING).description("질문 작성자"),
                                         fieldWithPath("data.answers").type(JsonFieldType.ARRAY).description("질문에 대한 답변 리스트"),
                                         fieldWithPath("data.answers[].answerId").type(JsonFieldType.NUMBER).description("답변 식별자 ID"),
                                         fieldWithPath("data.answers[].content").type(JsonFieldType.STRING).description("답변 내용"),

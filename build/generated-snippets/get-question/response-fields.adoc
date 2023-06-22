@@ -29,7 +29,7 @@
 |`+Number+`
 |질문 조회 수
 
-|`+data.createBy+`
+|`+data.createdBy+`
 |`+String+`
 |질문 작성자
 

@@ -34,7 +34,8 @@ public class QuestionService {
     //로그인한 회원 질문 등록
     public Question createQuestion(Question request) {
         // 로그인한 사용자의 ID로 조회하여 해당 ID를 가진 사람이 존재하는 검증
-        request.setMember(authenticationMember());
+        Member member = authenticationMember();
+        request.setMember(member);
 
         return questionRepository.save(request);
     }
@@ -65,7 +66,7 @@ public class QuestionService {
     public Question getQuestion(Long id) {
         // Question의 Id 값을 기준으로 DB에 조회하며 해당 Id를 가진 Question이 없다면 QUESTION_NOT_FOUNT 예외 발생
         Question question = findverifyQuestion(id);
-        question.setViewCount(question.getViewCount() + 1);
+        questionRepository.incrementViews(id);
 
         return question;
     }
@@ -83,7 +84,7 @@ public class QuestionService {
                     question.getCreatedAt(),
                     question.getModifiedAt(),
                     question.getViewCount(),
-                    question.getCreateBy()
+                    question.getMember().getName()
             );
             questionDtos.add(questionDto);
         }

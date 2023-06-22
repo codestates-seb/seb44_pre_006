@@ -92,7 +92,7 @@ public class AnswerService {
                     answer.getContent(),
                     answer.getCreatedAt(),
                     answer.getModifiedAt(),
-                    answer.getCreatedBy()
+                    answer.getMember().getName()
             );
             answerDtos.add(answerDto);
         }

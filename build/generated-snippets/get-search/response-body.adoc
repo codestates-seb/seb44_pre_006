@@ -2,18 +2,30 @@
 ----
 {
   "data" : [ {
+    "id" : 1,
     "title" : "Title",
     "content" : "Content",
     "viewCount" : 0,
+<<<<<<< HEAD
     "createBy" : "user@gamil.com",
     "modifiedAt" : "2023-06-22T11:23:05",
+=======
+    "createBy" : "user",
+    "modifiedAt" : "2023-06-22T18:26:37",
+>>>>>>> be-feature/question
     "answerCount" : 0
   }, {
+    "id" : 2,
     "title" : "Title1",
     "content" : "Content1",
     "viewCount" : 0,
+<<<<<<< HEAD
     "createBy" : "user@gamil.com",
     "modifiedAt" : "2023-06-22T11:23:05",
+=======
+    "createBy" : "user",
+    "modifiedAt" : "2023-06-22T18:26:37",
+>>>>>>> be-feature/question
     "answerCount" : 0
   } ],
   "pageInfo" : {

@@ -12,8 +12,13 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< HEAD
     date = "2023-06-22T18:18:11+0900",
     comments = "version: 1.5.1.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 11.0.18 (Azul Systems, Inc.)"
+=======
+    date = "2023-06-22T18:16:18+0900",
+    comments = "version: 1.5.1.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 11.0.17 (Oracle Corporation)"
+>>>>>>> be-feature/question
 )
 @Component
 public class QuestionMapperImpl implements QuestionMapper {
@@ -40,10 +45,10 @@ public class QuestionMapperImpl implements QuestionMapper {
 
         QuestionResponseDto.Response.ResponseBuilder response = QuestionResponseDto.Response.builder();
 
+        response.id( question.getId() );
         response.title( question.getTitle() );
         response.content( question.getContent() );
         response.viewCount( question.getViewCount() );
-        response.createBy( question.getCreateBy() );
         response.modifiedAt( question.getModifiedAt() );
 
         return response.build();
@@ -62,9 +67,10 @@ public class QuestionMapperImpl implements QuestionMapper {
         responseDetail.content( question.getContent() );
         responseDetail.createdAt( question.getCreatedAt() );
         responseDetail.modifiedAt( question.getModifiedAt() );
-        responseDetail.viewCount( question.getViewCount() );
-        responseDetail.createBy( question.getCreateBy() );
         responseDetail.answers( answerListToAnswerResponseDtoList( question.getAnswers() ) );
+
+        responseDetail.viewCount( question.getViewCount() + 1 );
+        responseDetail.createdBy( question.getMember().getName() );
 
         return responseDetail.build();
     }
@@ -82,7 +88,6 @@ public class QuestionMapperImpl implements QuestionMapper {
         answerResponseDto.content( answer.getContent() );
         answerResponseDto.createdAt( answer.getCreatedAt() );
         answerResponseDto.modifiedAt( answer.getModifiedAt() );
-        answerResponseDto.createdBy( answer.getCreatedBy() );
 
         return answerResponseDto.build();
     }

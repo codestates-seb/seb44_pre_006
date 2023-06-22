@@ -5,16 +5,27 @@
     "id" : 1,
     "title" : "Title",
     "content" : "Content",
+<<<<<<< HEAD
     "createdAt" : "2023-06-22T11:23:05",
     "modifiedAt" : "2023-06-22T11:23:05",
+=======
+    "createdAt" : "2023-06-22T18:26:37",
+    "modifiedAt" : "2023-06-22T18:26:37",
+>>>>>>> be-feature/question
     "viewCount" : 0,
-    "createBy" : "user@gmail.com",
+    "createdBy" : "user",
     "answers" : [ {
       "answerId" : 1,
       "content" : "body",
+<<<<<<< HEAD
       "createdAt" : "2023-06-22T11:23:05",
       "modifiedAt" : "2023-06-22T11:23:05",
       "createdBy" : "kevin@gmail.com"
+=======
+      "createdAt" : "2023-06-22T18:26:37",
+      "modifiedAt" : "2023-06-22T18:26:37",
+      "createdBy" : "kevin"
+>>>>>>> be-feature/question
     } ]
   }
 }

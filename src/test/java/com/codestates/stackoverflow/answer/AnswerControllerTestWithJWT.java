@@ -144,7 +144,7 @@ public class AnswerControllerTestWithJWT {
 
         String content = gson.toJson(patch);
 
-        AnswerResponseDto response = new AnswerResponseDto(1L, "answer1", LocalDateTime.now(), LocalDateTime.now(), "a@gmail.com");
+        AnswerResponseDto response = new AnswerResponseDto(1L, "answer1", LocalDateTime.now(), LocalDateTime.now(), "user");
 
         given(mapper.answerPatchDtoToAnswer(Mockito.any(AnswerPatchDto.class))).willReturn(new Answer());
         given(answerService.updateAnswer(Mockito.any(Answer.class))).willReturn(new Answer());
@@ -202,7 +202,7 @@ public class AnswerControllerTestWithJWT {
 
         //given
         Long answerId = 1L;
-        AnswerResponseDto response = new AnswerResponseDto(answerId, "answer1", LocalDateTime.now(), LocalDateTime.now(), "a@gmail.com");
+        AnswerResponseDto response = new AnswerResponseDto(answerId, "answer1", LocalDateTime.now(), LocalDateTime.now(), "user");
 
         given(answerService.findAnswer(Mockito.anyLong())).willReturn(new Answer());
         given(mapper.answerToAnswerResponseDto(Mockito.any(Answer.class))).willReturn(response);
@@ -246,8 +246,8 @@ public class AnswerControllerTestWithJWT {
         );
 
         List<AnswerResponseDto> responses = List.of(
-                new AnswerResponseDto(1L, "answer1", LocalDateTime.now(), LocalDateTime.now(), "a@gmail.com"),
-                new AnswerResponseDto(2L, "answer2", LocalDateTime.now(), LocalDateTime.now(), "b@gmail.com")
+                new AnswerResponseDto(1L, "answer1", LocalDateTime.now(), LocalDateTime.now(), "user1"),
+                new AnswerResponseDto(2L, "answer2", LocalDateTime.now(), LocalDateTime.now(), "user2")
         );
 
         // given
