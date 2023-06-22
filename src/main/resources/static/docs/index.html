@@ -631,8 +631,8 @@ Host: localhost:8080
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZXJuYW1lIjoiamVlaW5AZ21haWwuY29tIiwic3ViIjoiamVlaW5AZ21haWwuY29tIiwiaWF0IjoxNjg3NDAwNTg0LCJleHAiOjE2ODc0MDIzODR9.MjfD4Rjs5oQNacjcaoOQPRpsV0t6ZKTNs6e6Jl0-QIU
-Refresh: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWVpbkBnbWFpbC5jb20iLCJpYXQiOjE2ODc0MDA1ODQsImV4cCI6MTY4NzQyNTc4NH0.LzcZ_zEfP7XaD5ApVD2cKj4S0JUgfivHX7KY6dK4Xuo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZXJuYW1lIjoiamVlaW5AZ21haWwuY29tIiwic3ViIjoiamVlaW5AZ21haWwuY29tIiwiaWF0IjoxNjg3NDI5ODY4LCJleHAiOjE2ODc0MzE2Njh9.9b1o-T0GUoZCEzMdnvOJAGfg8PnOO81hk1EHBKmDWFM
+Refresh: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWVpbkBnbWFpbC5jb20iLCJpYXQiOjE2ODc0Mjk4NjgsImV4cCI6MTY4NzQ1NTA2OH0.DvG8J767XdXsAAqwEsBrkui5u4Tz0iX7jM5L8pOJlgs
 Content-Type: application/json;charset=UTF-8
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
@@ -886,7 +886,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 506
+Content-Length: 497
 
 {
   "data" : {
@@ -894,17 +894,17 @@ Content-Length: 506
       "id" : 1,
       "title" : "question1",
       "content" : "question1",
-      "createdAt" : "2023-06-22T11:23:04.530564",
-      "modifiedAt" : "2023-06-22T11:23:04.530565",
+      "createdAt" : "2023-06-22T19:31:08.955164",
+      "modifiedAt" : "2023-06-22T19:31:08.955167",
       "viewCount" : 1,
-      "createdBy" : "jeein@gmail.com"
+      "createdBy" : "jeein Park"
     } ],
     "answers" : [ {
       "answerId" : 1,
       "content" : "answer1",
-      "createdAt" : "2023-06-22T11:23:04.53058",
-      "modifiedAt" : "2023-06-22T11:23:04.530583",
-      "createdBy" : "jeein@gmail.com"
+      "createdAt" : "2023-06-22T19:31:08.955187",
+      "modifiedAt" : "2023-06-22T19:31:08.955191",
+      "createdBy" : "jeein Park"
     } ]
   }
 }</code></pre>
@@ -1310,7 +1310,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 18. /questions/{id}</caption>
+<caption class="title">Table 18. /questions/{question-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1323,7 +1323,7 @@ Host: localhost:8080</code></pre>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>question-id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 식별자 ID</p></td>
 </tr>
 </tbody>
@@ -1342,23 +1342,23 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 424
+Content-Length: 405
 
 {
   "data" : {
     "id" : 1,
     "title" : "Title",
     "content" : "Content",
-    "createdAt" : "2023-06-22T11:23:05",
-    "modifiedAt" : "2023-06-22T11:23:05",
+    "createdAt" : "2023-06-22T19:31:10",
+    "modifiedAt" : "2023-06-22T19:31:10",
     "viewCount" : 0,
-    "createBy" : "user@gmail.com",
+    "createdBy" : "user",
     "answers" : [ {
       "answerId" : 1,
       "content" : "body",
-      "createdAt" : "2023-06-22T11:23:05",
-      "modifiedAt" : "2023-06-22T11:23:05",
-      "createdBy" : "kevin@gmail.com"
+      "createdAt" : "2023-06-22T19:31:10",
+      "modifiedAt" : "2023-06-22T19:31:10",
+      "createdBy" : "kevin"
     } ]
   }
 }</code></pre>
@@ -1415,7 +1415,7 @@ Content-Length: 424
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 조회 수</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.createBy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.createdBy</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 작성자</p></td>
 </tr>
@@ -1499,22 +1499,24 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 474
+Content-Length: 482
 
 {
   "data" : [ {
+    "id" : 1,
     "title" : "Title",
     "content" : "Content",
     "viewCount" : 0,
-    "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-22T11:23:04",
+    "createBy" : "user",
+    "modifiedAt" : "2023-06-22T19:31:10",
     "answerCount" : 0
   }, {
+    "id" : 2,
     "title" : "Title1",
     "content" : "Content1",
     "viewCount" : 0,
-    "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-22T11:23:04",
+    "createBy" : "user",
+    "modifiedAt" : "2023-06-22T19:31:10",
     "answerCount" : 0
   } ],
   "pageInfo" : {
@@ -1545,6 +1547,11 @@ Content-Length: 474
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 리스트</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">질문 식별자 ID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].title</code></p></td>
@@ -1655,22 +1662,24 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 474
+Content-Length: 482
 
 {
   "data" : [ {
+    "id" : 1,
     "title" : "Title",
     "content" : "Content",
     "viewCount" : 0,
-    "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-22T11:23:05",
+    "createBy" : "user",
+    "modifiedAt" : "2023-06-22T19:31:10",
     "answerCount" : 0
   }, {
+    "id" : 2,
     "title" : "Title1",
     "content" : "Content1",
     "viewCount" : 0,
-    "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-22T11:23:05",
+    "createBy" : "user",
+    "modifiedAt" : "2023-06-22T19:31:10",
     "answerCount" : 0
   } ],
   "pageInfo" : {
@@ -1701,6 +1710,11 @@ Content-Length: 474
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 리스트</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">질문 식별자 ID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].title</code></p></td>
@@ -1932,15 +1946,15 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 196
+Content-Length: 189
 
 {
   "data" : {
     "answerId" : 1,
     "content" : "answer1",
-    "createdAt" : "2023-06-22T11:23:03.196354",
-    "modifiedAt" : "2023-06-22T11:23:03.196364",
-    "createdBy" : "a@gmail.com"
+    "createdAt" : "2023-06-22T19:31:05.665302",
+    "modifiedAt" : "2023-06-22T19:31:05.665318",
+    "createdBy" : "user"
   }
 }</code></pre>
 </div>
@@ -1989,15 +2003,15 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 196
+Content-Length: 189
 
 {
   "data" : {
     "answerId" : 1,
     "content" : "answer1",
-    "createdAt" : "2023-06-22T11:23:03.210068",
-    "modifiedAt" : "2023-06-22T11:23:03.210076",
-    "createdBy" : "a@gmail.com"
+    "createdAt" : "2023-06-22T19:31:05.703501",
+    "modifiedAt" : "2023-06-22T19:31:05.703516",
+    "createdBy" : "user"
   }
 }</code></pre>
 </div>
@@ -2050,21 +2064,21 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 484
+Content-Length: 472
 
 {
   "data" : [ {
     "answerId" : 1,
     "content" : "answer1",
-    "createdAt" : "2023-06-22T11:23:02.996512",
-    "modifiedAt" : "2023-06-22T11:23:02.996525",
-    "createdBy" : "a@gmail.com"
+    "createdAt" : "2023-06-22T19:31:05.248299",
+    "modifiedAt" : "2023-06-22T19:31:05.248315",
+    "createdBy" : "user1"
   }, {
     "answerId" : 2,
     "content" : "answer2",
-    "createdAt" : "2023-06-22T11:23:02.996533",
-    "modifiedAt" : "2023-06-22T11:23:02.996535",
-    "createdBy" : "b@gmail.com"
+    "createdAt" : "2023-06-22T19:31:05.248324",
+    "modifiedAt" : "2023-06-22T19:31:05.248327",
+    "createdBy" : "user2"
   } ],
   "pageInfo" : {
     "page" : 1,
@@ -2128,7 +2142,7 @@ X-Frame-Options: SAMEORIGIN</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-06-22 11:20:34 +0900
+Last updated 2023-06-22 19:04:16 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

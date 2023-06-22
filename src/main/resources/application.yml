@@ -58,7 +58,7 @@ mail:
     admin: admin@gmail.com
 
 jwt:
-  key: ${JWT_SECRET_KEY}
+  key: codestates123412341234123412341234codestates
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
 

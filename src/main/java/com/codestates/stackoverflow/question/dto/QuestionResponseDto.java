@@ -13,6 +13,7 @@ public class QuestionResponseDto {
     @Getter
     @Builder
     public static class Response {
+        private Long id;
         private String title;
         private String content;
         private Long viewCount;
@@ -30,7 +31,7 @@ public class QuestionResponseDto {
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private Long viewCount;
-        private String createBy;
+        private String createdBy;
         private List<AnswerResponseDto> answers;
     }
 
