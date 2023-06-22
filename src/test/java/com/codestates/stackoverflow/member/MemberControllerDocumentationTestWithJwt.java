@@ -188,6 +188,12 @@ class MemberControllerDocumentationTestWithJwt {
                         ),
                         responseHeaders(
                                 headerWithName(HttpHeaders.AUTHORIZATION).description("발급된 JWT")
+                        ),
+                        responseFields(
+                                List.of(
+                                        fieldWithPath("name").type(JsonFieldType.STRING).description("회원 이름"),
+                                        fieldWithPath("memberId").type(JsonFieldType.STRING).description("회원 번호")
+                                )
                         )
                 ));
     }

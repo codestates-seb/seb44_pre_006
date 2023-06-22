@@ -631,8 +631,8 @@ Host: localhost:8080
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZXJuYW1lIjoiamVlaW5AZ21haWwuY29tIiwic3ViIjoiamVlaW5AZ21haWwuY29tIiwiaWF0IjoxNjg3MjQyOTg4LCJleHAiOjE2ODcyNDQ3ODh9.1hAm9eaobGHDQkDa3185XFjNqoxW9tCP6-G4GyiCox8
-Refresh: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWVpbkBnbWFpbC5jb20iLCJpYXQiOjE2ODcyNDI5ODgsImV4cCI6MTY4NzI2ODE4OH0.4mtSws41XEBbTC-zF58eSVOsse7Zgg9ZL0rAtipi_B4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZXJuYW1lIjoiamVlaW5AZ21haWwuY29tIiwic3ViIjoiamVlaW5AZ21haWwuY29tIiwiaWF0IjoxNjg3NDAwNDM5LCJleHAiOjE2ODc0MDIyMzl9.Hd1tsE6j0Iey0FCzEmzstrDSSiEFJf2NSndjwngv794
+Refresh: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWVpbkBnbWFpbC5jb20iLCJpYXQiOjE2ODc0MDA0MzksImV4cCI6MTY4NzQyNTYzOX0.uOU-v1nypCnUyUlFCtu1KfSfxNd2YFbDI91CU80xofU
 Content-Type: application/json;charset=UTF-8
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
@@ -640,9 +640,12 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 41
+Content-Length: 47
 
-Authentication success! User : jeein Park</code></pre>
+{
+  "name" : "jeein Park",
+  "memberId" : "1"
+}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -661,6 +664,33 @@ Authentication success! User : jeein Park</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Authorization</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">발급된 JWT</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. response-fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>memberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 번호</p></td>
 </tr>
 </tbody>
 </table>
@@ -685,7 +715,7 @@ Host: localhost:8080
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. /users/{member-id}</caption>
+<caption class="title">Table 6. /users/{member-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -704,7 +734,7 @@ Host: localhost:8080
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. request-fields</caption>
+<caption class="title">Table 7. request-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -768,7 +798,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. /users/{member-id}</caption>
+<caption class="title">Table 8. /users/{member-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -824,7 +854,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. /users/getInfo/{member-id}</caption>
+<caption class="title">Table 9. /users/getInfo/{member-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -856,7 +886,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 506
+Content-Length: 507
 
 {
   "data" : {
@@ -864,16 +894,16 @@ Content-Length: 506
       "id" : 1,
       "title" : "question1",
       "content" : "question1",
-      "createdAt" : "2023-06-20T15:36:28.32252",
-      "modifiedAt" : "2023-06-20T15:36:28.322522",
+      "createdAt" : "2023-06-22T11:20:39.441216",
+      "modifiedAt" : "2023-06-22T11:20:39.441218",
       "viewCount" : 1,
       "createdBy" : "jeein@gmail.com"
     } ],
     "answers" : [ {
       "answerId" : 1,
       "content" : "answer1",
-      "createdAt" : "2023-06-20T15:36:28.322536",
-      "modifiedAt" : "2023-06-20T15:36:28.322539",
+      "createdAt" : "2023-06-22T11:20:39.441232",
+      "modifiedAt" : "2023-06-22T11:20:39.441235",
       "createdBy" : "jeein@gmail.com"
     } ]
   }
@@ -892,7 +922,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. request-parameters</caption>
+<caption class="title">Table 10. request-parameters</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -961,7 +991,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. /users/{member-id}</caption>
+<caption class="title">Table 11. /users/{member-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1053,7 +1083,7 @@ Host: localhost:8080
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. request-fields</caption>
+<caption class="title">Table 12. request-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1096,7 +1126,7 @@ X-Frame-Options: SAMEORIGIN</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. response-fields</caption>
+<caption class="title">Table 13. response-fields</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1133,7 +1163,7 @@ Host: localhost:8080
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. /questions/posts/{question-id}/edit</caption>
+<caption class="title">Table 14. /questions/posts/{question-id}/edit</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1161,7 +1191,7 @@ Host: localhost:8080
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. request-fields</caption>
+<caption class="title">Table 15. request-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1204,7 +1234,7 @@ X-Frame-Options: SAMEORIGIN</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. response-fields</caption>
+<caption class="title">Table 16. response-fields</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1235,7 +1265,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. /questions/{question-id}</caption>
+<caption class="title">Table 17. /questions/{question-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1280,7 +1310,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 17. /questions/{id}</caption>
+<caption class="title">Table 18. /questions/{id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1319,15 +1349,15 @@ Content-Length: 424
     "id" : 1,
     "title" : "Title",
     "content" : "Content",
-    "createdAt" : "2023-06-20T15:36:28",
-    "modifiedAt" : "2023-06-20T15:36:28",
+    "createdAt" : "2023-06-22T11:20:39",
+    "modifiedAt" : "2023-06-22T11:20:39",
     "viewCount" : 0,
     "createBy" : "user@gmail.com",
     "answers" : [ {
       "answerId" : 1,
       "content" : "body",
-      "createdAt" : "2023-06-20T15:36:28",
-      "modifiedAt" : "2023-06-20T15:36:28",
+      "createdAt" : "2023-06-22T11:20:39",
+      "modifiedAt" : "2023-06-22T11:20:39",
       "createdBy" : "kevin@gmail.com"
     } ]
   }
@@ -1335,7 +1365,7 @@ Content-Length: 424
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 18. response-fields</caption>
+<caption class="title">Table 19. response-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1433,7 +1463,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 19. request-parameters</caption>
+<caption class="title">Table 20. request-parameters</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1477,14 +1507,14 @@ Content-Length: 474
     "content" : "Content",
     "viewCount" : 0,
     "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-20T15:36:28",
+    "modifiedAt" : "2023-06-22T11:20:39",
     "answerCount" : 0
   }, {
     "title" : "Title1",
     "content" : "Content1",
     "viewCount" : 0,
     "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-20T15:36:28",
+    "modifiedAt" : "2023-06-22T11:20:39",
     "answerCount" : 0
   } ],
   "pageInfo" : {
@@ -1497,7 +1527,7 @@ Content-Length: 474
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 20. response-fields</caption>
+<caption class="title">Table 21. response-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1585,7 +1615,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 21. request-parameters</caption>
+<caption class="title">Table 22. request-parameters</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1633,14 +1663,14 @@ Content-Length: 474
     "content" : "Content",
     "viewCount" : 0,
     "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-20T15:36:28",
+    "modifiedAt" : "2023-06-22T11:20:39",
     "answerCount" : 0
   }, {
     "title" : "Title1",
     "content" : "Content1",
     "viewCount" : 0,
     "createBy" : "user@gamil.com",
-    "modifiedAt" : "2023-06-20T15:36:28",
+    "modifiedAt" : "2023-06-22T11:20:39",
     "answerCount" : 0
   } ],
   "pageInfo" : {
@@ -1653,7 +1683,7 @@ Content-Length: 474
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 22. response-fields</caption>
+<caption class="title">Table 23. response-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1754,7 +1784,7 @@ Host: localhost:8080
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 23. /answers/{question-id}</caption>
+<caption class="title">Table 24. /answers/{question-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1773,7 +1803,7 @@ Host: localhost:8080
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 24. request-fields</caption>
+<caption class="title">Table 25. request-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1811,7 +1841,7 @@ X-Frame-Options: SAMEORIGIN</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 25. response-headers</caption>
+<caption class="title">Table 26. response-headers</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1848,7 +1878,7 @@ Host: localhost:8080
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 26. /answers/{answer-id}</caption>
+<caption class="title">Table 27. /answers/{answer-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1867,7 +1897,7 @@ Host: localhost:8080
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 27. request-fields</caption>
+<caption class="title">Table 28. request-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1902,14 +1932,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 196
+Content-Length: 194
 
 {
   "data" : {
     "answerId" : 1,
     "content" : "answer1",
-    "createdAt" : "2023-06-20T15:36:27.027443",
-    "modifiedAt" : "2023-06-20T15:36:27.027452",
+    "createdAt" : "2023-06-22T11:20:38.09844",
+    "modifiedAt" : "2023-06-22T11:20:38.09845",
     "createdBy" : "a@gmail.com"
   }
 }</code></pre>
@@ -1927,7 +1957,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 28. /answers/{answer-id}</caption>
+<caption class="title">Table 29. /answers/{answer-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1959,14 +1989,14 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 195
+Content-Length: 196
 
 {
   "data" : {
     "answerId" : 1,
     "content" : "answer1",
-    "createdAt" : "2023-06-20T15:36:27.039361",
-    "modifiedAt" : "2023-06-20T15:36:27.03937",
+    "createdAt" : "2023-06-22T11:20:38.112225",
+    "modifiedAt" : "2023-06-22T11:20:38.112235",
     "createdBy" : "a@gmail.com"
   }
 }</code></pre>
@@ -1984,7 +2014,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 29. request-parameters</caption>
+<caption class="title">Table 30. request-parameters</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2020,20 +2050,20 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: SAMEORIGIN
-Content-Length: 483
+Content-Length: 484
 
 {
   "data" : [ {
     "answerId" : 1,
     "content" : "answer1",
-    "createdAt" : "2023-06-20T15:36:26.880392",
-    "modifiedAt" : "2023-06-20T15:36:26.880402",
+    "createdAt" : "2023-06-22T11:20:37.946623",
+    "modifiedAt" : "2023-06-22T11:20:37.946635",
     "createdBy" : "a@gmail.com"
   }, {
     "answerId" : 2,
     "content" : "answer2",
-    "createdAt" : "2023-06-20T15:36:26.880408",
-    "modifiedAt" : "2023-06-20T15:36:26.88041",
+    "createdAt" : "2023-06-22T11:20:37.946641",
+    "modifiedAt" : "2023-06-22T11:20:37.946643",
     "createdBy" : "b@gmail.com"
   } ],
   "pageInfo" : {
@@ -2058,7 +2088,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 30. /answers/{answer-id}</caption>
+<caption class="title">Table 31. /answers/{answer-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2098,7 +2128,7 @@ X-Frame-Options: SAMEORIGIN</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-06-20 11:24:04 +0900
+Last updated 2023-06-22 11:20:34 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

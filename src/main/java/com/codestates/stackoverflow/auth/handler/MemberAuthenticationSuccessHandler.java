@@ -33,8 +33,8 @@ public class MemberAuthenticationSuccessHandler implements AuthenticationSuccess
 //        response.getWriter().flush();
         Member member = (Member)authentication.getPrincipal();
         Map<String, String> responseData = new HashMap<>();
-        responseData.put("message", "Authentication success!");
-        responseData.put("user", member.getName());
+        responseData.put("name", member.getName());
+        responseData.put("memberId", member.getMemberId()+"");
 
         // JSON 변환
         ObjectMapper objectMapper = new ObjectMapper();
