@@ -24,7 +24,7 @@ public interface AnswerMapper {
                         .content(answer.getContent())
                         .createdAt(answer.getCreatedAt())
                         .modifiedAt(answer.getModifiedAt())
-                        .createdBy(answer.getMember().getEmail())
+                        .createdBy(answer.getMember().getName())
                         .build())
                 .collect(Collectors.toList());
         return response;
