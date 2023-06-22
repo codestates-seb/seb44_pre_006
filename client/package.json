@@ -13,9 +13,7 @@
     "react-router-dom": "^6.13.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
-    "styled-components": "^6.0.0-rc.3",
-    "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
-    "@toast-ui/react-editor": "^3.2.3"
+    "styled-components": "^6.0.0-rc.3"
   },
   "scripts": {
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
