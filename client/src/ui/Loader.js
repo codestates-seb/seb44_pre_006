@@ -7,12 +7,12 @@ const LoaderWrapper = styled.div`
   height: 90vh;
   justify-content: center;
   align-items: center;
-  background-color: var(--orange-300);
+  background-color: var(--orange);
 
   .fade-loader {
     display: flex;
     width: 100%;
-    background-color: var(--orange-300);
+    background-color: var(--orange);
   }
 `;
 

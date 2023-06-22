@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import Link, { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -125,6 +125,10 @@ const NewestButton = styled.a`
     color: var(--black-700);
   }
 
+  &:active {
+    box-shadow: 0 0 0 4px hsla(210,8%,15%,0.1);
+  }
+
   &:focus {
     background-color: var(--black-075);
   }
@@ -150,6 +154,10 @@ const UnansweredButton = styled.a`
     color: var(--black-700);
   }
 
+  &:active {
+    box-shadow: 0 0 0 4px hsla(210,8%,15%,0.1);
+  }
+
   &:focus {
     background-color: var(--black-075);
   }
@@ -164,6 +172,8 @@ function AllQuestion() {
   const { status, questions } = useSelector(state => state.question);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  console.log(questions);
 
   useEffect(() => {
     dispatch(fetchAllQuestions());
@@ -188,7 +198,7 @@ function AllQuestion() {
           </MainBarHeaderWrapper>
           <DataControllerWrapper>
             <div className="data-controller-box">
-              <TotalQuestions>23,754,569 questions</TotalQuestions>
+              <TotalQuestions>{questions.length} questions</TotalQuestions>
               <DataFilterWrapper>
                 <div className="data-filter-box">
                   <NewestButton>
@@ -201,7 +211,6 @@ function AllQuestion() {
               </DataFilterWrapper>
             </div>
           </DataControllerWrapper>
-          <QuestionItem />
           {status === 'loading' && <Loader />}
           {status === 'succeed' &&
             dummy.map(item => <QuestionItem key={item.questionId} {...item} />)}

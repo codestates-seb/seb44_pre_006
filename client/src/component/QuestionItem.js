@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 import displayCreatedAt from '../utils/displayCreateAt';
 import test_user from '../asset/User_null.png';
@@ -55,14 +56,14 @@ const ContentTitle = styled.h3`
   padding-right: 24px;
   font-size: 17px;
   hyphens: auto;
-  color: var(--blue);
   word-break: break-word;
   overflow-wrap: break-word;
 `;
 
-const TitleLink = styled.a`
+const TitleLink = styled(Link)`
   text-decoration: none;
   cursor: pointer;
+  color: var(--blue);
 
   &:hover {
     color: var(--blue-500);
@@ -135,7 +136,7 @@ const MetaUserCard = styled.div`
   gap: 4px;
 `;
 
-const UserAvatar = styled.a`
+const UserAvatar = styled(Link)`
   width: 16px;
   height: 16px;
   display: flex;
@@ -228,7 +229,7 @@ function QuestionItem({
         </QuestionSummary>
         <SummaryContent>
           <ContentTitle>
-            <TitleLink>{title}</TitleLink>
+            <TitleLink to="/questions/:questionId">{title}</TitleLink>
           </ContentTitle>
           <ContentExcerpt>{content}</ContentExcerpt>
           <SummaryMeta>
@@ -246,7 +247,7 @@ function QuestionItem({
               </ul>
             </MetaTages>
             <MetaUserCard>
-              <UserAvatar>
+              <UserAvatar to='/users/:memberId'>
                 <div className="avatar-wrapper">
                   <img
                     src={test_user}
@@ -257,7 +258,7 @@ function QuestionItem({
               </UserAvatar>
               <UserInfo>
                 <div className="user-info-link-wrapper">
-                  <a className="user-info-link">{userName}</a>
+                  <Link to='/users/:memberId' className="user-info-link">{userName}</Link>
                 </div>
               </UserInfo>
               <UpdateTime>

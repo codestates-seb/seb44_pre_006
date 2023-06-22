@@ -19,7 +19,7 @@ const questionSlice = createSlice({
       });
       builder.addCase(fetchAllQuestions.fulfilled, (state, action) => {
         state.status = 'succeed';
-        state.questions = action.payload;
+        state.questions = action.payload.data;
       });
       builder.addCase(fetchAllQuestions.rejected, (state, action) => {
         state.status = 'failed';
