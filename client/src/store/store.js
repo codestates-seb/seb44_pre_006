@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import memberSlice from './memberSlice'
-import answerSlice from './AnswerSlice';
-import qustionSlice from './qustionSlice';
+import answerSlice from './answerSlice';
+import questionSlice from './questionSlice';
 
   const store = configureStore({
     reducer: {
       member: memberSlice.reducer,
       answer: answerSlice.reducer,
-      qustion: qustionSlice.reducer,
+      question: questionSlice.reducer,
     }
   });
 

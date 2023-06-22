@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import displayCreatedAt from '../utils/displayCreateAt';
 import test_user from '../asset/User_null.png';
 
 const QuestionListWrapper = styled.section`
@@ -189,31 +190,47 @@ const UpdateTime = styled.div`
   }
 `;
 
-function QuestionItem() {
+function QuestionItem({
+  questionId,
+  userName,
+  userAvatar,
+  title,
+  content,
+  viewCount,
+  answerCount,
+  createAt,
+  modifiedAt,
+}) {
   return (
     <QuestionListWrapper>
       <QuestionList>
         <QuestionSummary>
           <SummaryStats>
             <StatsItem>
-              <span className="stats-item-number">0</span>
-              <span className="stats-item-unit">answers</span>
+              <span className="stats-item-number">{viewCount}</span>
+              <span className="stats-item-unit">views</span>
             </StatsItem>
             <StatsItem>
-              <span className="stats-item-number">0</span>
-              <span className="stats-item-unit">views</span>
+              <span className="stats-item-number">{answerCount}</span>
+              <span className="stats-item-unit">answers</span>
             </StatsItem>
           </SummaryStats>
         </QuestionSummary>
         <SummaryContent>
           <ContentTitle>
-            <TitleLink>Content Title</TitleLink>
+            <TitleLink>{title}</TitleLink>
           </ContentTitle>
           <SummaryMeta>
             <MetaTages>
               <ul className="tag-list-wrapper">
                 <li className="tag-list-item">
                   <a className="tag-link">react</a>
+                </li>
+                <li className="tag-list-item">
+                  <a className="tag-link">react-router-dom</a>
+                </li>
+                <li className="tag-list-item">
+                  <a className="tag-link">redux-toolkit</a>
                 </li>
               </ul>
             </MetaTages>
@@ -229,12 +246,12 @@ function QuestionItem() {
               </UserAvatar>
               <UserInfo>
                 <div className="user-info-link-wrapper">
-                  <a className="user-info-link">User-Name</a>
+                  <a className="user-info-link">{userName}</a>
                 </div>
               </UserInfo>
               <UpdateTime>
                 <span>asked </span>
-                <span className="relative-time">8 mins ago</span>
+                <span className="relative-time">{displayCreatedAt(createAt)}</span>
               </UpdateTime>
             </MetaUserCard>
           </SummaryMeta>

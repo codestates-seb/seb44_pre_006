@@ -1,8 +1,14 @@
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import SideBar from '../component/SideBar';
 import QuestionItem from '../component/QuestionItem';
+import { fetchAllQuestions } from '../api/question';
+import Loader from '../ui/Loader';
 // import { BottomBtn, SortBtn } from '../component/Buttons';
+import dummy from '../data/dummy';
 
 const Container = styled.div`
   max-width: 1264px;
@@ -155,7 +161,13 @@ const UnansweredButton = styled.a`
 `;
 
 function AllQuestion() {
+  const { status, questions } = useSelector(state => state.question);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllQuestions());
+  }, [dispatch]);
 
   return (
     <Container>
@@ -165,7 +177,11 @@ function AllQuestion() {
           <MainBarHeaderWrapper>
             <div className="mainbar-header">
               <MainbarHeadline>Top Questions</MainbarHeadline>
-              <MainBarHeaderAsK onClick={() => {navigate('/questions/ask');}}>
+              <MainBarHeaderAsK
+                onClick={() => {
+                  navigate('/questions/ask');
+                }}
+              >
                 <AskBtn>Ask Question</AskBtn>
               </MainBarHeaderAsK>
             </div>
@@ -186,10 +202,9 @@ function AllQuestion() {
             </div>
           </DataControllerWrapper>
           <QuestionItem />
-          <QuestionItem />
-          <QuestionItem />
-          <QuestionItem />
-          <QuestionItem />
+          {status === 'loading' && <Loader />}
+          {status === 'succeed' &&
+            dummy.map(item => <QuestionItem key={item.questionId} {...item} />)}
         </MainBar>
       </Content>
     </Container>
