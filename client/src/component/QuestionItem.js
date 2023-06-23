@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
+import displayCreatedAt from '../utils/displayCreateAt';
 import test_user from '../asset/User_null.png';
 
 const QuestionListWrapper = styled.section`
@@ -49,22 +51,32 @@ const SummaryContent = styled.div`
 `;
 
 const ContentTitle = styled.h3`
-  display: inline-block;
+  display: flex;
+  margin: 0 0 0.4rem;
   padding-right: 24px;
   font-size: 17px;
   hyphens: auto;
-  color: var(--blue);
   word-break: break-word;
   overflow-wrap: break-word;
 `;
 
-const TitleLink = styled.a`
+const TitleLink = styled(Link)`
   text-decoration: none;
   cursor: pointer;
+  color: var(--blue);
 
   &:hover {
     color: var(--blue-500);
   }
+`;
+
+const ContentExcerpt = styled.div`
+  display: -webkit-box;
+  margin: 0 0 0.5rem;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const SummaryMeta = styled.div`
@@ -124,7 +136,7 @@ const MetaUserCard = styled.div`
   gap: 4px;
 `;
 
-const UserAvatar = styled.a`
+const UserAvatar = styled(Link)`
   width: 16px;
   height: 16px;
   display: flex;
@@ -189,36 +201,53 @@ const UpdateTime = styled.div`
   }
 `;
 
-function QuestionItem() {
+function QuestionItem({
+  questionId,
+  userName,
+  userAvatar,
+  title,
+  content,
+  viewCount,
+  answerCount,
+  createAt,
+  modifiedAt,
+}) {
   return (
     <QuestionListWrapper>
       <QuestionList>
         <QuestionSummary>
           <SummaryStats>
             <StatsItem>
-              <span className="stats-item-number">0</span>
-              <span className="stats-item-unit">answers</span>
+              <span className="stats-item-number">{viewCount}</span>
+              <span className="stats-item-unit">views</span>
             </StatsItem>
             <StatsItem>
-              <span className="stats-item-number">0</span>
-              <span className="stats-item-unit">views</span>
+              <span className="stats-item-number">{answerCount}</span>
+              <span className="stats-item-unit">answers</span>
             </StatsItem>
           </SummaryStats>
         </QuestionSummary>
         <SummaryContent>
           <ContentTitle>
-            <TitleLink>Content Title</TitleLink>
+            <TitleLink to="/questions/:questionId">{title}</TitleLink>
           </ContentTitle>
+          <ContentExcerpt>{content}</ContentExcerpt>
           <SummaryMeta>
             <MetaTages>
               <ul className="tag-list-wrapper">
                 <li className="tag-list-item">
                   <a className="tag-link">react</a>
                 </li>
+                <li className="tag-list-item">
+                  <a className="tag-link">react-router-dom</a>
+                </li>
+                <li className="tag-list-item">
+                  <a className="tag-link">redux-toolkit</a>
+                </li>
               </ul>
             </MetaTages>
             <MetaUserCard>
-              <UserAvatar>
+              <UserAvatar to='/users/:memberId'>
                 <div className="avatar-wrapper">
                   <img
                     src={test_user}
@@ -229,12 +258,12 @@ function QuestionItem() {
               </UserAvatar>
               <UserInfo>
                 <div className="user-info-link-wrapper">
-                  <a className="user-info-link">User-Name</a>
+                  <Link to='/users/:memberId' className="user-info-link">{userName}</Link>
                 </div>
               </UserInfo>
               <UpdateTime>
                 <span>asked </span>
-                <span className="relative-time">8 mins ago</span>
+                <span className="relative-time">{displayCreatedAt(createAt)}</span>
               </UpdateTime>
             </MetaUserCard>
           </SummaryMeta>

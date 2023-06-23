@@ -1,8 +1,14 @@
 import { styled } from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import Link, { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import SideBar from '../component/SideBar';
 import QuestionItem from '../component/QuestionItem';
-// import { BottomBtn, SortBtn } from '../component/Buttons';
+import { fetchAllQuestions } from '../api/question';
+import Loader from '../ui/Loader';
+import Pagination from '../ui/Pagination';
+import dummy from '../data/dummy';
 
 const Container = styled.div`
   max-width: 1264px;
@@ -119,6 +125,10 @@ const NewestButton = styled.a`
     color: var(--black-700);
   }
 
+  &:active {
+    box-shadow: 0 0 0 4px hsla(210,8%,15%,0.1);
+  }
+
   &:focus {
     background-color: var(--black-075);
   }
@@ -144,6 +154,10 @@ const UnansweredButton = styled.a`
     color: var(--black-700);
   }
 
+  &:active {
+    box-shadow: 0 0 0 4px hsla(210,8%,15%,0.1);
+  }
+
   &:focus {
     background-color: var(--black-075);
   }
@@ -155,7 +169,20 @@ const UnansweredButton = styled.a`
 `;
 
 function AllQuestion() {
+  const { status, questions } = useSelector(state => state.question);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [questionsPerPage] = useState(10);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllQuestions());
+  }, [dispatch]);
+
+  const indexOfLastPage = currentPage * questionsPerPage;
+  const indexOfFirstPage = indexOfLastPage - questionsPerPage;
+  const currentPageQuestions = dummy.slice(indexOfFirstPage, indexOfLastPage);
+  const NumberOfPages = Math.ceil(dummy.length / questionsPerPage);
 
   return (
     <Container>
@@ -165,14 +192,18 @@ function AllQuestion() {
           <MainBarHeaderWrapper>
             <div className="mainbar-header">
               <MainbarHeadline>Top Questions</MainbarHeadline>
-              <MainBarHeaderAsK onClick={() => {navigate('/questions/ask');}}>
+              <MainBarHeaderAsK
+                onClick={() => {
+                  navigate('/questions/ask');
+                }}
+              >
                 <AskBtn>Ask Question</AskBtn>
               </MainBarHeaderAsK>
             </div>
           </MainBarHeaderWrapper>
           <DataControllerWrapper>
             <div className="data-controller-box">
-              <TotalQuestions>23,754,569 questions</TotalQuestions>
+              <TotalQuestions>{questions.length} questions</TotalQuestions>
               <DataFilterWrapper>
                 <div className="data-filter-box">
                   <NewestButton>
@@ -185,11 +216,10 @@ function AllQuestion() {
               </DataFilterWrapper>
             </div>
           </DataControllerWrapper>
-          <QuestionItem />
-          <QuestionItem />
-          <QuestionItem />
-          <QuestionItem />
-          <QuestionItem />
+          {status === 'loading' && <Loader />}
+          {status === 'succeed' && questions.map(item => <QuestionItem key={item.questionId} {...item} />)}
+          {dummy.map(item => <QuestionItem key={item.questionId} {...item} />)}
+          <Pagination NumberOfPages={NumberOfPages} setCurrentPage={setCurrentPage} questionsPerPage={questionsPerPage}/>
         </MainBar>
       </Content>
     </Container>

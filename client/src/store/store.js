@@ -7,7 +7,7 @@ import qustionSlice from './qustionSlice';
     reducer: {
       user: userSlice.reducer,
       answer: answerSlice.reducer,
-      qustion: qustionSlice.reducer,
+      question: questionSlice.reducer,
     }
   });
 

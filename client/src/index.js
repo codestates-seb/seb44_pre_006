@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
 import router from './Router';
-import './Global.css';
 import { Provider } from 'react-redux';
+import './Global.css';
 import store from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
