@@ -13,6 +13,7 @@ import DeleteProfile from './page/DeleteProfile';
 import AllQuestion from './page/AllQuestion';
 import AskQuestion from './page/AskQuestion';
 import Answer from './page/Answer';
+import ApiTest from './page/ApiTest';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Main /> },
       {
-        path: 'home',
+        path: '/home',
         element: <Home />,
       },
       {
@@ -62,9 +63,13 @@ const router = createBrowserRouter([
         element: <AskQuestion />,
       },
       {
-        path: 'questions/:memberId/:title',
+        path: '/questions/:memberId/:title',
         element: <Answer />,
       },
+      {
+        path: '/apitest',
+        element: <ApiTest />,
+      }
     ],
   },
 ]);
