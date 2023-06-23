@@ -64,22 +64,28 @@ const NavUserLink = styled.img`
 `
 
 function Nav() {
-    //임시? jwt토큰 유무 판단용 변수
-    let jwt = true
     const navigate = useNavigate()
     const user = useSelector(state => state.user)
+    console.log(user)
 
+    const jwtToken = localStorage.getItem('jwtToken')
+
+    const onLogOutHandler = () => {
+        localStorage.removeItem('jwtToken')
+        window.location.reload();
+    }
+    
     return (
       <NavContainer>
         <LogoImag src={SOF} onClick={()=>{navigate('/')}}/>
-        <NavLink>{user.name}</NavLink>
+        <NavLink>{user.data.name}</NavLink>
         <NavSreachBar>
             <button>
                 <img src={sreachLogo} alt='sreachLogo'/>
             </button>
             <input placeholder="Search..."/>
         </NavSreachBar>
-        {jwt  //jwt토큰 유무에 따른 분기.
+        {!jwtToken  //jwt토큰 유무에 따른 분기.
         ? (
         <>
             <NavLogBtn backgroundColor="var(--powder-200)" color="var(--powder-700)" onClick={()=>{navigate('/users/login')}}>
@@ -92,7 +98,7 @@ function Nav() {
         : (
         <>  
             <NavUserLink src={UserNull}></NavUserLink>
-            <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)">Log out</NavLogBtn>
+            <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)" onClick={() => onLogOutHandler()}>Log out</NavLogBtn>
         </>    
         )}
       </NavContainer>
