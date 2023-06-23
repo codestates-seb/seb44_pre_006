@@ -4,6 +4,8 @@ import UserNull from "../asset/User_null.png"
 import sreachLogo from "../asset/sreach_logo.svg"
 import '../Global.css';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const NavContainer = styled.header`
     width: 100%;
@@ -65,11 +67,12 @@ function Nav() {
     //임시? jwt토큰 유무 판단용 변수
     let jwt = true
     const navigate = useNavigate()
+    const user = useSelector(state => state.user)
 
     return (
       <NavContainer>
         <LogoImag src={SOF} onClick={()=>{navigate('/')}}/>
-        <NavLink>About</NavLink>
+        <NavLink>{user.name}</NavLink>
         <NavSreachBar>
             <button>
                 <img src={sreachLogo} alt='sreachLogo'/>

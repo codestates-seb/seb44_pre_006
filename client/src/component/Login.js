@@ -1,8 +1,12 @@
 import { styled } from "styled-components";
 import logoIcon from '../asset/logo-icon.png'
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import GoogleButton from "./GoogleButton";
-import '../Global.css';
+import { useRef } from 'react';
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import {fetchUser} from '../api/user'
+
 
 export const LoginContainer = styled.section`
 width: 400px;
@@ -51,6 +55,30 @@ margin-top: 10px;
 `
 
 function Login () {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const nameRef = useRef(null);
+    const passwordRef = useRef(null);
+    
+
+    const onLogInHandler = async () => {
+        const name = nameRef.current.value;
+        const password = passwordRef.current.value;
+
+        await axios
+            .post('/users/login', {  password: password, username: name })
+            .then(response => {
+                console.log(response);
+                localStorage.setItem("jwtToken", response.headers.authorization);
+                localStorage.setItem("refreshToken", response.headers.refresh);
+                dispatch(fetchUser(response.data.memberId))
+                
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
     return(
         <LoginContainer className="LoginContainer">
             <img src={logoIcon} alt='logoIcon'/>
@@ -58,13 +86,13 @@ function Login () {
             <LoginForm>
                 <LoginInputForm className="LoginInputForm">
                     <h3>Email</h3>
-                    <input/>
+                    <input ref={nameRef} id='nameRef'/>
                 </LoginInputForm>
                 <LoginInputForm className="LoginInputForm">
                     <h3>Password</h3>
-                    <input/>
+                    <input ref={passwordRef} id="passwordRef"/>
                 </LoginInputForm>
-                <button>Log in</button>
+                <button onClick={() => onLogInHandler()}>Log in</button>
             </LoginForm>
             <p>
                 Don’t have an account? &nbsp; 
