@@ -7,7 +7,7 @@ import SideBar from '../component/SideBar';
 import QuestionItem from '../component/QuestionItem';
 import { fetchAllQuestions } from '../api/question';
 import Loader from '../ui/Loader';
-// import { BottomBtn, SortBtn } from '../component/Buttons';
+import Pagination from '../ui/Pagination';
 import dummy from '../data/dummy';
 
 const Container = styled.div`
@@ -170,14 +170,19 @@ const UnansweredButton = styled.a`
 
 function AllQuestion() {
   const { status, questions } = useSelector(state => state.question);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [questionsPerPage] = useState(10);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  console.log(questions);
 
   useEffect(() => {
     dispatch(fetchAllQuestions());
   }, [dispatch]);
+
+  const indexOfLastPage = currentPage * questionsPerPage;
+  const indexOfFirstPage = indexOfLastPage - questionsPerPage;
+  const currentPageQuestions = dummy.slice(indexOfFirstPage, indexOfLastPage);
+  const NumberOfPages = Math.ceil(dummy.length / questionsPerPage);
 
   return (
     <Container>
@@ -212,8 +217,9 @@ function AllQuestion() {
             </div>
           </DataControllerWrapper>
           {status === 'loading' && <Loader />}
-          {status === 'succeed' &&
-            dummy.map(item => <QuestionItem key={item.questionId} {...item} />)}
+          {status === 'succeed' && questions.map(item => <QuestionItem key={item.questionId} {...item} />)}
+          {dummy.map(item => <QuestionItem key={item.questionId} {...item} />)}
+          <Pagination NumberOfPages={NumberOfPages} setCurrentPage={setCurrentPage} questionsPerPage={questionsPerPage}/>
         </MainBar>
       </Content>
     </Container>
