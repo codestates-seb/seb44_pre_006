@@ -12,7 +12,7 @@ export  const fetchUser = createAsyncThunk('users/fetchUser', async (userid) => 
       Authorization: token
     },
   }).catch(error => {console.error("실패",error);});
-
+  console.log(response.data)
   return response.data;
 });
 
