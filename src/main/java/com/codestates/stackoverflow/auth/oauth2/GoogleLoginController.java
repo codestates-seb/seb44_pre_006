@@ -1,15 +1,15 @@
-package com.codestates.stackoverflow.auth.handler;
+package com.codestates.stackoverflow.auth.oauth2;
 
 import com.codestates.stackoverflow.auth.jwt.JwtTokenizer;
-import com.codestates.stackoverflow.auth.utils.CustomAuthorityUtils;
 import com.codestates.stackoverflow.member.entity.Member;
 import com.codestates.stackoverflow.member.service.MemberService;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
-import org.springframework.stereotype.Component;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.ServletException;
@@ -22,38 +22,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//OAuth2 인증 후, Front로 JWT를 전송하는 핵심 역할 담당
-@Component
-public class OAuth2MemberSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
-    private final JwtTokenizer jwtTokenizer;
-    private final CustomAuthorityUtils authorityUtils;
-    private final  MemberService memberService;
+@RestController
+public class GoogleLoginController {
 
-    public OAuth2MemberSuccessHandler(JwtTokenizer jwtTokenizer,
-                                      CustomAuthorityUtils authorityUtils, MemberService memberService) {
+    private final JwtTokenizer jwtTokenizer;
+    private final MemberService memberService;
+
+    public GoogleLoginController(JwtTokenizer jwtTokenizer, MemberService memberService) {
         this.jwtTokenizer = jwtTokenizer;
-        this.authorityUtils = authorityUtils;
         this.memberService = memberService;
     }
 
-    @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        var oAuth2User = (OAuth2User)authentication.getPrincipal();
-        String email = String.valueOf(oAuth2User.getAttributes().get("email")); // Authentication으로 부터 얻어낸 OAuth2User 객체로부터 Resource Owner의 이메일 주소를 얻음
-        String profile = String.valueOf(oAuth2User.getAttributes().get("profile"));
-        List<String> authorities = authorityUtils.createRoles(email);           // CustomAthoritiyUtils를 이용해 권한 정보를 생성함.
-
-        System.out.println("email : " +email);
-
-        Member savedMember=saveMember(email);  // Resource Owner의 이메일 주소를 DB에 저장한다.
-        Long memberId = savedMember.getMemberId();
-        redirect(request, response, email, authorities,memberId);  //Access Token과 Refresh Token을 생성해서 Front에 전달하기 위한 메서드
-    }
-
-    private Member saveMember(String email) {
-        Member member = new Member(email,"1234",email);
-        Member savedMember = memberService.createMember(member);
-        return savedMember;
+    @GetMapping("/oauth2/authorization/google")
+    public void handleGoogleLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // Google 로그인 상태 확인 로직 수행
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            // 이미 Google 로그인이 된 상태이므로 추가 로직을 수행하거나 리다이렉션 처리
+            Member findMember=memberService.authenticationMember();
+            Long memberId = findMember.getMemberId();
+            List<String> authorities = findMember.getRoles();
+            System.out.println("findMember: "+findMember.getEmail());
+            redirect(request, response, findMember.getEmail(), authorities, memberId);
+        }
     }
 
     private void redirect(HttpServletRequest request, HttpServletResponse response, String username, List<String> authorities, Long memberId) throws IOException {
@@ -61,7 +52,7 @@ public class OAuth2MemberSuccessHandler extends SimpleUrlAuthenticationSuccessHa
         String refreshToken = delegateRefreshToken(username);
 
         String uri = createURI(accessToken, refreshToken,memberId).toString();
-        getRedirectStrategy().sendRedirect(request, response, uri);
+        response.sendRedirect(uri);
     }
 
     private String delegateAccessToken(String username, List<String> authorities) {
@@ -103,7 +94,7 @@ public class OAuth2MemberSuccessHandler extends SimpleUrlAuthenticationSuccessHa
                 .newInstance()
                 .scheme("http")
                 .host("localhost")
-                .port(8080)
+                .port(8081)
                 .path("/")
                 .queryParams(queryParams)
                 .build()

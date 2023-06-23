@@ -145,7 +145,7 @@ public class MemberService {
             throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
     }
 
-    private Member authenticationMember() {
+    public Member authenticationMember() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         //현재 로그인한 사용자 이메일
         String username = (String) authentication.getPrincipal();
