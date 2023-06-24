@@ -179,13 +179,8 @@ function AllQuestion() {
   const BASE_URL = process.env.REACT_APP_EC2_URL;
   
   useEffect(() => {
-    // const url = `${BASE_URL}/questions?size=10000&page=${currentPage}`;
-    // const response = axios.get(url);
-    // console.log(response.data);
     dispatch(fetchAllQuestions({ currentPage, postsPerPage }));
   }, [dispatch]);
-
-  // console.log(questions);
 
   const sortedQuestions = newestFilterActive
     ? [...questions].sort((a, b) => {
@@ -211,6 +206,16 @@ function AllQuestion() {
     setNewestFilterActive(!newestFilterActive);
   };
 
+  const onAskQuestionButtonHandler = () => {
+    const token = localStorage.getItem('jwtToken');
+    
+    if (token) {
+      navigate('/question/ask');
+    } else {
+      navigate('/user/login');
+    }
+  };
+
   return (
     <Container>
       <SideBar />
@@ -220,9 +225,7 @@ function AllQuestion() {
             <div className="mainbar-header">
               <MainbarHeadline>Top Questions</MainbarHeadline>
               <MainBarHeaderAsK
-                onClick={() => {
-                  navigate('/question/ask');
-                }}
+                onClick={onAskQuestionButtonHandler}
               >
                 <AskBtn>Ask Question</AskBtn>
               </MainBarHeaderAsK>
