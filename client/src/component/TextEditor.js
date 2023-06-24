@@ -5,6 +5,7 @@ import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 
+
 const TextEditor = styled.div`
   border-radius: 4px;
   border: 1px solid var(--black-200);
@@ -45,5 +46,4 @@ function EditorBox({setContent}) {
     </div>
   );
 }
-
 export default EditorBox;

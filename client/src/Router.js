@@ -27,43 +27,44 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/user",
+
+        path: '/user',
         element: <Users />,
       },
       {
-        path: "/userss/:memberId/:name",
+        path: '/user/:memberId/:name',
         element: <Profile />,
       },
       {
-        path: "/users/edit/:memberId",
+        path: '/user/edit/:memberId',
         element: <EditProfile />,
       },
       {
-        path: "/users/delete/:memberId",
+        path: '/user/delete/:memberId',
         element: <DeleteProfile />,
       },
       {
-        path: "/users/login",
+        path: '/user/login',
         element: <LogIn />,
       },
       {
-        path: "/users/logout",
+        path: '/user/logout',
         element: <LogOut />,
       },
       {
-        path: "/users/sighup",
+        path: '/user/sighup',
         element: <SighUp />,
       },
       {
-        path: "/questionss",
+        path: '/question',
         element: <AllQuestion />,
       },
       {
-        path: "/question/ask",
+        path: '/question/ask',
         element: <AskQuestion />,
       },
       {
-        path: "/questions/:memberId/:title",
+        path: '/question/:memberId/:title',
         element: <Answer />,
       },
       {

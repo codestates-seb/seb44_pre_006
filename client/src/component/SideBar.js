@@ -1,53 +1,77 @@
 import styled from 'styled-components';
 import QuestionIcon from '../asset/question.svg';
+import { useNavigate } from 'react-router-dom';
 
 const SideContainer = styled.div`
+  display: flex;
+  border-right: 1px solid var(--silver);
+  height: calc(100vh - 50px - 70px);
+  width: 13vw;
+  justify-content: end;
 
-border: 1px solid #CCCCCC;
-flex-direction: column;
-display: flex;
-width: 164px;
-height: calc(100vh - 50px - 70px);
-
-.side-container{
+  .side-container {
+    margin-top: 30px;
     list-style-type: none;
-    width: 240px;
-    padding: 32px 12px 12px 20px;
+    position: relative;
+    left: 0;
     cursor: pointer;
-    line-height: 200%;
+    line-height: 240%;
   }
 
-li{
-
+  li {
     font-size: 14px;
-    color: gray;
+    &:hover {
+      background-color: var(--black-050);
+    }
   }
 `;
+
 const QuestionClick = styled.div`
+  display: flex;
   font-weight: bold;
-  border-right: 3px solid rgb(244, 130, 37);
-  width: 69%;
-  background-color: #e2e2e2;
-`;
-const LogoImg = styled.img`
-  margin: 0 6px;
+  padding-right: 3vw;
+  &:hover {
+    background-color: var(--black-050);
+  }
+
+  > img {
+    margin-right: 10px;
+    width: 20px;
+  }
 `;
 
 const User = styled.div`
-  padding: 0 0 0 30px;
+  padding-left: 30px;
+  &:hover {
+    background-color: var(--black-050);
+  }
 `;
+
 const SideBar = () => {
+  const navigate = useNavigate();
+  const path = window.location.pathname;
+
   return (
-    <SideContainer>
+    <SideContainer className="SideContainer">
       <ul className="side-container">
-        <li>Home</li>
+        <li
+          onClick={() => navigate('/home')}
+          style={{ borderRight: path === '/home' ? '3px solid var(--orange)' : 'none' }}
+        >
+          Home
+        </li>
         <li>PUBLIC</li>
-        <QuestionClick>
-          <LogoImg src={QuestionIcon} />
+        <QuestionClick
+          onClick={() => navigate('/question')}
+          style={{ borderRight: path === '/question' ? '3px solid var(--orange)' : 'none' }}
+        >
+          <img src={QuestionIcon} alt="Question Icon" />
           <span>Question</span>
         </QuestionClick>
-
-        <User>
+        <User
+          onClick={() => navigate('/user')}
+          style={{ borderRight: path === '/user' ? '3px solid var(--orange)' : 'none' }}
+        >
           <p>Users</p>
         </User>
       </ul>

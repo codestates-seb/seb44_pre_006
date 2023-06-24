@@ -1,14 +1,14 @@
 import { styled } from 'styled-components';
-import Link, { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 import SideBar from '../component/SideBar';
 import QuestionItem from '../component/QuestionItem';
 import { fetchAllQuestions } from '../api/question';
 import Loader from '../ui/Loader';
 import Pagination from '../ui/Pagination';
-import dummy from '../data/dummy';
+import axios from 'axios';
+// import dummy from '../data/dummy';
 
 const Container = styled.div`
   max-width: 1264px;
@@ -126,7 +126,7 @@ const NewestButton = styled.a`
   }
 
   &:active {
-    box-shadow: 0 0 0 4px hsla(210,8%,15%,0.1);
+    box-shadow: 0 0 0 4px hsla(210, 8%, 15%, 0.1);
   }
 
   &:focus {
@@ -155,7 +155,7 @@ const UnansweredButton = styled.a`
   }
 
   &:active {
-    box-shadow: 0 0 0 4px hsla(210,8%,15%,0.1);
+    box-shadow: 0 0 0 4px hsla(210, 8%, 15%, 0.1);
   }
 
   &:focus {
@@ -169,20 +169,47 @@ const UnansweredButton = styled.a`
 `;
 
 function AllQuestion() {
-  const { status, questions } = useSelector(state => state.question);
+  const { status, questions } = useSelector((state) => state.question);
   const [currentPage, setCurrentPage] = useState(1);
-  const [questionsPerPage] = useState(10);
+  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [newestFilterActive, setNewestFilterActive] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const BASE_URL = process.env.REACT_APP_EC2_URL;
+  
   useEffect(() => {
-    dispatch(fetchAllQuestions());
+    // const url = `${BASE_URL}/questions?size=10000&page=${currentPage}`;
+    // const response = axios.get(url);
+    // console.log(response.data);
+    dispatch(fetchAllQuestions({ currentPage, postsPerPage }));
   }, [dispatch]);
 
-  const indexOfLastPage = currentPage * questionsPerPage;
-  const indexOfFirstPage = indexOfLastPage - questionsPerPage;
-  const currentPageQuestions = dummy.slice(indexOfFirstPage, indexOfLastPage);
-  const NumberOfPages = Math.ceil(dummy.length / questionsPerPage);
+  // console.log(questions);
+
+  const sortedQuestions = newestFilterActive
+    ? [...questions].sort((a, b) => {
+        if (b.modifiedAt > a.modifiedAt) {
+          return -1;
+        }
+        // b.id가 a.id보다 작다면 a를 앞으로 보냄.
+        if (b.modifiedAt < a.modifiedAt) {
+          return 1;
+        }
+        // b.id와 a.id가 같으면 순서를 유지.
+        return 0;
+      })
+    : [...questions];
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = sortedQuestions.slice(indexOfFirstPost, indexOfLastPost);
+
+  const onPaginate = (pageNum) => setCurrentPage(pageNum);
+
+  const onNewestFilterHandler = () => {
+    setNewestFilterActive(!newestFilterActive);
+  };
 
   return (
     <Container>
@@ -194,7 +221,7 @@ function AllQuestion() {
               <MainbarHeadline>Top Questions</MainbarHeadline>
               <MainBarHeaderAsK
                 onClick={() => {
-                  navigate('/questions/ask');
+                  navigate('/question/ask');
                 }}
               >
                 <AskBtn>Ask Question</AskBtn>
@@ -207,7 +234,12 @@ function AllQuestion() {
               <DataFilterWrapper>
                 <div className="data-filter-box">
                   <NewestButton>
-                    <div className="newest-button">Newest</div>
+                    <div
+                      className="newest-button"
+                      onClick={onNewestFilterHandler}
+                    >
+                      Newest
+                    </div>
                   </NewestButton>
                   <UnansweredButton>
                     <div className="unanswered-button">Unanswered</div>
@@ -217,9 +249,17 @@ function AllQuestion() {
             </div>
           </DataControllerWrapper>
           {status === 'loading' && <Loader />}
-          {status === 'succeed' && questions.map(item => <QuestionItem key={item.questionId} {...item} />)}
-          {dummy.map(item => <QuestionItem key={item.questionId} {...item} />)}
-          <Pagination NumberOfPages={NumberOfPages} setCurrentPage={setCurrentPage} questionsPerPage={questionsPerPage}/>
+          {status === 'succeed' &&
+            currentPosts.map((item) => (
+              <QuestionItem key={item.questionId} {...item} />
+            ))}
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={questions.length}
+            onPaginate={onPaginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </MainBar>
       </Content>
     </Container>

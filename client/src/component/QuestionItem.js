@@ -7,7 +7,7 @@ import test_user from '../asset/User_null.png';
 const QuestionListWrapper = styled.section`
   border-top: 1px solid var(--black-100);
   max-width: 751px;
-  margin-left: -18px;
+  margin-left: -17px;
   position: relative;
 `;
 
@@ -247,7 +247,7 @@ function QuestionItem({
               </ul>
             </MetaTages>
             <MetaUserCard>
-              <UserAvatar to='/users/:memberId'>
+              <UserAvatar to="/users/:memberId">
                 <div className="avatar-wrapper">
                   <img
                     src={test_user}
@@ -258,12 +258,16 @@ function QuestionItem({
               </UserAvatar>
               <UserInfo>
                 <div className="user-info-link-wrapper">
-                  <Link to='/users/:memberId' className="user-info-link">{userName}</Link>
+                  <Link to="/users/:memberId" className="user-info-link">
+                    {userName}
+                  </Link>
                 </div>
               </UserInfo>
               <UpdateTime>
                 <span>asked </span>
-                <span className="relative-time">{displayCreatedAt(createAt)}</span>
+                <span className="relative-time">
+                  {displayCreatedAt(modifiedAt)}
+                </span>
               </UpdateTime>
             </MetaUserCard>
           </SummaryMeta>

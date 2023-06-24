@@ -23,7 +23,7 @@ function SignUp() {
       .post('/users/signup', { email: email, password: password, name: name })
       .then(response => {
         console.log(response);
-        navigate('/users/login');
+        navigate('/user/login');
       })
       .catch(err => {
         console.log(err);

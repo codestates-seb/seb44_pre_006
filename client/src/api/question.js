@@ -1,13 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'http://ec2-3-39-195-247.ap-northeast-2.compute.amazonaws.com:8080';
-console.log(BASE_URL);
+const BASE_URL = process.env.REACT_APP_EC2_URL;
 
 export const fetchAllQuestions = createAsyncThunk(
   `questions/fetchAllQuestions`,
-  async (_, { rejectWithValue }) => {
-    const url = `${BASE_URL}/questions?size=10&page=1`;
+  async ({currentPage, postsPerPage}, { rejectWithValue }) => {
+    const url = `${BASE_URL}/questions?size=10000&page=${currentPage}`;
     const response = await axios.get(url);
 
     console.log(response);
