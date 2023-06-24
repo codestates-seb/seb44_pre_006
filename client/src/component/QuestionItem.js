@@ -229,7 +229,7 @@ function QuestionItem({
         </QuestionSummary>
         <SummaryContent>
           <ContentTitle>
-            <TitleLink to="/questions/:questionId">{title}</TitleLink>
+            <TitleLink to="/question/:questionId">{title}</TitleLink>
           </ContentTitle>
           <ContentExcerpt>{content}</ContentExcerpt>
           <SummaryMeta>
@@ -258,7 +258,7 @@ function QuestionItem({
               </UserAvatar>
               <UserInfo>
                 <div className="user-info-link-wrapper">
-                  <Link to="/users/:memberId" className="user-info-link">
+                  <Link to="/user/:memberId" className="user-info-link">
                     {userName}
                   </Link>
                 </div>

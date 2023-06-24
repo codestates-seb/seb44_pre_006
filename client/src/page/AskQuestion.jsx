@@ -169,7 +169,7 @@ function AskQuestion() {
   const handleSubmit = () => {
     const titles = titleref.current.value;
 dispatch(fetchAskQuestions({titles, contents}));
-    navigate("/questionss");
+    navigate("/question");
   };
   
   return (
