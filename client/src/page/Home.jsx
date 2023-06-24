@@ -81,7 +81,7 @@ function Home() {
         <MainBar>
           <MainBarHeader>
             <h1 className="mainbar-headline">Top Questions</h1>
-            <MainBarHeaderAsK onClick={() => {navigate('/questions/ask');}}>
+            <MainBarHeaderAsK onClick={() => {navigate('/question/ask');}}>
               <AskBtn>Ask Question</AskBtn>
             </MainBarHeaderAsK>
           </MainBarHeader>

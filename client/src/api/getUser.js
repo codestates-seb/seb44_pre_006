@@ -11,8 +11,15 @@ export  const fetchUser = createAsyncThunk('users/fetchUser', async (userid) => 
     headers: {
       Authorization: token
     },
-  }).catch(error => {console.error("실패",error);});
-  return response.data;
+  })
+  
+  try {
+    if (response.status >= 200 && response.status < 300)
+    return response.data; 
+  } 
+  catch (error) {
+    return error;
+  }
 });
 
 // eslint-disable-next-line import/no-anonymous-default-export

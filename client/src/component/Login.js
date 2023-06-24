@@ -5,7 +5,7 @@ import GoogleButton from "./GoogleButton";
 import { useRef } from 'react';
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import {fetchUser} from '../api/user'
+import {fetchUser} from '../api/getUser'
 
 
 export const LoginContainer = styled.section`
