@@ -10,6 +10,7 @@ const Body = styled.main`
  margin-bottom:50px; //간격을 준 만큼 마진을 준다.
  position: relative;
  min-height: calc(100vh - 50px - 70px); //화면 전체 높이 - Nav 높이 - Footer 높이
+ display: flex;
 `
 function App() {
   return (
