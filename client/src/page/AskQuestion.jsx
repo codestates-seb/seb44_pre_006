@@ -1,6 +1,12 @@
-import { styled } from 'styled-components';
-import Writing from '../asset/writing_img.png';
-import AskQuestionForm from '../component/AskQuestionForms';
+import { styled } from "styled-components";
+import Writing from "../asset/writing_img.png";
+import AskQuestionForm from "../component/AskQuestionForms";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchAskQuestions } from "../api/askquestion";
+import { useState } from "react";
+import { useRef } from "react";
+
 
 const Container = styled.div`
   max-width: 100%;
@@ -141,7 +147,31 @@ const LogoImg = styled.img`
   margin: 8px;
 `;
 
+const PostQuestionBtn = styled.button`
+  margin: 4px;
+  padding: 10px;
+  border: 1px solid var(--blue-600);
+  border-radius: 3px;
+  color: #fff;
+  background-color: var(--blue-500);
+  cursor: pointer;
+`;
+
 function AskQuestion() {
+  // const [askTitle, askTitleSet] = useState("");
+  // const [askBody, askBodySet] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const titleref = useRef(null);
+  const [contents, setContent] = useState("")
+
+  const handleSubmit = () => {
+    const titles = titleref.current.value;
+dispatch(fetchAskQuestions({titles, contents}));
+    navigate("/questionss");
+  };
+  
   return (
     <Container>
       <Content>
@@ -191,12 +221,16 @@ function AskQuestion() {
               <Input
                 type="text"
                 placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
+                ref={titleref}
               ></Input>
             </div>
           </div>
-          <LogoImg src={Writing} alt="안됨" />
+          <LogoImg src={Writing} alt="이미지 안보임 " />
         </QuestionTitleContainer>
-        <AskQuestionForm />
+        <AskQuestionForm setContent={setContent}/>
+        <PostQuestionBtn onClick={() => handleSubmit()}>
+          Post your question
+        </PostQuestionBtn>
       </Content>
     </Container>
   );

@@ -1,5 +1,5 @@
-import { styled } from 'styled-components';
-import EditorBox from '../component/TextEditor';
+import { styled } from "styled-components";
+import EditorBox from "../component/TextEditor";
 
 const QuestionForm = styled.div`
   .ask-container {
@@ -39,16 +39,7 @@ const QuestionForm = styled.div`
   }
 `;
 
-const PostQuestionBtn = styled.button`
-  margin: 4px;
-  padding: 10px;
-  border: 1px solid var(--blue-600);
-  border-radius: 3px;
-  color: #fff;
-  background-color: var(--blue-500);
-  cursor: pointer;
-`;
-function AskQuestionForm() {
+function AskQuestionForm({ askBodySet , setContent }) {
   return (
     <QuestionForm>
       <div className="ask-container">
@@ -63,11 +54,10 @@ function AskQuestionForm() {
             </label>
           </div>
           <div className="askform-body" id="ask-body">
-            <EditorBox />
+            <EditorBox onChangeHandler={askBodySet} setContent={setContent}/>
           </div>
         </div>
       </div>
-      <PostQuestionBtn>Post your question</PostQuestionBtn>
     </QuestionForm>
   );
 }
