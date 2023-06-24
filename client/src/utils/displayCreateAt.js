@@ -1,5 +1,6 @@
 const displayCreatedAt = createdAt => {
   const time = new Date(createdAt);
+  time.setHours(time.getHours() + 9); // 한국 시간대로 맞추기 위해 9시간을 더함.
 
   const milliSeconds = new Date() - time;
   const seconds = milliSeconds / 1000;
