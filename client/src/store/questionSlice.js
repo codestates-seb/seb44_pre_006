@@ -14,6 +14,7 @@ const questionSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
       builder
+      //fetchAllQuestions
       .addCase(fetchAllQuestions.pending, (state, action) => {
         state.status = 'loading';
         state.error = null;
@@ -26,6 +27,7 @@ const questionSlice = createSlice({
         state.status = 'failed';
         state.error = action.error;
       })
+      //fetchSreachTitle
       .addCase(fetchSreachTitle.pending, (state, action) => {
         state.status = 'loading';
         state.error = null;

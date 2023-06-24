@@ -10,6 +10,7 @@ export  const fetchSreachTitle = createAsyncThunk('question/fetchSreachTitle', a
 
   try {
     if (response.status >= 200 && response.status < 300)
+    console.log(response.data)
     return response.data; 
   } 
   catch (error) {

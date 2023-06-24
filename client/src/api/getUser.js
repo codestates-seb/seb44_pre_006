@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-//유저 id를 받아 정보를 받는 api
+//1.4 회원 정보 조회
 const URL = process.env.REACT_APP_EC2_URL;
 
 export  const fetchUser = createAsyncThunk('users/fetchUser', async (userid) => {

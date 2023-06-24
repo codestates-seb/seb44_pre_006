@@ -194,7 +194,7 @@ function AllQuestion() {
               <MainbarHeadline>Top Questions</MainbarHeadline>
               <MainBarHeaderAsK
                 onClick={() => {
-                  navigate('/questions/ask');
+                  navigate('/question/ask');
                 }}
               >
                 <AskBtn>Ask Question</AskBtn>

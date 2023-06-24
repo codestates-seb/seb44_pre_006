@@ -2,10 +2,10 @@ import { styled } from "styled-components";
 import SOF from "../asset/SOF_Logo.png"
 import UserNull from "../asset/User_null.png"
 import sreachLogo from "../asset/sreach_logo.svg"
-import '../Global.css';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from '../store/userSlice';
+import  {fetchSreachTitle}  from "../api/sreachTitle";
 
 const NavContainer = styled.header`
   width: 100%;
@@ -111,9 +111,10 @@ function Nav() {
     if (event.key === 'Enter') {
       const searchText = event.target.value; // 입력된 텍스트를 사용하여 필요한 동작을 수행합니다.
       event.target.value = ''; // 검색 이후 입력값 초기화
-      //검색 api 작성
+      dispatch(fetchSreachTitle(searchText))
       navigate('/question')
     }
+
   };
 
 
