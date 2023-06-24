@@ -12,7 +12,7 @@ const TextEditor = styled.div`
   position: relative;
 `;
 
-function EditorBox() {
+function EditorBox({setContent}) {
   const toolbarItems = [
     ["heading", "bold", "italic", "strike"],
     ["hr"],
@@ -26,7 +26,7 @@ function EditorBox() {
   const editorRef = useRef();
   const onChange = () => {
     const data = editorRef.current.getInstance().getMarkdown();
-    console.log(data);
+    setContent(data);
   };
   return (
     <div>

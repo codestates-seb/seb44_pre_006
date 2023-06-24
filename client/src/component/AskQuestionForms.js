@@ -39,7 +39,7 @@ const QuestionForm = styled.div`
   }
 `;
 
-function AskQuestionForm({ askBodySet }) {
+function AskQuestionForm({ askBodySet , setContent }) {
   return (
     <QuestionForm>
       <div className="ask-container">
@@ -54,7 +54,7 @@ function AskQuestionForm({ askBodySet }) {
             </label>
           </div>
           <div className="askform-body" id="ask-body">
-            <EditorBox onChangeHandler={askBodySet} />
+            <EditorBox onChangeHandler={askBodySet} setContent={setContent}/>
           </div>
         </div>
       </div>
