@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUser } from '../api/user';
+import { fetchUser } from '../api/getUser';
 
 const  initialState = {
   data : {

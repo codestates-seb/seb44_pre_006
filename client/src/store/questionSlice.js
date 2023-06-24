@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { fetchAllQuestions } from '../api/question';
+import { fetchSreachTitle } from '../api/sreachTitle';
 
 const  initialState = {
   status: 'loading',
@@ -13,15 +13,30 @@ const questionSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: builder => {
-      builder.addCase(fetchAllQuestions.pending, (state, action) => {
+      builder
+      //fetchAllQuestions
+      .addCase(fetchAllQuestions.pending, (state, action) => {
         state.status = 'loading';
         state.error = null;
-      });
-      builder.addCase(fetchAllQuestions.fulfilled, (state, action) => {
-        state.status = 'succeed';
+      })
+      .addCase(fetchAllQuestions.fulfilled, (state, action) => {
+        state.status = 'succeeded';
         state.questions = action.payload.data;
-      });
-      builder.addCase(fetchAllQuestions.rejected, (state, action) => {
+      })
+      .addCase(fetchAllQuestions.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error;
+      })
+      //fetchSreachTitle
+      .addCase(fetchSreachTitle.pending, (state, action) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchSreachTitle.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.questions = action.payload.data;
+      })
+      .addCase(fetchSreachTitle.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error;
       });
