@@ -1,11 +1,8 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 import displayCreatedAt from '../utils/displayCreateAt';
 import test_user from '../asset/User_null.png';
-// import { fetchUser } from '../api/getUser'
 
 const QuestionListWrapper = styled.section`
   border-top: 1px solid var(--black-100);
@@ -168,7 +165,7 @@ const UserInfo = styled.div`
   align-items: center;
 
   .user-info-link-wrapper {
-    display: flex; 
+    display: flex;
     font-size: var(--_uc-link-fs);
     white-space: var(--_uc-link-ws);
     align-items: center;
@@ -212,20 +209,10 @@ function QuestionItem({
   viewCount,
   answerCount,
   createBy,
+  createdByMemberId,
   createAt,
-  modifiedAt,
+  modifiedAt,c
 }) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const onTitleClickHandler = () => {
-    navigate(`/question/${id}`)
-  };
-  
-  const onAvatarClickHandler = async () => {
-    
-  }
-
   return (
     <QuestionListWrapper>
       <QuestionList>
@@ -243,7 +230,7 @@ function QuestionItem({
         </QuestionSummary>
         <SummaryContent>
           <ContentTitle>
-            <TitleLink onClick={onTitleClickHandler}>{title}</TitleLink>
+            <TitleLink to={`/question/${id}`}>{title}</TitleLink>
           </ContentTitle>
           <ContentExcerpt>{content}</ContentExcerpt>
           <SummaryMeta>
@@ -261,7 +248,7 @@ function QuestionItem({
               </ul>
             </MetaTages>
             <MetaUserCard>
-              <UserAvatar to="/users/:memberId">
+              <UserAvatar to={`/user/${createdByMemberId}`}>
                 <div className="avatar-wrapper">
                   <img
                     src={test_user}
@@ -272,7 +259,10 @@ function QuestionItem({
               </UserAvatar>
               <UserInfo>
                 <div className="user-info-link-wrapper">
-                  <Link onClick={onAvatarClickHandler} className="user-info-link">
+                  <Link
+                    to={`/user/${createdByMemberId}`}
+                    className="user-info-link"
+                  >
                     {createBy}
                   </Link>
                 </div>
