@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import fetchGetQuestion from "../api/getQuestion"
 import displayCreatedAt from '../utils/displayCreateAt';
 import Loader from '../ui/Loader';
+import {fetchSetAnswer} from "../api/setAnswer"
 
 const Main = styled.div`
   display: flex;
@@ -66,16 +67,26 @@ function Answer() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [question, setQuestion] = useState(null);
+  const [answerContent, setAnswerContent] = useState("");
   const path = window.location.pathname;
   const questionId = path.slice(path.lastIndexOf("/") + 1);
 
   
 
-  const handleSubmit = () => {console.log(question)};
+  const handleSubmit = () => {
+    if(answerContent === ""){
+      console.log(question)
+    }
+    else{
+      console.log(answerContent)
+      dispatch(fetchSetAnswer({questionId , answerContent })).then(window.location.reload())
+      
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchGetQuestion(questionId)).then(data => setQuestion(data.payload.data));
-  },[dispatch])
+  },[])
   
   return (
     <Main>
@@ -114,7 +125,7 @@ function Answer() {
 
       <AnswerTextArea className="AnswerTextArea">
         <h2>Your Answer</h2>
-        <AskQuestionForm/>
+        <AskQuestionForm setContent={setAnswerContent}/>
         <PostQuestionBtn onClick={() => handleSubmit()}>
           Post your Answer
         </PostQuestionBtn>
