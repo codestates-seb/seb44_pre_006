@@ -1,12 +1,11 @@
 import { styled } from "styled-components";
 import Writing from "../asset/writing_img.png";
 import AskQuestionForm from "../component/AskQuestionForms";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchAskQuestions } from "../api/askquestion";
 import { useState } from "react";
 import { useRef } from "react";
-
 
 const Container = styled.div`
   max-width: 100%;
@@ -164,14 +163,14 @@ function AskQuestion() {
   const navigate = useNavigate();
 
   const titleref = useRef(null);
-  const [contents, setContent] = useState("")
+  const [contents, setContent] = useState("");
 
   const handleSubmit = () => {
     const titles = titleref.current.value;
-dispatch(fetchAskQuestions({titles, contents}));
+    dispatch(fetchAskQuestions({ titles, contents }));
     navigate("/question");
   };
-  
+
   return (
     <Container>
       <Content>
@@ -227,7 +226,7 @@ dispatch(fetchAskQuestions({titles, contents}));
           </div>
           <LogoImg src={Writing} alt="이미지 안보임 " />
         </QuestionTitleContainer>
-        <AskQuestionForm setContent={setContent}/>
+        <AskQuestionForm setContent={setContent} />
         <PostQuestionBtn onClick={() => handleSubmit()}>
           Post your question
         </PostQuestionBtn>
