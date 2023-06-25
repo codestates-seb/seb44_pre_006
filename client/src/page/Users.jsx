@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import SideBar from '../component/SideBar';
 import SearchBar from '../component/user/users/SearchBar';
 import UserItem from '../component/user/users/UserItem';
 import Pagination from '../ui/Pagination';
 import Loader from '../ui/Loader';
 import { fetchAllUser } from '../api/getAllUser';
-// import { fetchSearchUser } from '../../../api/searchUser';
-
 
 const Container = styled.div`
   max-width: 1264px;
@@ -41,45 +39,74 @@ const UserGrid = styled.div`
 `;
 
 function Users() {
-  const { status, users } = useSelector(state => state.alluser)
+  const { status, users } = useSelector((state) => state.alluser);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
+  const [searchText, setSearchText] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllUser({ currentPage, postsPerPage }));
-  },[]);
+  }, [dispatch, currentPage, postsPerPage]);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = users.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastPost = useMemo(
+    () => currentPage * postsPerPage,
+    [currentPage, postsPerPage]
+  );
+  const indexOfFirstPost = useMemo(
+    () => indexOfLastPost - postsPerPage,
+    [indexOfLastPost, postsPerPage]
+  );
+
+  const currentPosts = useMemo(
+    () => users.slice(indexOfFirstPost, indexOfLastPost),
+    [users, indexOfFirstPost, indexOfLastPost]
+  );
+
+  const filteredUsers = useMemo(() => {
+    if (searchText.trim() === '') {
+      return currentPosts;
+    }
+    return currentPosts.filter((user) =>
+      user.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+  }, [searchText, currentPosts]);
+
+  const handleSearch = (searchText) => {
+    setSearchText(searchText);
+    setCurrentPage(1);
+  };
 
   const onPaginate = (pageNum) => setCurrentPage(pageNum);
 
-  console.log(currentPosts);
-
   return (
     <Container>
-      <SideBar/>
+      <SideBar />
       <Content>
         <Headline>Users</Headline>
-        <SearchBar users={users}>searchBar</SearchBar>
+        <SearchBar
+          handleSearch={handleSearch}
+          searchText={searchText}
+          setSearchText={setSearchText}
+        >
+          searchBar
+        </SearchBar>
         <GridContainer>
           <UserGrid>
-          {status === 'loading' && <Loader />}
-          {status === 'succeed' &&
-            currentPosts.map((item) => (
-              <UserItem key={item.memberId} {...item} />
-            ))}
+            {status === 'loading' && <Loader />}
+            {status === 'succeed' &&
+              filteredUsers.map((item) => (
+                <UserItem key={item.memberId} {...item} />
+              ))}
           </UserGrid>
         </GridContainer>
         <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={users.length}
-            onPaginate={onPaginate}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
+          postsPerPage={postsPerPage}
+          totalPosts={users.length}
+          onPaginate={onPaginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </Content>
     </Container>
   );

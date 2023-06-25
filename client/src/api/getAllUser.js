@@ -17,7 +17,7 @@ export const fetchAllUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error);
     }
-  },
+  }
 );
 
 // eslint-disable-next-line import/no-anonymous-default-export

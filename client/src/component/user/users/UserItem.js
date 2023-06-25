@@ -45,7 +45,7 @@ const UserName = styled.a`
 
 const UserEmail = styled.div`
   display: flex;
-  
+
   > span {
     font-size: 0.8rem;
     color: var(--black-500);
@@ -53,11 +53,7 @@ const UserEmail = styled.div`
   }
 `;
 
-function UserItem({
-  memberId,
-  email,
-  name,
-}) {
+function UserItem({ memberId, email, name }) {
   return (
     <GridItem>
       <UserAvatarWrapper>

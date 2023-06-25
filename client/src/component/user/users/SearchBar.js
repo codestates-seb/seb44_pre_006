@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
 import searchLogo from '../../../asset/search_logo.svg';
-import fetchSearchUser from '../../../api/searchUser'
 
 const Container = styled.div`
   margin: 0 0 0.75rem;
@@ -45,15 +42,19 @@ const UserFilterInput = styled.input`
   }
 `;
 
-function SearchBar(users) {
-  const navigate = useNavigate();
+function SearchBar({ handleSearch, searchText, setSearchText }) {
+  const handleSearchChange = (event) => {
+    setSearchText(event.target.value);
+  };
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      const searchText = event.target.value;
-      event.target.value = '';
+      handleSearch(searchText);
+      setSearchText('');
     }
   };
+
+  console.log(searchText);
 
   return (
     <Container>
@@ -62,6 +63,8 @@ function SearchBar(users) {
         <UserFilterInput
           type="text"
           placeholder="Filter by user"
+          value={searchText}
+          onChange={handleSearchChange}
           onKeyPress={handleKeyPress}
         />
       </SearchBarWrapper>
