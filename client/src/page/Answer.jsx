@@ -1,19 +1,28 @@
 import { styled } from "styled-components";
 import SideBar from "../component/SideBar"
-import '../Global.css';
 import {AskBtn} from "../component/Buttons"
 import { useNavigate } from "react-router-dom";
 import AskBox from "../component/AskBox";
 import AnswerBox from "../component/AnswerBox";
+import AskQuestionForm from "../component/AskQuestionForms";
+import {PostQuestionBtn} from "../page/AskQuestion";
+import { useEffect , useState} from "react";
+import { useDispatch } from "react-redux";
+import fetchGetQuestion from "../api/getQuestion"
+import displayCreatedAt from '../utils/displayCreateAt';
+import Loader from '../ui/Loader';
+import {fetchSetAnswer} from "../api/setAnswer"
 
 const Main = styled.div`
   display: flex;
+  
 `
 const AnswertContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   margin: 30px;
+  
 `
 const AnswerHeader = styled.section`
   display: flex;
@@ -49,43 +58,82 @@ const AnswerContentBody = styled.section`
 
 `
 
+const AnswerTextArea = styled.section`
+  
+`
+
 
 function Answer() {
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [question, setQuestion] = useState(null);
+  const [answerContent, setAnswerContent] = useState("");
+  const path = window.location.pathname;
+  const questionId = path.slice(path.lastIndexOf("/") + 1);
 
+  
+
+  const handleSubmit = () => {
+    if(answerContent === ""){
+      console.log(question)
+    }
+    else{
+      console.log(answerContent)
+      dispatch(fetchSetAnswer({questionId , answerContent })).then(window.location.reload())
+      
+    }
+  };
+
+  useEffect(() => {
+    dispatch(fetchGetQuestion(questionId)).then(data => setQuestion(data.payload.data));
+  },[])
+  
   return (
     <Main>
     <SideBar/>
+    {question
+    ? (
     <AnswertContainer className="AnswertContainer">
       <AnswerHeader className="AnswerHeader">
         <div className="topDiv">
-          <h2>제목 입니다.</h2>
+          <h2>{question.title}</h2>
           <AskBtn onClick={() => navigate('/questions/ask')}>Ask Question</AskBtn>
         </div>
         <div className="bottomDiv">
           <div className="infoBox">
             <p>Asked  &nbsp;</p>
-            <p>today</p>  
+            <p>{displayCreatedAt(question.createdAt)}</p>  
           </div>
           <div className="infoBox">
             <p>Modified  &nbsp;</p>
-            <p>today</p> 
+            <p>{displayCreatedAt(question.modifiedAt)}</p> 
           </div>
           <div className="infoBox">
             <p>Viewed  &nbsp;</p>
-            <p>40</p> 
+            <p>{question.viewCount} times</p> 
           </div>
         </div>
       </AnswerHeader>
-      <AnswerContentBody>
-        <AskBox />
-        <h2>2 Answers</h2>
-        <AnswerBox/>
-        <AnswerBox/>
-        <h2>Your Answer</h2>
+
+      <AnswerContentBody className="AnswerContentBody">
+        <AskBox question={question}/>
+        <h2>{`${question.answers.length} Answers`}</h2>
+        {question.answers.map(answer => (
+        <AnswerBox key={answer.answerId} answer={answer}/>
+      ))}
       </AnswerContentBody>
+
+      <AnswerTextArea className="AnswerTextArea">
+        <h2>Your Answer</h2>
+        <AskQuestionForm setContent={setAnswerContent}/>
+        <PostQuestionBtn onClick={() => handleSubmit()}>
+          Post your Answer
+        </PostQuestionBtn>
+      </AnswerTextArea>
     </AnswertContainer>
+    )
+    : <Loader />
+    }
     </Main>
   );
 }

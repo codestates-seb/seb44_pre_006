@@ -74,7 +74,7 @@ function ApiTest() {
 
   const on2_4 = async () => {
     await axios
-      .get('/questions/1')
+      .get('/questions/11')
       .then(respone => console.log(respone.data))
   }
 
@@ -94,7 +94,7 @@ function ApiTest() {
   const on3_1 = async () => {
     await axios
       .post(
-        "/answers/1",
+        "/answers/11",
         { content: "답변 등록" },
         { headers: { Authorization: jwt } }
       )
