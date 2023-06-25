@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-23T10:25:20+0900",
+    date = "2023-06-25T15:56:22+0900",
     comments = "version: 1.5.1.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 11.0.19 (Oracle Corporation)"
 )
 @Component
@@ -40,6 +40,7 @@ public class QuestionMapperImpl implements QuestionMapper {
         response.title( question.getTitle() );
         response.content( question.getContent() );
         response.viewCount( question.getViewCount() );
+        response.createdAt( question.getCreatedAt() );
         response.modifiedAt( question.getModifiedAt() );
 
         return response.build();

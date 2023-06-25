@@ -18,6 +18,8 @@ public class QuestionResponseDto {
         private String content;
         private Long viewCount;
         private String createBy;
+        private Long createdByMemberId;
+        private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private Integer answerCount;
     }

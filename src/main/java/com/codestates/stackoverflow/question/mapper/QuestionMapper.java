@@ -43,7 +43,9 @@ public interface QuestionMapper {
                         .viewCount(i.getViewCount())
                         .answerCount(i.getAnswers().size())
                         .modifiedAt(i.getModifiedAt())
+                        .createdAt(i.getCreatedAt())
                         .createBy(i.getMember().getName())
+                        .createdByMemberId(i.getMember().getMemberId())
                         .build())
                 .collect(Collectors.toList());
 
