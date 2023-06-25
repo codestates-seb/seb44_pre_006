@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         element: <Users />,
       },
       {
-        path: '/user/:memberId/:name',
+        path: '/user/:memberId',
         element: <Profile />,
       },
       {
@@ -64,7 +64,8 @@ const router = createBrowserRouter([
         element: <AskQuestion />,
       },
       {
-        path: '/question/:title',
+
+        path: '/question/:id',
         element: <Answer />,
       },
       {

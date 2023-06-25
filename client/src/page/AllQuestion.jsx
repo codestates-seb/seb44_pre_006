@@ -175,8 +175,6 @@ function AllQuestion() {
   const [newestFilterActive, setNewestFilterActive] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const BASE_URL = process.env.REACT_APP_EC2_URL;
   
   useEffect(() => {
     dispatch(fetchAllQuestions({ currentPage, postsPerPage }));
@@ -215,7 +213,7 @@ function AllQuestion() {
       navigate('/user/login');
     }
   };
-
+console.log(questions);
   return (
     <Container>
       <SideBar />
