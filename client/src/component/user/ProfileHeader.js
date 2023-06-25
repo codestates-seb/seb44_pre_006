@@ -7,7 +7,6 @@ const ProfileContainer = styled.section`
     display: flex;
     height: 12vh;
     width: 100%;
-    align-items: center;
     justify-content: space-between;
     
     > .leftDiv {
@@ -25,7 +24,7 @@ const ProfileContainer = styled.section`
 
     > .rightDiv {
         display: flex;
-        align-items: center;
+        align-items: start;
         height: 100%;
         >button{
             padding: 10px;
@@ -34,17 +33,11 @@ const ProfileContainer = styled.section`
             border-radius: 5px;
         }
     }
-
-
-   
-
 `
 
 export default function ProfileHeader(){
     const navigate = useNavigate()
     const user = useSelector(state => state.user)
-
-
     return(
         <>
         <ProfileContainer>

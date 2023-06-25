@@ -9,6 +9,7 @@ const CartegoryContainer = styled.div`
     color: var(--white);
     border-radius: 20px;
     background-color: var(--orange);
+    margin-top: 50px;
 `
 export default function ProfileCartegory({text}) {
     return(

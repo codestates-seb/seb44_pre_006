@@ -101,7 +101,7 @@ const TotalQuestions = styled.div`
   font-size: 1.065rem;
 `;
 
-const DataFilterWrapper = styled.div`
+export const DataFilterWrapper = styled.div`
   display: flex;
 
   .data-filter-box {
@@ -111,7 +111,7 @@ const DataFilterWrapper = styled.div`
   }
 `;
 
-const NewestButton = styled.a`
+export const NewestButton = styled.a`
   background-color: var(--white);
   color: var(--black-500);
   border: 1px solid var(--black-400);
@@ -139,7 +139,7 @@ const NewestButton = styled.a`
   }
 `;
 
-const UnansweredButton = styled.a`
+export const UnansweredButton = styled.a`
   background-color: var(--white);
   color: var(--black-500);
   border: 1px solid var(--black-400);
