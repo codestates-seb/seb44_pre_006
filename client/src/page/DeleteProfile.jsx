@@ -1,8 +1,106 @@
+import { styled } from "styled-components";
+import SideBar from "../component/SideBar";
+import { useNavigate } from "react-router";
+
+const DelePageContainer = styled.div`
+  display: flex;
+`;
+const DeleContainer = styled.div`
+  width: 100%;
+  margin: 30px;
+  > h2 {
+    margin-left: 20px;
+  }
+`;
+
+const DeleBoxContainer = styled.section`
+  margin-left: 20px;
+  > div {
+    width: 70%;
+    margin-bottom: 24px;
+    padding: 24px;
+    border-radius: 3px;
+    border-top: 1px solid var(--black-200);
+
+    > p {
+      margin: 0;
+      font-style: 15px;
+      margin-bottom: 15px;
+    }
+
+    > p:last-child {
+      margin: 0;
+      > ul {
+        margin-left: 15px;
+        > li {
+          font-size: 13px;
+          line-height: 1.3;
+          list-style-type: disc;
+          list-style-position: inside;
+        }
+      }
+    }
+  }
+`;
+
+const DeleteBtn = styled.button`
+  margin: 4px;
+  padding: 10px;
+  border: 1px solid var(--red-700);
+  border-radius: 3px;
+  color: #fff;
+  background-color: var(--red-600);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--red-700);
+  }
+`;
+
 function DeleteProfile() {
+  const navigate = useNavigate();
   return (
-    <div>
-      <h1>DeleteProfile</h1>
-    </div>
+    <DelePageContainer>
+      <SideBar />
+      <DeleContainer>
+        <h2>Delete Profile</h2>
+        <DeleBoxContainer>
+          <div>
+            <p>
+              Before confirming that you would like your profile deleted, we'd
+              like to take a moment to explain the implications of deletion:
+            </p>
+            <p>
+              <ul>
+                <li>
+                  Deletion is irreversible, and you will have no way to regain
+                  any of your original content, should this deletion be carried
+                  out and you change your mind later on.
+                </li>
+                <li>
+                  Your questions and answers will remain on the site, but will
+                  be disassociated and anonymized (the author will be listed as
+                  "user22064595") and will not indicate your authorship even if
+                  you later return to the site.
+                </li>
+              </ul>
+            </p>
+            <p>
+              Confirming deletion will only delete your profile on Stack
+              Overflow - it will not affect any of your other profiles on the
+              Stack Exchange network. If you want to delete multiple profiles,
+              you'll need to visit each site separately and request deletion of
+              those individual profiles.
+            </p>
+            <label className="checkinput">
+              <input type="checkbox" />I have read the information stated above
+              and understand the implications of having my profile deleted. I
+              wish to proceed with the deletion of my profile.
+            </label>
+          </div>
+          <DeleteBtn onClick={() => navigate("/")}>Delete profile</DeleteBtn>
+        </DeleBoxContainer>
+      </DeleContainer>
+    </DelePageContainer>
   );
 }
 
