@@ -1,15 +1,14 @@
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import userNull from "../asset/User_null.png"
+import displayCreatedAt from '../utils/displayCreateAt';
 
 const ContentsContainer = styled.section`
     width: 70vw;
     padding: 30px;
-   
-    
+    border-bottom: 1px solid var(--silver-darker);
 `
 const TextField = styled.div`
-    
     
 `
 const TagField = styled.div`
@@ -52,22 +51,14 @@ const UserBox = styled.div`
         }
     }
 `
-
-
-function AnswerBox() {
-
+function AnswerBox({answer}) {
 
     const navigate = useNavigate();
     
     return(
         <ContentsContainer>
             <TextField>
-            How can I automatically trigger an action whenever an element containing a <br/>
-            specific attribute in an Ember 3.11 project is clicked?<br/>
-            Currently, my structure is as follows:<br/>
-            Whenever an element has the 'trackClick' attribute defined in any template, I want the '<br/>
-            elementClicked' method that I've defined to be executed. I don't want to manually add <br/>
-            this to each component separately.
+            {answer.content}
             </TextField>
             <TagField>
                 {/* 태그 필드 */}
@@ -75,10 +66,10 @@ function AnswerBox() {
             <UserField>
                 <p className="editBtn" onClick={() => navigate()}>Edit</p>
                 <UserBox className="userBox">
-                    <p className="askDate">asked 11 mins ago</p>
+                    <p className="askDate">answered {displayCreatedAt(answer.createdAt)}</p>
                     <div className="userInfo">
                         <img src={userNull} alt='userNull'/>
-                        <p>won young</p>
+                        <p>{answer.createdBy}</p>
                     </div>
                 </UserBox>
             </UserField>

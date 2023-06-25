@@ -147,7 +147,7 @@ const LogoImg = styled.img`
   margin: 8px;
 `;
 
-const PostQuestionBtn = styled.button`
+export const PostQuestionBtn = styled.button`
   margin: 4px;
   padding: 10px;
   border: 1px solid var(--blue-600);
