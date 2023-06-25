@@ -1,18 +1,26 @@
 import { styled } from "styled-components";
 import ProfileHeader from "../component/user/ProfileHeader"
 import SideBar from "../component/SideBar";
+import ProfileCartegory from "../component/user/ProfileCategory"
 
-
-const ProfileContainer = styled.div`
+const ProfilePageContainer = styled.div`
   display: flex;
+`
+const ProfileContainer = styled.div`
+  width: 100%;
+  margin: 30px;
+  border: 1px solid;
 `
 
 function Profile() {
   return (
-    <ProfileContainer>
+    <ProfilePageContainer>
       <SideBar/>
-      <ProfileHeader/>
-    </ProfileContainer>
+      <ProfileContainer>
+        <ProfileHeader/>
+        <ProfileCartegory text={`Profile`}/>
+      </ProfileContainer>
+    </ProfilePageContainer>
   );
 }
 
