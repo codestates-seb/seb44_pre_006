@@ -51,6 +51,7 @@ const NavSreachBar = styled.div`
   height: 70%;
   width: 700px;
   margin-left: 30px;
+  border-radius: 5px;
 
   > button {
     background: none;
@@ -71,7 +72,7 @@ const NavLogBtn = styled.button`
   color: ${(props) => props.color};
   background-color: ${(props) => props.backgroundColor};
   margin-left: 10px;
-  border-radius: 7%;
+  border-radius: 5px;
   padding: 0px 10px;
   &:hover {
     filter: brightness(90%);
@@ -133,13 +134,13 @@ function Nav() {
           <NavLogBtn backgroundColor="var(--powder-200)" color="var(--powder-700)" onClick={() => navigate('/user/login')}>
             Log in
           </NavLogBtn>
-          <NavLogBtn backgroundColor="var(--blue-500)" color="var(--blue-050)" onClick={() => navigate('/user/sighup')}>
+          <NavLogBtn backgroundColor="var(--blue-500)" color="var(--blue-050)" onClick={() => navigate('/user/signup')}>
             Sign up
           </NavLogBtn>
         </>
       ) : (
         <>
-          <NavUserLink src={UserNull} onClick={() => navigate()}></NavUserLink>
+          <NavUserLink src={UserNull} onClick={() => navigate(`/user/${user.data.memberId}`)}></NavUserLink>
             <p>{user.data.name}</p>
           <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)" onClick={() => onLogOutHandler()}>
             Log out
