@@ -213,7 +213,9 @@ function AllQuestion() {
       navigate('/user/login');
     }
   };
-console.log(questions);
+
+  console.log(questions);
+  
   return (
     <Container>
       <SideBar />
@@ -221,7 +223,7 @@ console.log(questions);
         <MainBar>
           <MainBarHeaderWrapper>
             <div className="mainbar-header">
-              <MainbarHeadline>Top Questions</MainbarHeadline>
+              <MainbarHeadline>All Questions</MainbarHeadline>
               <MainBarHeaderAsK
                 onClick={onAskQuestionButtonHandler}
               >

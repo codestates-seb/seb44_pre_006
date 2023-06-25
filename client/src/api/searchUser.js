@@ -3,10 +3,10 @@ import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_EC2_URL;
 
-export const fetchAllQuestions = createAsyncThunk(
-  `questions/fetchAllQuestions`,
-  async ({currentPage, postsPerPage}, { rejectWithValue }) => {
-    const url = `${BASE_URL}/questions?size=100&page=${currentPage}`;
+export const fetchSearchUser = createAsyncThunk(
+  `user/fetchSearchUser`,
+  async ({ currentPage, postsPerPage }, { rejectWithValue }) => {
+    const url = `${BASE_URL}/users?page=${currentPage}&size=1000`;
     const response = await axios.get(url);
 
     try {
@@ -20,5 +20,5 @@ export const fetchAllQuestions = createAsyncThunk(
   },
 );
 
-const emptyObject = {};
-export default emptyObject;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {};

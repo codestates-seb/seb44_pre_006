@@ -27,7 +27,6 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-
         path: '/user',
         element: <Users />,
       },
@@ -64,7 +63,6 @@ const router = createBrowserRouter([
         element: <AskQuestion />,
       },
       {
-
         path: '/question/:id',
         element: <Answer />,
       },
