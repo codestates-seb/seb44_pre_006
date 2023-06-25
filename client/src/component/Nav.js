@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import SOF from "../asset/SOF_Logo.png"
 import UserNull from "../asset/User_null.png"
-import sreachLogo from "../asset/sreach_logo.svg"
+import searchLogo from "../asset/search_logo.svg"
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from '../store/userSlice';
@@ -125,7 +125,7 @@ function Nav() {
         <NavLink onClick={() => navigate()}>About</NavLink>
       <NavSreachBar>
         <button>
-          <img src={sreachLogo} alt='sreachLogo' />
+          <img src={searchLogo} alt='sreachLogo' />
         </button>
         <input placeholder="Search..."  onKeyPress={handleKeyPress}/>
       </NavSreachBar>
