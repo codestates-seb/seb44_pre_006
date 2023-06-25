@@ -1,11 +1,11 @@
-import SignUpCompo from "../component/SighUp";
+import SignUpCompo from "../component/SignUp";
 import SideBar from "../component/SideBar";
 import { styled } from "styled-components";
 
-const SighUpContainer = styled.div`
+const SignUpContainer = styled.div`
   display: flex;
 `
-const SighUpBox = styled.div`
+const SignUpBox = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: space-evenly;
@@ -18,9 +18,9 @@ const TextContent = styled.section`
 
 function SignUp() {
   return (
-    <SighUpContainer>
+    <SignUpContainer>
       <SideBar/>
-      <SighUpBox>
+      <SignUpBox>
       <TextContent>
         <h1>Join the Stack Overflow community</h1>
         <p>Get unstuck — ask a question</p>
@@ -29,8 +29,8 @@ function SignUp() {
         <p>Earn reputation and badges</p>
       </TextContent>
        <SignUpCompo/>
-      </SighUpBox>
-    </SighUpContainer>
+      </SignUpBox>
+    </SignUpContainer>
   );
 }
 

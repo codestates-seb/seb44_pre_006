@@ -6,7 +6,7 @@ import NotFound from "./page/NotFound";
 import Users from "./page/Users";
 import LogIn from "./page/LogIn";
 import LogOut from "./page/LogOut";
-import SighUp from "./page/SighUp";
+import SignUp from "./page/SignUp";
 import Profile from "./page/Profile";
 import EditProfile from "./page/EditProfile";
 import DeleteProfile from "./page/DeleteProfile";
@@ -27,7 +27,6 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-
         path: '/user',
         element: <Users />,
       },
@@ -52,8 +51,8 @@ const router = createBrowserRouter([
         element: <LogOut />,
       },
       {
-        path: '/user/sighup',
-        element: <SighUp />,
+        path: '/user/signup',
+        element: <SignUp />,
       },
       {
         path: '/question',
