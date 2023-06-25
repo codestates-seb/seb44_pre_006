@@ -213,7 +213,9 @@ function AllQuestion() {
       navigate('/user/login');
     }
   };
-console.log(questions);
+
+  console.log(questions);
+  
   return (
     <Container>
       <SideBar />
