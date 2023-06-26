@@ -75,12 +75,13 @@ function DeleteProfile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  console.log(memberId);
   const handleCheckBoxChange = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleDeleteProfile = () => {
-    dispatch(fetchDeleteUser(memberId))
+  const handleDeleteProfile = async () => {
+    await dispatch(fetchDeleteUser({ memberId }))
     .then(() => {
       navigate('/');
     })

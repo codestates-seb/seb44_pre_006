@@ -3,8 +3,8 @@ import axios from 'axios';
 //1.4 회원 정보 조회
 const URL = process.env.REACT_APP_EC2_URL;
 
-export  const fetchUser = createAsyncThunk('users/fetchUser', async (userid) => {
-  const url = `${URL}/users/${userid}`;
+export  const fetchUser = createAsyncThunk('users/fetchUser', async (memberId) => {
+  const url = `${URL}/users/${memberId}`;
   const token = localStorage.getItem('jwtToken');
 
   const response = await axios.get(url, {

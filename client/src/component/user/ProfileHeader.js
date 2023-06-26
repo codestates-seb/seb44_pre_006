@@ -58,8 +58,8 @@ export default function ProfileHeader(){
                 </div>
             </div>
             <div className="rightDiv">
-                <button style={{ backgroundColor: 'var(--blue-500)' }}  onClick={()=>navigate(`/user/edit/${user.data.userId}`)}>Edit Profile</button>
-                <button style={{ backgroundColor: 'var(--red-400)' }}  onClick={()=>navigate(`/user/delete/${user.data.userId}`)}>Delete Profile</button>
+                <button style={{ backgroundColor: 'var(--blue-500)' }}  onClick={()=>navigate(`/user/edit/${user.data.memberId}`)}>Edit Profile</button>
+                <button style={{ backgroundColor: 'var(--red-400)' }}  onClick={()=>navigate(`/user/delete/${user.data.memberId}`)}>Delete Profile</button>
             </div>
         </ProfileContainer>
         </>
