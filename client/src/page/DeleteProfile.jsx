@@ -1,13 +1,20 @@
-import { styled } from "styled-components";
-import SideBar from "../component/SideBar";
-import { useNavigate } from "react-router";
-import EditHeader from "../component/user/EditHeader";
-import ProfileCartegory from "../component/user/ProfileCategory";
+import { useState } from 'react';
+import { styled } from 'styled-components';
+import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import SideBar from '../component/SideBar';
+import EditHeader from '../component/user/EditHeader';
+import ProfileCartegory from '../component/user/ProfileCategory';
+import { fetchDeleteUser } from '../api/deleteUser';
 
 const DelePageContainer = styled.div`
+  max-width: 1264px;
   display: flex;
+  justify-content: center;
 `;
+
 const DeleContainer = styled.div`
+  max-width: 1100px;
   width: 100%;
   margin: 30px;
 `;
@@ -49,13 +56,39 @@ const DeleteBtn = styled.button`
   color: #fff;
   background-color: var(--red-600);
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   &:hover {
-    background-color: var(--red-700);
+    &:disabled {
+      background-color: var(--red-700);
+    }
   }
 `;
 
 function DeleteProfile() {
+  const [isChecked, setIsChecked] = useState(false);
+  const memberId = useSelector(state => state.user.data.memberId)
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleCheckBoxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const handleDeleteProfile = () => {
+    dispatch(fetchDeleteUser(memberId))
+    .then(() => {
+      navigate('/');
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  };
+
   return (
     <DelePageContainer>
       <SideBar />
@@ -92,12 +125,15 @@ function DeleteProfile() {
               those individual profiles.
             </p>
             <label className="checkinput">
-              <input type="checkbox" />I have read the information stated above
-              and understand the implications of having my profile deleted. I
-              wish to proceed with the deletion of my profile.
+              <input type="checkbox" onChange={handleCheckBoxChange} />I have
+              read the information stated above and understand the implications
+              of having my profile deleted. I wish to proceed with the deletion
+              of my profile.
             </label>
           </div>
-          <DeleteBtn onClick={() => navigate("/")}>Delete profile</DeleteBtn>
+          <DeleteBtn disabled={!isChecked} onClick={() => handleDeleteProfile()}>
+            Delete Profile
+          </DeleteBtn>
         </DeleBoxContainer>
       </DeleContainer>
     </DelePageContainer>
