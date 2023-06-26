@@ -65,7 +65,7 @@ function AnswerBox({answer}) {
                 {/* 태그 필드 */}
             </TagField> 
             <UserField>
-                {answer.createdBy === user.data.name
+                {answer.createdBy === user.data.name || user.data.admin
                 ? <p className="editBtn" onClick={() => navigate()}>Edit</p>
                 : <p></p> }
                 <UserBox className="userBox">
