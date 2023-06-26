@@ -113,8 +113,8 @@ function Nav() {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('memberId');
-    window.location.reload();
     dispatch(resetUser());
+    navigate('/user/login');
   };
 
   // 엔터 키를 누를 때 동작
@@ -152,7 +152,7 @@ function Nav() {
         <>
           <NavUserLink src={UserNull} onClick={() => navigate(`/user/${user.data.memberId}`)}></NavUserLink>
             <p>{user.data.name}</p>
-          <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)" onClick={() => onLogOutHandler()}>
+          <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)" onClick={() => onLogOutHandler()} >
             Log out
           </NavLogBtn>
           {user.data.admin
