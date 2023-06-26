@@ -210,8 +210,8 @@ function QuestionItem({
   answerCount,
   createBy,
   createdByMemberId,
-  createAt,
-  modifiedAt,c
+  createdAt,
+  modifiedAt,
 }) {
   return (
     <QuestionListWrapper>
@@ -268,9 +268,9 @@ function QuestionItem({
                 </div>
               </UserInfo>
               <UpdateTime>
-                <span>asked </span>
+                <span>{createdAt === modifiedAt ? 'asked ' : 'modified '} </span>
                 <span className="relative-time">
-                  {displayCreatedAt(modifiedAt)}
+                  {displayCreatedAt(createdAt === modifiedAt ? createdAt : modifiedAt)}
                 </span>
               </UpdateTime>
             </MetaUserCard>

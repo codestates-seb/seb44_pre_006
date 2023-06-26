@@ -214,7 +214,7 @@ function AllQuestion() {
     }
   };
 
-  console.log(questions);
+  console.log(currentPosts);
   
   return (
     <Container>
