@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
 import SideBar from "../component/SideBar";
 import { useNavigate } from "react-router";
+import EditHeader from "../component/user/EditHeader";
+import ProfileCartegory from "../component/user/ProfileCategory";
 
 const DelePageContainer = styled.div`
   display: flex;
@@ -8,13 +10,9 @@ const DelePageContainer = styled.div`
 const DeleContainer = styled.div`
   width: 100%;
   margin: 30px;
-  > h2 {
-    margin-left: 20px;
-  }
 `;
 
 const DeleBoxContainer = styled.section`
-  margin-left: 20px;
   > div {
     width: 70%;
     margin-bottom: 24px;
@@ -62,6 +60,8 @@ function DeleteProfile() {
     <DelePageContainer>
       <SideBar />
       <DeleContainer>
+        <EditHeader />
+        <ProfileCartegory text={`Settings`} />
         <h2>Delete Profile</h2>
         <DeleBoxContainer>
           <div>
