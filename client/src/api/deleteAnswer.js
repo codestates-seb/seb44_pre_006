@@ -7,7 +7,7 @@ const URL = process.env.REACT_APP_EC2_URL;
 export const fetchDeleteAnswer = createAsyncThunk(
   "answer/fetchDeleteAnswer",
   async ({ answerId }) => {
-    const url = `${URL}/asnwers/${answerId}`;
+    const url = `${URL}/answers/${answerId}`;
     const token = localStorage.getItem("jwtToken");
 
     const response = await axios.delete(

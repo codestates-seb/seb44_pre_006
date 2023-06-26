@@ -4,9 +4,8 @@ import { useNavigate } from "react-router";
 import AskQuestionForm from "../component/AskQuestionForms";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchEditQuestion } from "../api/editQuestion"
 import { fetchEditAnswer } from "../api/editAnswer";
-import { setQuestion } from "../store/questionSlice";
+import { fetchDeleteAnswer } from "../api/deleteAnswer";
 
 const EditContainer = styled.div`
   max-width: 1264px;
@@ -114,18 +113,20 @@ function EditAnswer() {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const titleRef = useRef(null);
   const path = window.location.pathname;
-  const questionId = path.slice(path.lastIndexOf("/") + 1);
+  const answerId = path.slice(path.lastIndexOf("/") + 1);
 
   const onSaveHandler = async () => {
-    const titles = titleRef.current.value;
-    dispatch(fetchEditQuestion({ questionId, titles, content }));
-    navigate(`/question/${questionId}`);
+    dispatch(fetchEditAnswer({ answerId, content }));
+    navigate(-1);
   };
 
   const onCancleHandler = async () => {
-    navigate(`/question/${questionId}`);
+    navigate(-1);
+  };
+  const onDeleteHandler = async () => {
+    dispatch(fetchDeleteAnswer({answerId}));
+    navigate(-1);
   };
 
   return (
@@ -169,7 +170,9 @@ function EditAnswer() {
             <button className="canbtn" onClick={() => onCancleHandler()}>
               Cancel
             </button>
-            <button className="delebtn">Delete</button>
+            <button className="delebtn" onClick={() => onDeleteHandler()}>
+              Delete
+              </button>
           </div>
         </BottomBtn>
       </EditContent>
