@@ -66,7 +66,7 @@ function AnswerBox({answer}) {
             </TagField> 
             <UserField>
                 {answer.createdBy === user.data.name || user.data.admin
-                ? <p className="editBtn" onClick={() => navigate()}>Edit</p>
+                ? <p className="editBtn" onClick={() => navigate(`/answer/edit/${answer.answerId}`)}>Edit</p>
                 : <p></p> }
                 <UserBox className="userBox">
                     <p className="askDate">answered {displayCreatedAt(answer.createdAt)}</p>
