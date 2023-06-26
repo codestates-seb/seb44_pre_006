@@ -111,9 +111,11 @@ function Nav() {
   ,[])
 
   const onLogOutHandler = () => {
+
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('memberId');
+
     dispatch(resetUser());
     navigate('/user/login');
   };
@@ -131,7 +133,7 @@ function Nav() {
   return (
     <NavContainer>
       <div className="imgDiv">
-        <LogoImag src={SOF} onClick={() => navigate("/")} />
+        <LogoImag src={SOF} onClick={() => navigate("/home")} />
       </div>
       <NavLink onClick={() => navigate()}>About</NavLink>
       <NavSreachBar>

@@ -1,12 +1,11 @@
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SideBar from '../component/SideBar';
 import QuestionItem from '../component/QuestionItem';
 import { fetchTopQuestions } from '../api/topQuestion';
 import Loader from '../ui/Loader';
-import axios from 'axios';
 // import dummy from '../data/dummy';
 
 const Container = styled.div`
@@ -100,10 +99,7 @@ function Home() {
     } else {
       navigate('/user/login');
     }
-  };
-
-  console.log(questions);
-  console.log(status);
+  };;
   
   return (
     <Container>

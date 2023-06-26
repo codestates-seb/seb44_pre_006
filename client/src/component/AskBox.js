@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import userNull from "../asset/User_null.png"
 import displayCreatedAt from '../utils/displayCreateAt';
+import { useSelector } from "react-redux";
 
 const ContentsContainer = styled.section`
     width: 70vw;
@@ -16,11 +17,13 @@ const UserField = styled.div`
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 
     > .editBtn {
         margin: 0;
         color: var(--silver-darker)
     }
+    
 `
 const UserBox = styled.div`
     width: 200px;
@@ -53,7 +56,7 @@ const UserBox = styled.div`
 function AskBox({question}) {
 
     const navigate = useNavigate();
-    
+    const user = useSelector(state => state.user)
     return(
         <ContentsContainer>
             <TextField>
@@ -63,7 +66,9 @@ function AskBox({question}) {
                 {/* 태그 필드 */}
             </TagField>
             <UserField>
-                <p className="editBtn" onClick={() => navigate()}>Edit</p>
+                {question.createdBy === user.data.name
+                ? <p className="editBtn" onClick={() => navigate()}>Edit</p>
+                : <p></p>}
                 <UserBox className="userBox">
                     <p className="askDate">asked {displayCreatedAt(question.createdAt)}</p>
                     <div className="userInfo">

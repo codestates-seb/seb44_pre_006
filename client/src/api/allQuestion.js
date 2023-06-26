@@ -11,7 +11,6 @@ export const fetchAllQuestions = createAsyncThunk(
 
     try {
       if (response.status >= 200 && response.status < 300) {
-        console.log(response.data);
         return response.data;
       } 
     } catch (error) {

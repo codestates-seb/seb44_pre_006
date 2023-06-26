@@ -219,8 +219,6 @@ function AllQuestion() {
     }
   };
 
-  console.log(currentPosts);
-
   return (
     <Container>
       <SideBar />

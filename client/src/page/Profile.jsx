@@ -111,7 +111,6 @@ function Profile() {
 
   useEffect(() => {
     dispatch(fetchGetUserQnA(memberId)).then(data => setQnA(data.payload.data));
-    console.log(QnA)
   },[dispatch])
 
   return (
