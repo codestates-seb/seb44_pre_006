@@ -6,10 +6,11 @@
 
 </br>
 
-- **팀 명 :** 🌙 낭만코더
+- **팀 명 :** 🌙 낭만코더 
 - **프로젝트 명 :** Stackoverflow
 - **프로젝트 기간 :** 2023.06.9 - 2023.06.27
-- **팀 노션주소 :** [🌙 낭만코더](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350)
+- **배포링크 :** [배포링크]()
+- **노션링크 :** [노션 바로가기](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350)
 
 <br/>
 
@@ -18,7 +19,7 @@
 | ![한원영](https://avatars.githubusercontent.com/u/85989215?v=4) | ![김형일](https://avatars.githubusercontent.com/u/124700383?v=4) | ![이지효](https://avatars.githubusercontent.com/u/91511828?v=4) | ![박지인](https://avatars.githubusercontent.com/u/96341808?v=4) | ![김어진](https://avatars.githubusercontent.com/u/124785394?v=4) | ![이지윤](https://avatars.githubusercontent.com/u/121713161?v=4) | ![최서우](https://avatars.githubusercontent.com/u/119303663?v=4) |
 | :-------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------------: | :------------------------------------------------------------------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
 |           [한원영](https://github.com/qpwoei0123)            |              [김형일](https://github.com/hyeong-il)               |              [이지효](https://github.com/dlwl8y)              |            [박지인](https://github.com/jeein2222)             |               [김어진](https://github.com/kimaj2001)               |              [이지윤](https://github.com/younihi)               |                [최서우](https://github.com/wooseoboy)               
-|                            FE (부팀장)                            |                                FE                                |                                FE                                |                                BE(팀장)                                |                              BE                               |                                  BE                                  |                               BE                                |
+|                            FE 부팀장                            |                                FE                                |                                FE                                |                                BE 팀장                                |                              BE                               |                                  BE                                  |                               BE                                |
 
 
 <details>
@@ -138,10 +139,9 @@
 ## Stacks
 
 ### <span style=""> **Tools** </span>
-|                            Github                            |                           Discord                            |                            Notion                            |                              Jira                         |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img alt="github logo" src="https://techstack-generator.vercel.app/github-icon.svg" width="65" height="65"> | <img alt="Discord logo" src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/62595384e89d1d54d704ece7_3437c10597c1526c3dbd98c737c2bcae.svg" height="65" width="65"> | <img alt="Notion logo" src="https://www.notion.so/cdn-cgi/image/format=auto,width=640,quality=100/front-static/shared/icons/notion-app-icon-3d.png" height="65" width="65"> | <img alt="jira logo" src="https://i.ibb.co/hLsWHgc/jira-logo.png" width="65" height="65">
-
+|                            Github                            |                           Discord                            |                            Notion                            |                              Jira                         |                              Zoom                         |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img alt="github logo" src="https://techstack-generator.vercel.app/github-icon.svg" width="65" height="65"> | <img alt="Discord logo" src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/62595384e89d1d54d704ece7_3437c10597c1526c3dbd98c737c2bcae.svg" height="65" width="65"> | <img alt="Notion logo" src="https://www.notion.so/cdn-cgi/image/format=auto,width=640,quality=100/front-static/shared/icons/notion-app-icon-3d.png" height="65" width="65"> |  <img alt="jira logo" src="https://i.ibb.co/V2pbfYY/jira.png" width="65" height="65">| <img alt="jira logo" src="https://i.ibb.co/VtXvQn6/vecteezy-zoom-logo-in-blue-colors-meetings-app-logotype-illustration-12871376-692.png" width="65" height="65">
 <br/>
 
 ### <span style=""> **Front-end** </span>
@@ -152,7 +152,7 @@
 
 <br/>
 
-### <span style=""> **Back-end** ### </span>
+### <span style=""> **Back-end** </span>
 |                             Java                             |                            Spring                            |                        Spring<br>Boot                        |                            mySQL                             |                             AWS                              |                             JWT                              |                             Oauth2                              |                             Postman                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/java-icon.svg" alt="icon" width="65" height="65" /></div> | <img alt="spring logo" src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" height="50" width="50" > | <img alt="spring-boot logo" src="https://t1.daumcdn.net/cfile/tistory/27034D4F58E660F616" width="65" height="65" > | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="icon" width="65" height="65" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="icon" width="65" height="65" /></div> | <img alt="jwt logo" src="https://i.ibb.co/xzJ0tYJ/jwt-logo.png" width="65" height="65" > | <img alt="oauth2 logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Oauth_logo.svg" width="65" height="65"/></div> | <img alt="postman logo" src="https://i.ibb.co/jMMf3Fw/postman-icon.png" width="65" height="65"/></div> |
@@ -163,11 +163,31 @@
 <br/>
 
 ## Documents
-### [사용자요구사항 정의서](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350f?p=afe3b397714a49dfba59090ac8095406&pm=s)
-### [테이블 명세서](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350f?p=e7400232f43a4ab186c29b00b1e77118&pm=s)
+### [사용자요구사항 정의서](https://www.notion.so/codestates/afe3b397714a49dfba59090ac8095406?pvs=4)
+### [테이블 명세서](https://www.notion.so/codestates/e7400232f43a4ab186c29b00b1e77118)
 ### ERD
-### [API명세서](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350f?p=c6725bd41a184bab8d618081b75d0183&pm=s)
+### [API 명세서](https://younihi.github.io/api/#_membercontroller)
 ### [화면정의서](https://file.notion.so/f/s/067948eb-87e8-4e50-91a0-20fd916462da/0ee2b19e-b34b-48e3-8b95-57d61c1e14fe___%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A5.pdf?id=e9a666c5-1e03-4689-b460-522e137d5507&table=block&spaceId=82d63a72-8254-4cde-bf1e-b2597b7c099c&expirationTimestamp=1687846624368&signature=2nnLSwdwhRCXaTZKTr8uExB4wVitzCvkz6Vm9Z1gEtc&downloadName=%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A5.pdf)
+### [테스트 체크리스트](https://www.notion.so/b3393093fc964a9b9bacba77af78cce0?v=5efb0b75679c4f15929a48be59bc142b)
 
+## 프로젝트 관리
+#### Github의 칸반 보드를 사용하여 전체 업무 흐름 관리 및 업무 개선
+<img width="1430" alt="스크린샷 2023-06-26 오후 8 32 22" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/a16aceca-635d-4e85-87e4-19e94a330223">
 
+#### Zoom, Discord를 활용한 데일리 칸반 회의 및 주간 보충 회의 진행
+<img width="208" alt="스크린샷 2023-06-26 오후 8 55 31" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/d724b2b1-a019-41f3-a566-a25be0599ed9">
 
+#### 팀 노션을 활용한 이슈 및 문서관리
+
+<img width="594" alt="스크린샷 2023-06-26 오후 8 57 46" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/c86c0e09-c026-4960-bfa8-30267d4dc618">
+<img width="769" alt="스크린샷 2023-06-26 오후 8 58 34" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/e904c901-5430-4d42-89d7-32aa4461a016">
+
+#### Coz'Git flow 사용한 버전 관리
+|  Message   | 설명                                                  |
+| :--------: | :---------------------------------------------------- |
+|   [feat]   | 새로운 기능 추가    |
+|   [fix]    | 버그 수정                                  |
+| [refactor] | 코드 리팩토링에 대한 커밋                   |
+|   [docs]   | 문서 수정                           |
+|  [test]    | test 수정 및 추가                          |
+|  [release] | 배포 전 release 커밋                               |
