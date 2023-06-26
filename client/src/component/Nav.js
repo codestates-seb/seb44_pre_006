@@ -4,8 +4,11 @@ import UserNull from "../asset/User_null.png";
 import searchLogo from "../asset/search_logo.svg";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { resetUser } from "../store/userSlice";
-import { fetchSreachTitle } from "../api/sreachTitle";
+import { resetUser } from '../store/userSlice';
+import  {fetchSreachTitle}  from "../api/sreachTitle";
+import {fetchUser} from "../api/getUser";
+import { useEffect } from "react";
+
 
 const NavContainer = styled.header`
   width: 100%;
@@ -100,11 +103,21 @@ function Nav() {
   const user = useSelector((state) => state.user);
   const jwtToken = localStorage.getItem("jwtToken");
 
+  useEffect(() => {
+    if(user.data.email === "" && jwtToken){
+      dispatch(fetchUser(localStorage.getItem('memberId')));
+    }
+  }
+  ,[])
+
   const onLogOutHandler = () => {
-    localStorage.removeItem("jwtToken");
-    localStorage.removeItem("refreshToken");
-    window.location.reload();
+
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('memberId');
+
     dispatch(resetUser());
+    navigate('/user/login');
   };
 
   // 엔터 키를 누를 때 동작
@@ -148,6 +161,7 @@ function Nav() {
         </>
       ) : (
         <>
+
           <NavUserLink
             src={UserNull}
             onClick={() => navigate(`/user/${user.data.memberId}`)}
