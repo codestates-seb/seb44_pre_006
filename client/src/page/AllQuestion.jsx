@@ -7,8 +7,6 @@ import QuestionItem from '../component/QuestionItem';
 import { fetchAllQuestions } from '../api/allQuestion';
 import Loader from '../ui/Loader';
 import Pagination from '../ui/Pagination';
-import axios from 'axios';
-// import dummy from '../data/dummy';
 
 const Container = styled.div`
   max-width: 1264px;
@@ -173,9 +171,10 @@ function AllQuestion() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
   const [newestFilterActive, setNewestFilterActive] = useState(false);
+  const [unansweredFilterActive, setUnansweredFilterActive] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(fetchAllQuestions({ currentPage, postsPerPage }));
   }, [dispatch]);
@@ -192,6 +191,8 @@ function AllQuestion() {
         // b.id와 a.id가 같으면 순서를 유지.
         return 0;
       })
+    : unansweredFilterActive
+    ? [...questions].sort((a, b) => a.answerCount - b.answerCount)
     : [...questions];
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -204,9 +205,13 @@ function AllQuestion() {
     setNewestFilterActive(!newestFilterActive);
   };
 
+  const onUnansweredFilterHandler = () => {
+    setUnansweredFilterActive(!unansweredFilterActive);
+  };
+
   const onAskQuestionButtonHandler = () => {
     const token = localStorage.getItem('jwtToken');
-    
+
     if (token) {
       navigate('/question/ask');
     } else {
@@ -215,7 +220,7 @@ function AllQuestion() {
   };
 
   console.log(currentPosts);
-  
+
   return (
     <Container>
       <SideBar />
@@ -224,9 +229,7 @@ function AllQuestion() {
           <MainBarHeaderWrapper>
             <div className="mainbar-header">
               <MainbarHeadline>All Questions</MainbarHeadline>
-              <MainBarHeaderAsK
-                onClick={onAskQuestionButtonHandler}
-              >
+              <MainBarHeaderAsK onClick={onAskQuestionButtonHandler}>
                 <AskBtn>Ask Question</AskBtn>
               </MainBarHeaderAsK>
             </div>
@@ -245,7 +248,12 @@ function AllQuestion() {
                     </div>
                   </NewestButton>
                   <UnansweredButton>
-                    <div className="unanswered-button">Unanswered</div>
+                    <div
+                      className="unanswered-button"
+                      onClick={onUnansweredFilterHandler}
+                    >
+                      Unanswered
+                    </div>
                   </UnansweredButton>
                 </div>
               </DataFilterWrapper>
