@@ -73,6 +73,7 @@ function Login () {
                 localStorage.setItem("jwtToken", response.headers.authorization);
                 localStorage.setItem("refreshToken", response.headers.refresh);
                 dispatch(fetchUser(response.data.memberId))
+                localStorage.setItem("memberId", response.data.memberId)
                 navigate('/home')
             })
             .catch(err => {

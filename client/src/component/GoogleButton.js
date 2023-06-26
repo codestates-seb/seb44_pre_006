@@ -9,9 +9,9 @@ function GoogleButton() {
         document.body.appendChild(script);
     },[])
     
-    const pathname = window.location.pathname
-    const dataClientId = ''
-    const dataLoginId = ''
+    const pathname = window.location.pathname;
+    const dataClientId = '';
+    const dataLoginId = '';
 
     return(
         <div className="GoogleButton">

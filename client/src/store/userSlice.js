@@ -21,6 +21,9 @@ const userSlice = createSlice({
       state.data.name = '';
       state.data.admin = false;
     },
+     setUser(state, action) {
+        state.data.name = action.payload;
+     }
   },
   extraReducers: (builder) => {
     builder
@@ -45,4 +48,5 @@ const userSlice = createSlice({
 });
 
 export default userSlice;
-export const { resetUser } = userSlice.actions;
+export const { resetUser, setUser } = userSlice.actions;
+  

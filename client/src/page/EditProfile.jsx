@@ -6,6 +6,7 @@ import ProfileCartegory from "../component/user/ProfileCategory";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEditUser } from "../api/editUser";
+import {setUser} from "../store/userSlice";
 
 const EditPageContainer = styled.div`
   display: flex;
@@ -73,16 +74,17 @@ function EditProfile() {
   const onSaveHandler = async () => {
     const names = nameRef.current.value;
     const passwords = passwordRef.current.value;
-    const memberId = user.data.userId
+    const memberId = user.data.memberId
     console.log(names);
     console.log(memberId);
 
     dispatch(fetchEditUser({ memberId, names, passwords }));
+    dispatch(setUser(names));
     navigate(`/user/${memberId}`);
   };
 
   const onCancleHandler = async () => {
-    const memberId = user.data.userId
+    const memberId = user.data.memberId
     navigate(`/user/${memberId}`);
   }
 
