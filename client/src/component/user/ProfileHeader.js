@@ -47,6 +47,9 @@ const ProfileContainer = styled.section`
 export default function ProfileHeader(){
     const navigate = useNavigate()
     const user = useSelector(state => state.user)
+    const path = window.location.pathname;
+    const memberId = path.slice(path.lastIndexOf("/") + 1);
+
     return(
         <>
         <ProfileContainer>
@@ -58,8 +61,13 @@ export default function ProfileHeader(){
                 </div>
             </div>
             <div className="rightDiv">
-                <button style={{ backgroundColor: 'var(--blue-500)' }}  onClick={()=>navigate(`/user/edit/${user.data.memberId}`)}>Edit Profile</button>
-                <button style={{ backgroundColor: 'var(--red-400)' }}  onClick={()=>navigate(`/user/delete/${user.data.memberId}`)}>Delete Profile</button>
+                {user.data.memberId == memberId || user.data.admin
+                ? <>
+                    <button style={{ backgroundColor: 'var(--blue-500)' }}  onClick={()=>navigate(`/user/edit/${user.data.memberId}`)}>Edit Profile</button>
+                    <button style={{ backgroundColor: 'var(--red-400)' }}  onClick={()=>navigate(`/user/delete/${user.data.memberId}`)}>Delete Profile</button>
+                </>
+                :<></>}
+                
             </div>
         </ProfileContainer>
         </>

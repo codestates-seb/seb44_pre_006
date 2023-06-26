@@ -92,7 +92,7 @@ const NavUserLink = styled.img`
 const AdminOn = styled.p`
   font-size: 22px;
   color: var(--white);
-  margin: 0 0 0 50px;
+  height: 100%;
   background-color: var(--orange);
   padding: 10px;
 `;
@@ -173,9 +173,9 @@ function Nav() {
           >
             Log out
           </NavLogBtn>
-          {user.data.admin ? <AdminOn>Admin Mode</AdminOn> : null}
         </>
       )}
+      {user.data.admin ? <AdminOn>Admin Mode</AdminOn> : null}
     </NavContainer>
   );
 }
