@@ -11,7 +11,7 @@ function ApiTest() {
 
   const on1_4 = async () => {
     await axios
-    .get('/users/3', {headers:{Authorization: jwt}})
+    .get('/users/7', {headers:{Authorization: jwt}})
     .then(respone => console.log(respone.data))
   }
 

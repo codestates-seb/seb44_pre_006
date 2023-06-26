@@ -72,7 +72,8 @@ const DeleteBtn = styled.button`
 
 function DeleteProfile() {
   const [isChecked, setIsChecked] = useState(false);
-  const memberId = useSelector(state => state.user.data.memberId)
+  const path = window.location.pathname;
+  const memberId = path.slice(path.lastIndexOf("/") + 1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
