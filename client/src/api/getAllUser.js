@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-const BASE_URL = process.env.REACT_APP_EC2_URL;
+// 1.6. 전체 회원 정보 조회
+const URL = process.env.REACT_APP_EC2_URL;
 
 export const fetchAllUser = createAsyncThunk(
   `user/fetchAllUser`,
   async ({ currentPage, postsPerPage }, { rejectWithValue }) => {
-    const url = `${BASE_URL}/users?page=${currentPage}&size=100`;
+    const url = `${URL}/users?page=${currentPage}&size=100`;
     const response = await axios.get(url);
 
     try {
