@@ -1,6 +1,11 @@
 import { styled } from "styled-components";
 import SideBar from "../component/SideBar";
 import { useNavigate } from "react-router";
+import EditHeader from "../component/user/EditHeader";
+import ProfileCartegory from "../component/user/ProfileCategory";
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { fetchEditUser } from "../api/editUser";
 
 const EditPageContainer = styled.div`
   display: flex;
@@ -11,8 +16,6 @@ const EditContainer = styled.div`
 `;
 
 const EditBoxContainer = styled.section`
-  margin-left: 20px;
-
   > .editbox {
     > .edittitle {
       margin-top: 30px;
@@ -59,29 +62,42 @@ const EditBoxContainer = styled.section`
     }
   }
 `;
+
 function EditProfile() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const nameRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const onSaveHandler = async () => {
+    const names = nameRef.current.value;
+    const passwords = passwordRef.current.value;
+    console.log(names);
+
+    dispatch(fetchEditUser({ names, passwords }));
+    // navigate("user/profile");
+  };
+
   return (
     <EditPageContainer>
       <SideBar />
       <EditContainer>
+        <EditHeader />
+        <ProfileCartegory text={`Settings`} />
         <EditBoxContainer>
           <h2>Edit your profile</h2>
           <div className="editbox">
             <div className="edittitle">
               <p>display name</p>
             </div>
-            <input type="text" className="inputbox"></input>
+            <input type="text" className="inputbox" ref={nameRef}></input>
             <div className="edittitle">
               <p>password</p>
             </div>
-            <input type="text" className="inputbox"></input>
+            <input type="text" className="inputbox" ref={passwordRef}></input>
           </div>
           <div className="bottombtn">
-            <button
-              className="savebtn"
-              onClick={() => navigate("user/profile")}
-            >
+            <button className="savebtn" onClick={() => onSaveHandler()}>
               Save profile
             </button>
             <button className="canbtn" onClick={() => navigate("user/profile")}>
