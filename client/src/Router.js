@@ -14,6 +14,7 @@ import AllQuestion from "./page/AllQuestion";
 import AskQuestion from "./page/AskQuestion";
 import Answer from "./page/Answer";
 import ApiTest from "./page/ApiTest";
+import EditQuestion from "./page/EditQuestion";
 
 const router = createBrowserRouter([
   {
@@ -27,48 +28,52 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/user',
+        path: "/user",
         element: <Users />,
       },
       {
-        path: '/user/:memberId',
+        path: "/user/:memberId",
         element: <Profile />,
       },
       {
-        path: '/user/edit/:memberId',
+        path: "/user/edit/:memberId",
         element: <EditProfile />,
       },
       {
-        path: '/user/delete/:memberId',
+        path: "/user/delete/:memberId",
         element: <DeleteProfile />,
       },
       {
-        path: '/user/login',
+        path: "/user/login",
         element: <LogIn />,
       },
       {
-        path: '/user/logout',
+        path: "/user/logout",
         element: <LogOut />,
       },
       {
-        path: '/user/signup',
+        path: "/user/signup",
         element: <SignUp />,
       },
       {
-        path: '/question',
+        path: "/question",
         element: <AllQuestion />,
       },
       {
-        path: '/question/ask',
+        path: "/question/ask",
         element: <AskQuestion />,
       },
       {
-        path: '/question/:id',
+        path: "/question/:id",
         element: <Answer />,
       },
       {
         path: "/apitest",
         element: <ApiTest />,
+      },
+      {
+        path: "/question/edit/:questionId",
+        element: <EditQuestion />,
       },
     ],
   },

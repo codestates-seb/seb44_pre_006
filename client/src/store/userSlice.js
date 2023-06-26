@@ -1,3 +1,4 @@
+
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchUser } from '../api/getUser';
 import { fetchDeleteUser } from '../api/deleteUser';
@@ -44,9 +45,11 @@ const userSlice = createSlice({
       .addCase(fetchDeleteUser.rejected, (state, action) => {
         state.error = action.error;
       });
+
   },
 });
 
 export default userSlice;
 export const { resetUser, setUser } = userSlice.actions;
   
+

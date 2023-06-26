@@ -1,13 +1,14 @@
 import { styled } from "styled-components";
-import SOF from "../asset/SOF_Logo.png"
-import UserNull from "../asset/User_null.png"
-import searchLogo from "../asset/search_logo.svg"
+import SOF from "../asset/SOF_Logo.png";
+import UserNull from "../asset/User_null.png";
+import searchLogo from "../asset/search_logo.svg";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from '../store/userSlice';
 import  {fetchSreachTitle}  from "../api/sreachTitle";
 import {fetchUser} from "../api/getUser";
 import { useEffect } from "react";
+
 
 const NavContainer = styled.header`
   width: 100%;
@@ -19,7 +20,7 @@ const NavContainer = styled.header`
   align-items: center;
   position: fixed;
   z-index: 100;
-  > .imgDiv{
+  > .imgDiv {
     height: 100%;
   }
 `;
@@ -28,7 +29,7 @@ const LogoImag = styled.img`
   margin-left: 100px;
   height: 100%;
   padding: 0 20px;
-  &:hover{
+  &:hover {
     background-color: var(--black-050);
   }
 `;
@@ -39,7 +40,7 @@ const NavLink = styled.div`
   display: flex;
   align-items: center;
   padding: 0 10px;
-  &:hover{
+  &:hover {
     background-color: var(--black-050);
   }
 `;
@@ -89,18 +90,18 @@ const NavUserLink = styled.img`
 `;
 
 const AdminOn = styled.p`
-    font-size: 22px;
-    color: var(--white);
-    margin: 0 0 0 50px;
-    background-color: var(--orange);
-    padding: 10px;
-`
+  font-size: 22px;
+  color: var(--white);
+  margin: 0 0 0 50px;
+  background-color: var(--orange);
+  padding: 10px;
+`;
 
 function Nav() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  const jwtToken = localStorage.getItem('jwtToken');
+  const jwtToken = localStorage.getItem("jwtToken");
 
   useEffect(() => {
     if(user.data.email === "" && jwtToken){
@@ -110,54 +111,70 @@ function Nav() {
   ,[])
 
   const onLogOutHandler = () => {
+
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('memberId');
+
     dispatch(resetUser());
     navigate('/user/login');
   };
 
   // 엔터 키를 누를 때 동작
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       const searchText = event.target.value; // 입력된 텍스트를 사용하여 필요한 동작을 수행합니다.
-      event.target.value = ''; // 검색 이후 입력값 초기화
-      dispatch(fetchSreachTitle(searchText))
-      navigate('/question')
+      event.target.value = ""; // 검색 이후 입력값 초기화
+      dispatch(fetchSreachTitle(searchText));
+      navigate("/question");
     }
-
   };
-
 
   return (
     <NavContainer>
-        <div className="imgDiv"><LogoImag src={SOF} onClick={() =>  navigate('/')} /></div>
-        <NavLink onClick={() => navigate()}>About</NavLink>
+      <div className="imgDiv">
+        <LogoImag src={SOF} onClick={() => navigate("/")} />
+      </div>
+      <NavLink onClick={() => navigate()}>About</NavLink>
       <NavSreachBar>
         <button>
-          <img src={searchLogo} alt='sreachLogo' />
+          <img src={searchLogo} alt="sreachLogo" />
         </button>
-        <input placeholder="Search..."  onKeyPress={handleKeyPress}/>
+        <input placeholder="Search..." onKeyPress={handleKeyPress} />
       </NavSreachBar>
       {!jwtToken ? (
         <>
-          <NavLogBtn backgroundColor="var(--powder-200)" color="var(--powder-700)" onClick={() => navigate('/user/login')}>
+          <NavLogBtn
+            backgroundColor="var(--powder-200)"
+            color="var(--powder-700)"
+            onClick={() => navigate("/user/login")}
+          >
             Log in
           </NavLogBtn>
-          <NavLogBtn backgroundColor="var(--blue-500)" color="var(--blue-050)" onClick={() => navigate('/user/signup')}>
+          <NavLogBtn
+            backgroundColor="var(--blue-500)"
+            color="var(--blue-050)"
+            onClick={() => navigate("/user/signup")}
+          >
             Sign up
           </NavLogBtn>
         </>
       ) : (
         <>
-          <NavUserLink src={UserNull} onClick={() => navigate(`/user/${user.data.memberId}`)}></NavUserLink>
-            <p>{user.data.name}</p>
-          <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)" onClick={() => onLogOutHandler()} >
+
+          <NavUserLink
+            src={UserNull}
+            onClick={() => navigate(`/user/${user.data.memberId}`)}
+          ></NavUserLink>
+          <p>{user.data.name}</p>
+          <NavLogBtn
+            backgroundColor="var(--red-400)"
+            color="var(--red-050)"
+            onClick={() => onLogOutHandler()}
+          >
             Log out
           </NavLogBtn>
-          {user.data.admin
-            ? <AdminOn>Admin Mode</AdminOn>
-            : null}
+          {user.data.admin ? <AdminOn>Admin Mode</AdminOn> : null}
         </>
       )}
     </NavContainer>

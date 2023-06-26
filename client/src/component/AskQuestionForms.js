@@ -7,7 +7,7 @@ const QuestionForm = styled.div`
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      width: 70%;
+      width: 75%;
       margin: 20px 0 50px;
       border: 1px solid var(--black-075);
       border-radius: 3px;
@@ -39,7 +39,7 @@ const QuestionForm = styled.div`
   }
 `;
 
-function AskQuestionForm({ askBodySet , setContent }) {
+function AskQuestionForm({ askBodySet, setContent }) {
   return (
     <QuestionForm>
       <div className="ask-container">
@@ -54,7 +54,7 @@ function AskQuestionForm({ askBodySet , setContent }) {
             </label>
           </div>
           <div className="askform-body" id="ask-body">
-            <EditorBox onChangeHandler={askBodySet} setContent={setContent}/>
+            <EditorBox onChangeHandler={askBodySet} setContent={setContent} />
           </div>
         </div>
       </div>
