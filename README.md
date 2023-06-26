@@ -73,15 +73,17 @@
 **`박지인`**
 
 - 사용자 정보
-
   - 회원가입, 로그인, 회원 탈퇴 기능
   - 회원 정보 수정 기능
   - JWT를 이용한 사용자 인증, 인가 구현
  
-
 - OAuth2 구글 로그인
   - 구글 Cloud API 서비스를 사용한 구글 로그인 기능 구현
   - 로그인에 성공시 JWT accessToken, refreshToken 발급하도록 구현
+ 
+- CI/CD
+  - gitActions로 통합 개발 환경 구축
+  - EC2로 서버 구축, S3 버킷으로 클라이언트 서버 구축, RDS - mysql 사용
  
  <br>
  
