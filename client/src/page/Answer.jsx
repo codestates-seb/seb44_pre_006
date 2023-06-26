@@ -71,8 +71,6 @@ function Answer() {
   const path = window.location.pathname;
   const questionId = path.slice(path.lastIndexOf("/") + 1);
 
-  
-
   const handleSubmit = () => {
     if(answerContent === ""){
       console.log(question)

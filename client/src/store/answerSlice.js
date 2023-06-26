@@ -7,9 +7,7 @@ const  initialState = {
 const answerSlice = createSlice({
     name: 'answer',
     initialState,
-    reducers:{
-
-    }
+    reducers: {},
 })
 
 export default answerSlice;

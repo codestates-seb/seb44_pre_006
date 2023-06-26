@@ -15,6 +15,7 @@ import AskQuestion from "./page/AskQuestion";
 import Answer from "./page/Answer";
 import ApiTest from "./page/ApiTest";
 import EditQuestion from "./page/EditQuestion";
+import EditAnswer from "./page/EditAnswer";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "/question/edit/:questionId",
         element: <EditQuestion />,
+      },
+      {
+        path: "/answer/edit/:answerId",
+        element: <EditAnswer />,
       },
     ],
   },
