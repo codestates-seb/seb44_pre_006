@@ -3,9 +3,9 @@ import SideBar from "../component/SideBar";
 import { useNavigate } from "react-router";
 import AskQuestionForm from "../component/AskQuestionForms";
 import { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchEditQuestion } from "../api/editQuestion";
-import { setQuestion } from "../store/questionSlice";
+import { fetchDeleteQuestion } from "../api/deleteQuestion.js";
 
 const EditContainer = styled.div`
   max-width: 1264px;
@@ -123,6 +123,7 @@ const BottomBtn = styled.section`
 
 function EditQuestion() {
   const [content, setContent] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const titleRef = useRef(null);
@@ -137,6 +138,21 @@ function EditQuestion() {
 
   const onCancleHandler = async () => {
     navigate(`/question/${questionId}`);
+  };
+
+  const handleCheckBoxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const handleDeleteQuestion = async () => {
+    await dispatch(fetchDeleteQuestion(questionId))
+      .then(() => {
+        localStorage.removeItem("questionId");
+        navigate("/question");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -172,9 +188,10 @@ function EditQuestion() {
           <DeleBoxContainer>
             <div>
               <label className="checkinput">
-                <input type="checkbox" />I have read the information stated
-                above and understand the implications of having my question
-                deleted. I wish to proceed with the deletion of my question.
+                <input type="checkbox" onChange={handleCheckBoxChange} />I have
+                read the information stated above and understand the
+                implications of having my question deleted. I wish to proceed
+                with the deletion of my question.
               </label>
             </div>
           </DeleBoxContainer>
@@ -187,7 +204,13 @@ function EditQuestion() {
             <button className="canbtn" onClick={() => onCancleHandler()}>
               Cancel
             </button>
-            <button className="delebtn">Delete</button>
+            <button
+              className="delebtn"
+              disabled={!isChecked}
+              onClick={() => handleDeleteQuestion()}
+            >
+              Delete
+            </button>
           </div>
         </BottomBtn>
       </EditContent>
