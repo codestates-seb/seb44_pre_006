@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const ProfilePageContainer = styled.div`
   display: flex;
+  width: 1264px;
 `
 const ProfileContainer = styled.div`
   width: 75%;
