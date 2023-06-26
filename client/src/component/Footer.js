@@ -20,8 +20,12 @@ const FooterNav = styled.nav`
   vertical-align: baseline;
 
   > ul {
-    color: hsl(210, 8%, 60%);
     list-style-type: none;
+
+    > li > a {
+      text-decoration: none;
+      color: hsl(210, 8%, 60%);
+    }
   }
 `;
 
@@ -39,13 +43,19 @@ function Footer() {
         <Logoimg src={logo} />
         <FooterNav>
           <ul>
-            <li>Questions</li>
+            <li>
+              <a href='/home'>Questions</a>
+            </li>
           </ul>
           <ul>
-            <li>About Team</li>
+            <li>
+              <a href='/about'>About Team</a>
+            </li>
           </ul>
           <ul>
-            <li>GitHub</li>
+            <li>
+              <a href='https://github.com/codestates-seb/seb44_pre_006'>GitHub</a>
+            </li>
           </ul>
         </FooterNav>
         <DesignBy>
