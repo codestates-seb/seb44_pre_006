@@ -182,7 +182,7 @@ function Profile() {
             QnA.answers.slice(0, 5).map(el => (
               <div className="ActivityItem">
                 <p className="view">0</p>
-                <p className="title">{el.content}</p>
+                <p className="title" onClick={()=> navigate(`/answer/${el.id}`)}>{el.content}</p>
                 <p className="createdAt">{displayCreatedAt(el.createdAt)}</p>
               </div>
             ))

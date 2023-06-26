@@ -6,6 +6,7 @@ import SideBar from '../component/SideBar';
 import EditHeader from '../component/user/EditHeader';
 import ProfileCartegory from '../component/user/ProfileCategory';
 import { fetchDeleteUser } from '../api/deleteUser';
+import { resetUser } from '../store/userSlice';
 
 const DelePageContainer = styled.div`
   max-width: 1264px;
@@ -75,7 +76,6 @@ function DeleteProfile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log(memberId);
   const handleCheckBoxChange = () => {
     setIsChecked(!isChecked);
   };
@@ -83,6 +83,10 @@ function DeleteProfile() {
   const handleDeleteProfile = async () => {
     await dispatch(fetchDeleteUser({ memberId }))
     .then(() => {
+      localStorage.removeItem('jwtToken');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('memberId');
+      dispatch(resetUser());
       navigate('/');
     })
     .catch((error) => {

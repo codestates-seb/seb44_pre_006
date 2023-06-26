@@ -4,6 +4,7 @@ import { styled } from "styled-components";
 
 const LoginContainer = styled.div`
   display: flex;
+  width: 1264px;
 `
 const LoginBox = styled.div`
   flex-grow: 1;

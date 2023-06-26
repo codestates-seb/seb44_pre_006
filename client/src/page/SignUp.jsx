@@ -4,6 +4,7 @@ import { styled } from "styled-components";
 
 const SignUpContainer = styled.div`
   display: flex;
+  width: 1264px;
 `
 const SignUpBox = styled.div`
   flex-grow: 1;

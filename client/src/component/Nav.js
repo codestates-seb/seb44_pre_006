@@ -111,11 +111,9 @@ function Nav() {
   ,[])
 
   const onLogOutHandler = () => {
-
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('memberId');
-
     dispatch(resetUser());
     navigate('/user/login');
   };
