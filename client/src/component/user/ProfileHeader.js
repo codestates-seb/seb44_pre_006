@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
 const ProfileContainer = styled.section`
     display: flex;
-    height: 12vh;
+    height: 20vh;
     width: 100%;
     justify-content: space-between;
     
@@ -15,10 +15,19 @@ const ProfileContainer = styled.section`
         align-items: center;
         >img{
             height: 100%;
+            border-radius: 20px;
         }
-        > p {
+        > .userInfo {
             margin-left: 20px;
-            font-size: 200%;
+            & > :first-child {
+                margin: 0;
+                font-size: 200%;
+                color: var(--black);
+            }
+            & > :last-child {
+                margin: 0;
+                color: var(--silver-darker);
+        }
          }
     }
 
@@ -28,8 +37,8 @@ const ProfileContainer = styled.section`
         height: 100%;
         >button{
             padding: 10px;
-            margin-right: 20px;
-            background-color: ${(props) => props.backgroundColor};
+            margin-left: 20px;
+            color: var(--white);
             border-radius: 5px;
         }
     }
@@ -43,11 +52,14 @@ export default function ProfileHeader(){
         <ProfileContainer>
             <div className="leftDiv">
                 <img src={userNull} alt="userNull"/>
-                <p>{user.data.name}</p>
+                <div className="userInfo">
+                    <p>{user.data.name}</p>
+                    <p>{user.data.email}</p>
+                </div>
             </div>
             <div className="rightDiv">
-                <button backgroundColor='' onClick={()=>navigate('user/edit')}>Edit Profile</button>
-                <button backgroundColor='' onClick={()=>navigate('user/delete')}>Delete Profile</button>
+                <button style={{ backgroundColor: 'var(--blue-500)' }}  onClick={()=>navigate(`/user/edit/${user.data.userId}`)}>Edit Profile</button>
+                <button style={{ backgroundColor: 'var(--red-400)' }}  onClick={()=>navigate(`/user/delete/${user.data.userId}`)}>Delete Profile</button>
             </div>
         </ProfileContainer>
         </>

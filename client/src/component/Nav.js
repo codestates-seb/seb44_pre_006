@@ -140,7 +140,7 @@ function Nav() {
         </>
       ) : (
         <>
-          <NavUserLink src={UserNull} onClick={() => navigate(`/user/${user.data.memberId}`)}></NavUserLink>
+          <NavUserLink src={UserNull} onClick={() => navigate(`/user/${user.data.userId}`)}></NavUserLink>
             <p>{user.data.name}</p>
           <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)" onClick={() => onLogOutHandler()}>
             Log out
