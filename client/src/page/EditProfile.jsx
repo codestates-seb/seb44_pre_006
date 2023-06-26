@@ -11,6 +11,7 @@ import {setUser} from "../store/userSlice";
 const EditPageContainer = styled.div`
   display: flex;
   width: 1264px;
+  
 `;
 const EditContainer = styled.div`
   width: 100%;
