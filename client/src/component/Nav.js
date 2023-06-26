@@ -111,11 +111,9 @@ function Nav() {
   ,[])
 
   const onLogOutHandler = () => {
-
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('memberId');
-
     dispatch(resetUser());
     navigate('/user/login');
   };
@@ -170,7 +168,8 @@ function Nav() {
           <NavLogBtn
             backgroundColor="var(--red-400)"
             color="var(--red-050)"
-            onClick={() => onLogOutHandler()}
+            onClick={() => navigate("/user/logout")
+            }
           >
             Log out
           </NavLogBtn>
