@@ -82,7 +82,7 @@
   - 로그인에 성공시 JWT accessToken, refreshToken 발급하도록 구현
  
 - CI/CD
-  - gitActions로 통합 개발 환경 구축
+  - gitActions로 통합 개발 환경 구축 (https://github.com/jeein2222/seb44_pre_006)
   - EC2로 서버 구축, S3 버킷으로 클라이언트 서버 구축, RDS - mysql 사용
  
  <br>
