@@ -53,6 +53,8 @@ export default function ProfileHeader(){
     const path = window.location.pathname;
     const [user, setUser] = useState(null)
     const memberId = path.slice(path.lastIndexOf("/") + 1);
+    const localId = localStorage.getItem("memberId")
+    const admin = useSelector(state => state.user.data.admin)
 
     useEffect(()=> {
         dispatch(fetchAllUserData())
@@ -74,7 +76,7 @@ export default function ProfileHeader(){
                     </div>
                 </div>
                 <div className="rightDiv">
-                {user.memberId == memberId
+                {localId == memberId || admin
                 ? (
                 <>
                     <button style={{ backgroundColor: 'var(--blue-500)' }}  onClick={()=>navigate(`/user/edit/${memberId}`)}>Edit Profile</button>
