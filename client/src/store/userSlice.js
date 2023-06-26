@@ -3,7 +3,7 @@ import { fetchUser } from '../api/getUser';
 
 const  initialState = {
   data : {
-    userId : 0,
+    memberId : 0,
     email : '',
     name : '',
     admin : false
@@ -15,15 +15,18 @@ const userSlice = createSlice({
     initialState,
     reducers: {
       resetUser(state) {
-        state.data.userId = 0;
+        state.data.memberId = 0;
         state.data.email = '';
         state.data.name = '';
         state.data.admin = false;
       },
+      setUser(state, action) {
+        state.data.name = action.payload;
+      }
     },
     extraReducers : builder => { 
       builder.addCase(fetchUser.fulfilled, (state, action) => {
-        state.data.userId = action.payload.data.memberId;
+        state.data.memberId = action.payload.data.memberId;
         state.data.email = action.payload.data.email;
         state.data.name = action.payload.data.name;
         if(action.payload.data.email === process.env.REACT_APP_ADMIN_ID)
@@ -33,5 +36,5 @@ const userSlice = createSlice({
   });
 
 export default userSlice;
-export const { resetUser } = userSlice.actions;
+export const { resetUser, setUser } = userSlice.actions;
   
