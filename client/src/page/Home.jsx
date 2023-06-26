@@ -1,7 +1,13 @@
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import SideBar from '../component/SideBar';
 import QuestionItem from '../component/QuestionItem';
+import { fetchTopQuestions } from '../api/topQuestion';
+import Loader from '../ui/Loader';
+import axios from 'axios';
+// import dummy from '../data/dummy';
 
 const Container = styled.div`
   max-width: 1264px;
@@ -28,34 +34,40 @@ const MainBar = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 `;
 
-const MainBarHeader = styled.div`
+const MainBarHeaderWrapper = styled.div`
   display: flex;
-  width: 100%;
-  height: 50px;
 
-  .mainbar-headline {
-    font-size: 1.7rem !important;
-    flex: 1 auto !important;
-    line-height: 1.3;
-    margin: 0 0 1rem;
+  .mainbar-header {
     display: flex;
+    width: 100%;
+    height: 50px;
   }
+`;
+
+const MainbarHeadline = styled.h1`
+  font-size: 1.7rem !important;
+  flex: 1 auto !important;
+  line-height: 1.3;
+  margin: 0 0 1rem;
+  display: flex;
 `;
 
 const MainBarHeaderAsK = styled.div`
   display: flex;
   margin-left: 12px;
-  font-size: 15px;
+  font-size: 0.9rem;
 `;
 
 const AskBtn = styled.a`
-  font-size: 100%;
-  background-color: #0a95ff;
-  color: #ffffff;
+  padding: 0.65rem;
   width: 101px;
   height: 35px;
+  white-space: nowrap;
+  background-color: #0a95ff;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,20 +84,47 @@ const AskBtn = styled.a`
 `;
 
 function Home() {
+  const { status, questions } = useSelector((state) => state.question);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(fetchTopQuestions());
+  }, [dispatch]);
 
+  const onAskQuestionButtonHandler = () => {
+    const token = localStorage.getItem('jwtToken');
+    
+    if (token) {
+      navigate('/question/ask');
+    } else {
+      navigate('/user/login');
+    }
+  };
+
+  console.log(questions);
+  console.log(status);
+  
   return (
     <Container>
       <SideBar />
       <Content>
         <MainBar>
-          <MainBarHeader>
-            <h1 className="mainbar-headline">Top Questions</h1>
-            <MainBarHeaderAsK onClick={() => {navigate('/question/ask');}}>
-              <AskBtn>Ask Question</AskBtn>
-            </MainBarHeaderAsK>
-          </MainBarHeader>
-          <QuestionItem />
+          <MainBarHeaderWrapper>
+            <div className="mainbar-header">
+              <MainbarHeadline>Top Questions</MainbarHeadline>
+              <MainBarHeaderAsK
+                onClick={onAskQuestionButtonHandler}
+              >
+                <AskBtn>Ask Question</AskBtn>
+              </MainBarHeaderAsK>
+            </div>
+          </MainBarHeaderWrapper>
+          {status === 'loading' && <Loader />}
+          {status === 'succeed' &&
+            questions.map((item) => (
+              <QuestionItem key={item.questionId} {...item} />
+            ))}
         </MainBar>
       </Content>
     </Container>
