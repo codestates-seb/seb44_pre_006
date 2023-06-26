@@ -9,6 +9,7 @@
 - **팀 명 :** 🌙 낭만코더
 - **프로젝트 명 :** Stackoverflow
 - **프로젝트 기간 :** 2023.06.9 - 2023.06.27
+- **팀 노션주소 :** [🌙 낭만코더](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350)
 
 <br/>
 
@@ -144,11 +145,18 @@
 <br/>
 
 ### <span style=""> **Front-end** </span>
+|                             Html                             |                             CSS                              |                          JavaScript                          |                            Typescript                             |                    React                     |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img alt="Html" src ="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/440px-HTML5_logo_and_wordmark.svg.png" width="60" height="60" /> | <div style="display: flex; align-items: flex-start;"><img src="https://user-images.githubusercontent.com/111227745/210204643-4c3d065c-59ec-481d-ac13-cea795730835.png" alt="CSS" width="45" height="60" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="80" height="80" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://user-images.githubusercontent.com/55175301/156929678-b21d4392-ebfd-491c-886c-a5c9dc24f7c2.svg" alt="typescript" width="80" height="80" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/react-icon.svg" alt="icon" width="65" height="65" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://styled-components.com/logo.png" alt="styled-components icon" width="100" height="100" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://axios-http.com/assets/logo.svg" width="65" height="65"/></div> | <div style="display: flex; align-items: flex-start;"><img src="https://user-images.githubusercontent.com/81786662/210203759-1bd2d0ea-86b3-43c0-8e30-44436d73bb9f.png" width="55" height="55"/></div> | <div style="display: flex; align-items: flex-start;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/ESLint_logo.svg/1200px-ESLint_logo.svg.png" width="55" height="55"/></div> |
+
 
 <br/>
 
-### <span style=""> **Back-end** 
-### </span>
+### <span style=""> **Back-end** ### </span>
+|                             Java                             |                            Spring                            |                        Spring<br>Boot                        |                            mySQL                             |                             AWS                              |                             JWT                              |                             Oauth2                              |                             Postman                              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/java-icon.svg" alt="icon" width="65" height="65" /></div> | <img alt="spring logo" src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" height="50" width="50" > | <img alt="spring-boot logo" src="https://t1.daumcdn.net/cfile/tistory/27034D4F58E660F616" width="65" height="65" > | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="icon" width="65" height="65" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="icon" width="65" height="65" /></div> | <img alt="jwt logo" src="https://i.ibb.co/xzJ0tYJ/jwt-logo.png" width="65" height="65" > | <img alt="oauth2 logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Oauth_logo.svg" width="65" height="65"/></div> | <img alt="postman logo" src="https://i.ibb.co/jMMf3Fw/postman-icon.png" width="65" height="65"/></div> |
+
 
 ## Service 
 
@@ -157,5 +165,9 @@
 ## Documents
 ### [사용자요구사항 정의서](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350f?p=afe3b397714a49dfba59090ac8095406&pm=s)
 ### [테이블 명세서](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350f?p=e7400232f43a4ab186c29b00b1e77118&pm=s)
+### ERD
 ### [API명세서](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350f?p=c6725bd41a184bab8d618081b75d0183&pm=s)
 ### [화면정의서](https://file.notion.so/f/s/067948eb-87e8-4e50-91a0-20fd916462da/0ee2b19e-b34b-48e3-8b95-57d61c1e14fe___%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A5.pdf?id=e9a666c5-1e03-4689-b460-522e137d5507&table=block&spaceId=82d63a72-8254-4cde-bf1e-b2597b7c099c&expirationTimestamp=1687846624368&signature=2nnLSwdwhRCXaTZKTr8uExB4wVitzCvkz6Vm9Z1gEtc&downloadName=%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A5.pdf)
+
+
+
