@@ -56,37 +56,36 @@ export default function ProfileHeader(){
 
     useEffect(()=> {
         dispatch(fetchAllUserData())
-        .then(data => setUser(data.payload.data))
-        .then(console.log(user))
-        
+        .then(data =>  data.payload.data)
+        .then(users => users.filter(user => user.memberId == memberId))
+        .then(data => setUser(data[0]))
     },[dispatch])
     
-
     return(
         <>
-        <ProfileContainer>
-            {/* {user
-            ?(<div>
+            {user
+            ?(
+            <ProfileContainer>
                 <div className="leftDiv">
-                <img src={userNull} alt="userNull"/>
-                <div className="userInfo">
-                    <p>{user.data.name}</p>
-                    <p>{user.data.email}</p>
+                    <img src={userNull} alt="userNull"/>
+                    <div className="userInfo">
+                        <p>{user.name}</p>
+                        <p>{user.email}</p>
+                    </div>
                 </div>
-            </div>
-            <div className="rightDiv">
-                {user.data.memberId == memberId || user.data.admin
-                ? <div>
+                <div className="rightDiv">
+                {user.memberId == memberId
+                ? (
+                <>
                     <button style={{ backgroundColor: 'var(--blue-500)' }}  onClick={()=>navigate(`/user/edit/${memberId}`)}>Edit Profile</button>
                     <button style={{ backgroundColor: 'var(--red-400)' }}  onClick={()=>navigate(`/user/delete/${memberId}`)}>Delete Profile</button>
+                </>)
+                :<></>}
                 </div>
-                :<div></div>}
-                
-            </div>
-            </div>)
-            : null} */}
+            </ProfileContainer>)
+            : null}
 
-        </ProfileContainer>
+        
         </>
     )
 }
