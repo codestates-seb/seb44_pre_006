@@ -4,16 +4,15 @@ import userNull from "../asset/User_null.png"
 import displayCreatedAt from '../utils/displayCreateAt';
 import { useSelector } from "react-redux";
 
-const ContentsContainer = styled.section`
-    width: 70vw;
-    padding: 30px; 
-`
-const TextField = styled.div`
 
-`
-const TagField = styled.div`
-`
+const ContentsContainer = styled.section`
+  width: 70vw;
+  padding: 30px;
+`;
+const TextField = styled.div``;
+const TagField = styled.div``;
 const UserField = styled.div`
+
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
@@ -24,39 +23,44 @@ const UserField = styled.div`
         color: var(--silver-darker)
     }
     
-`
+`;
 const UserBox = styled.div`
-    width: 200px;
-    height: 70px;
-    background-color: var(--powder-100);
-    padding: 5px 7px; 
+  width: 200px;
+  height: 70px;
+  background-color: var(--powder-100);
+  padding: 5px 7px;
+  display: flex;
+  flex-direction: column;
+  > .askDate {
+    margin: 0 0 3px 0;
+    color: var(--silver-darker);
+    font-size: small;
+  }
+  > .userInfo {
+    flex-grow: 1;
     display: flex;
-    flex-direction: column;
-    > .askDate {
-        margin: 0 0 3px 0;
-        color: var(--silver-darker);
-        font-size: small;
+    align-items: start;
+    > img {
+      position: relative;
+      width: 40px;
+      height: auto;
+      margin: px;
     }
-    > .userInfo {
-        flex-grow: 1;
-        display: flex;
-        align-items: start;
-        >img{
-            position: relative;
-            width: 40px;
-            height: auto;
-            margin: px;
-        }
-        >p{
-            margin: 0 0 0 10px;
-            color: var(--blue-600);
-        }
+    > p {
+      margin: 0 0 0 10px;
+      color: var(--blue-600);
     }
-`
-function AskBox({question}) {
+  }
+`;
+function AskBox({ question }) {
+  const navigate = useNavigate();
+  const user = useSelector(state => state.user)
+  const onEditHandler = async () => {
+    const path = window.location.pathname;
+    const questionId = path.slice(path.lastIndexOf("/") + 1);
+    navigate(`/question/edit/${questionId}`);
+  };
 
-    const navigate = useNavigate();
-    const user = useSelector(state => state.user)
     return(
         <ContentsContainer>
             <TextField>
@@ -67,7 +71,7 @@ function AskBox({question}) {
             </TagField>
             <UserField>
                 {question.createdBy === user.data.name || user.data.admin
-                ? <p className="editBtn" onClick={() => navigate()}>Edit</p>
+                ? <p className="editBtn" onClick={() => onEditHandler()}>Edit</p>
                 : <p></p>}
                 <UserBox className="userBox">
                     <p className="askDate">asked {displayCreatedAt(question.createdAt)}</p>
@@ -79,6 +83,7 @@ function AskBox({question}) {
             </UserField>
         </ContentsContainer>
     )
+
 }
 
 export default AskBox;

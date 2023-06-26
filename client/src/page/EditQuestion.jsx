@@ -2,6 +2,10 @@ import { styled } from "styled-components";
 import SideBar from "../component/SideBar";
 import { useNavigate } from "react-router";
 import AskQuestionForm from "../component/AskQuestionForms";
+import { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchEditQuestion } from "../api/editQuestion";
+import { setQuestion } from "../store/questionSlice";
 
 const EditContainer = styled.div`
   max-width: 1264px;
@@ -55,6 +59,15 @@ const BodyText = styled.section`
   }
 `;
 
+const DeleBoxContainer = styled.section`
+  > div {
+    width: 70%;
+    margin-bottom: 24px;
+    padding: 24px;
+    border-radius: 3px;
+    border-top: 1px solid var(--black-200);
+  }
+`;
 const BottomBtn = styled.section`
   > .bottombtn {
     margin-top: 10px;
@@ -85,10 +98,47 @@ const BottomBtn = styled.section`
         background-color: var(--powder);
       }
     }
+    > .delebtn {
+      margin: 4px;
+      padding: 10px;
+      border: 1px solid var(--red-700);
+      border-radius: 3px;
+      color: #fff;
+      background-color: var(--red-600);
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &:hover {
+        &:disabled {
+          background-color: var(--red-700);
+        }
+      }
+    }
   }
 `;
+
 function EditQuestion() {
+  const [content, setContent] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const titleRef = useRef(null);
+  const path = window.location.pathname;
+  const questionId = path.slice(path.lastIndexOf("/") + 1);
+
+  const onSaveHandler = async () => {
+    const titles = titleRef.current.value;
+    dispatch(fetchEditQuestion({ questionId, titles, content }));
+    navigate(`/question/${questionId}`);
+  };
+
+  const onCancleHandler = async () => {
+    navigate(`/question/${questionId}`);
+  };
+
   return (
     <EditContainer>
       <SideBar />
@@ -113,21 +163,31 @@ function EditQuestion() {
             <div className="edittitle">
               <h3>Title</h3>
             </div>
-            <input type="text" className="inputbox"></input>
+            <input type="text" className="inputbox" ref={titleRef}></input>
           </div>
         </TitleContainer>
         <BodyText className="BodyText">
           <h3>Body</h3>
-          <AskQuestionForm />
+          <AskQuestionForm setContent={setContent} />
+          <DeleBoxContainer>
+            <div>
+              <label className="checkinput">
+                <input type="checkbox" />I have read the information stated
+                above and understand the implications of having my question
+                deleted. I wish to proceed with the deletion of my question.
+              </label>
+            </div>
+          </DeleBoxContainer>
         </BodyText>
         <BottomBtn>
           <div className="bottombtn">
-            <button className="savebtn" onClick={() => navigate("/")}>
+            <button className="savebtn" onClick={() => onSaveHandler()}>
               Save profile
             </button>
-            <button className="canbtn" onClick={() => navigate("/")}>
+            <button className="canbtn" onClick={() => onCancleHandler()}>
               Cancel
             </button>
+            <button className="delebtn">Delete</button>
           </div>
         </BottomBtn>
       </EditContent>
