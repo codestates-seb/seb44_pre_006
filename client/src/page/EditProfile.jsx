@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import EditHeader from "../component/user/EditHeader";
 import ProfileCartegory from "../component/user/ProfileCategory";
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchEditUser } from "../api/editUser";
 
 const EditPageContainer = styled.div`
@@ -64,6 +64,7 @@ const EditBoxContainer = styled.section`
 `;
 
 function EditProfile() {
+  const user = useSelector(state => state.user)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const nameRef = useRef(null);
@@ -72,11 +73,18 @@ function EditProfile() {
   const onSaveHandler = async () => {
     const names = nameRef.current.value;
     const passwords = passwordRef.current.value;
+    const memberId = user.data.userId
     console.log(names);
+    console.log(memberId);
 
-    dispatch(fetchEditUser({ names, passwords }));
-    // navigate("user/profile");
+    dispatch(fetchEditUser({ memberId, names, passwords }));
+    navigate(`/user/${memberId}`);
   };
+
+  const onCancleHandler = async () => {
+    const memberId = user.data.userId
+    navigate(`/user/${memberId}`);
+  }
 
   return (
     <EditPageContainer>
@@ -100,7 +108,7 @@ function EditProfile() {
             <button className="savebtn" onClick={() => onSaveHandler()}>
               Save profile
             </button>
-            <button className="canbtn" onClick={() => navigate("user/profile")}>
+            <button className="canbtn" onClick={() => onCancleHandler()}>
               Cancel
             </button>
           </div>
