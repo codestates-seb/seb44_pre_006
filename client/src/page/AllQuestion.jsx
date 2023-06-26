@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SideBar from '../component/SideBar';
 import QuestionItem from '../component/QuestionItem';
-import { fetchAllQuestions } from '../api/question';
+import { fetchAllQuestions } from '../api/allQuestion';
 import Loader from '../ui/Loader';
 import Pagination from '../ui/Pagination';
 import axios from 'axios';
