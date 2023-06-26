@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from '../store/userSlice';
 import  {fetchSreachTitle}  from "../api/sreachTitle";
+import {fetchUser} from "../api/getUser";
+import { useEffect } from "react";
 
 const NavContainer = styled.header`
   width: 100%;
@@ -100,11 +102,19 @@ function Nav() {
   const user = useSelector((state) => state.user);
   const jwtToken = localStorage.getItem('jwtToken');
 
+  useEffect(() => {
+    if(user.data.email === "" && jwtToken){
+      dispatch(fetchUser(localStorage.getItem('memberId')));
+    }
+  }
+  ,[])
+
   const onLogOutHandler = () => {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('refreshToken');
-    window.location.reload();
+    localStorage.removeItem('memberId');
     dispatch(resetUser());
+    navigate('/user/login');
   };
 
   // 엔터 키를 누를 때 동작
@@ -140,9 +150,9 @@ function Nav() {
         </>
       ) : (
         <>
-          <NavUserLink src={UserNull} onClick={() => navigate(`/user/${user.data.userId}`)}></NavUserLink>
+          <NavUserLink src={UserNull} onClick={() => navigate(`/user/${user.data.memberId}`)}></NavUserLink>
             <p>{user.data.name}</p>
-          <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)" onClick={() => onLogOutHandler()}>
+          <NavLogBtn backgroundColor="var(--red-400)" color="var(--red-050)" onClick={() => onLogOutHandler()} >
             Log out
           </NavLogBtn>
           {user.data.admin
