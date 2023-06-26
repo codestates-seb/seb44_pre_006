@@ -92,7 +92,7 @@ const NavUserLink = styled.img`
 const AdminOn = styled.p`
   font-size: 22px;
   color: var(--white);
-  margin: 0 0 0 50px;
+  height: 100%;
   background-color: var(--orange);
   padding: 10px;
 `;
@@ -131,7 +131,7 @@ function Nav() {
   return (
     <NavContainer>
       <div className="imgDiv">
-        <LogoImag src={SOF} onClick={() => navigate("/")} />
+        <LogoImag src={SOF} onClick={() => navigate("/home")} />
       </div>
       <NavLink onClick={() => navigate()}>About</NavLink>
       <NavSreachBar>
@@ -168,13 +168,14 @@ function Nav() {
           <NavLogBtn
             backgroundColor="var(--red-400)"
             color="var(--red-050)"
-            onClick={() => onLogOutHandler()}
+            onClick={() => navigate("/user/logout")
+            }
           >
             Log out
           </NavLogBtn>
-          {user.data.admin ? <AdminOn>Admin Mode</AdminOn> : null}
         </>
       )}
+      {user.data.admin ? <AdminOn>Admin Mode</AdminOn> : null}
     </NavContainer>
   );
 }

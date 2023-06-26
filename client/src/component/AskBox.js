@@ -1,7 +1,9 @@
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
-import userNull from "../asset/User_null.png";
-import displayCreatedAt from "../utils/displayCreateAt";
+import userNull from "../asset/User_null.png"
+import displayCreatedAt from '../utils/displayCreateAt';
+import { useSelector } from "react-redux";
+
 
 const ContentsContainer = styled.section`
   width: 70vw;
@@ -10,14 +12,17 @@ const ContentsContainer = styled.section`
 const TextField = styled.div``;
 const TagField = styled.div``;
 const UserField = styled.div`
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
 
-  > .editBtn {
-    margin: 0;
-    color: var(--silver-darker);
-  }
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    > .editBtn {
+        margin: 0;
+        color: var(--silver-darker)
+    }
+    
 `;
 const UserBox = styled.div`
   width: 200px;
@@ -49,33 +54,36 @@ const UserBox = styled.div`
 `;
 function AskBox({ question }) {
   const navigate = useNavigate();
-
+  const user = useSelector(state => state.user)
   const onEditHandler = async () => {
     const path = window.location.pathname;
     const questionId = path.slice(path.lastIndexOf("/") + 1);
     navigate(`/question/edit/${questionId}`);
   };
 
-  return (
-    <ContentsContainer>
-      <TextField>{question.content}</TextField>
-      <TagField>{/* 태그 필드 */}</TagField>
-      <UserField>
-        <p className="editBtn" onClick={() => onEditHandler()}>
-          Edit
-        </p>
-        <UserBox className="userBox">
-          <p className="askDate">
-            asked {displayCreatedAt(question.createdAt)}
-          </p>
-          <div className="userInfo">
-            <img src={userNull} alt="userNull" />
-            <p>{question.createdBy}</p>
-          </div>
-        </UserBox>
-      </UserField>
-    </ContentsContainer>
-  );
+    return(
+        <ContentsContainer>
+            <TextField>
+            {question.content}
+            </TextField>
+            <TagField>
+                {/* 태그 필드 */}
+            </TagField>
+            <UserField>
+                {question.createdBy === user.data.name || user.data.admin
+                ? <p className="editBtn" onClick={() => onEditHandler()}>Edit</p>
+                : <p></p>}
+                <UserBox className="userBox">
+                    <p className="askDate">asked {displayCreatedAt(question.createdAt)}</p>
+                    <div className="userInfo">
+                        <img src={userNull} alt='userNull'/>
+                        <p>{question.createdBy}</p>
+                    </div>
+                </UserBox>
+            </UserField>
+        </ContentsContainer>
+    )
+
 }
 
 export default AskBox;

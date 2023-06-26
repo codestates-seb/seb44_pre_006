@@ -109,9 +109,9 @@ function Profile() {
   const [QnA, setQnA] = useState(null)
   const navigate = useNavigate()
 
+
   useEffect(() => {
     dispatch(fetchGetUserQnA(memberId)).then(data => setQnA(data.payload.data));
-    console.log(QnA)
   },[dispatch])
 
   return (

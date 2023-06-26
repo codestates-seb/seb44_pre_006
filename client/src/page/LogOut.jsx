@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { resetUser } from "../store/userSlice";
 
 const LogoutContainer = styled.div`
   display: flex;
@@ -65,6 +67,17 @@ const LogoutForm = styled.div`
 `;
 function LogOut() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onLogOutHandler = () => {
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('memberId');
+    dispatch(resetUser());
+    navigate('/user/login');
+  };
+
+
   return (
     <LogoutContainer>
       <ItemContainer>
@@ -74,7 +87,7 @@ function LogOut() {
         </div>
         <LogoutForm>
           <div className="topbtn">
-            <button className="outbtn" onClick={() => navigate("/")}>
+            <button className="outbtn" onClick={onLogOutHandler}>
               Log out
             </button>
             <button className="canbtn" onClick={() => navigate("/home")}>

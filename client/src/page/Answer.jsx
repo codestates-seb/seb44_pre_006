@@ -97,7 +97,7 @@ function Answer() {
       <AnswerHeader className="AnswerHeader">
         <div className="topDiv">
           <h2>{question.title}</h2>
-          <AskBtn onClick={() => navigate('/questions/ask')}>Ask Question</AskBtn>
+          <AskBtn onClick={() => navigate('/question/ask')}>Ask Question</AskBtn>
         </div>
         <div className="bottomDiv">
           <div className="infoBox">
