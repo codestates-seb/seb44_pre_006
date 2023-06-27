@@ -43,8 +43,18 @@
 
 **`김형일`**
 
-- 컴포넌트
-  - Side Bar 컴포넌트 구현 
+1) components
+
+  - Side Bar 컴포넌트 구현
+
+2) api
+   
+  - 1.3. 회원 정보 수정 - editUser
+  - 2.2. 질문 수정  - eidtQuestion
+  - 2.3. 질문 삭제  - deleteQuestion
+
+3) page
+   
 - 메인페이지
   - 메인페이지 구현
 - 회원정보 수정 
