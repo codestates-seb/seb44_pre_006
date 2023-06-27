@@ -6,6 +6,7 @@ import ProfileCartegory from "../component/user/ProfileCategory";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEditUser } from "../api/editUser";
+import ProfileHeader from "../component/user/ProfileHeader";
 
 const EditPageContainer = styled.div`
   display: flex;
@@ -80,6 +81,7 @@ function EditProfile() {
 
     dispatch(fetchEditUser({ memberId, names, passwords }));
     navigate(-1);
+    window.location.reload();
   };
 
   const onCancleHandler = async () => {
@@ -90,7 +92,7 @@ function EditProfile() {
     <EditPageContainer>
       <SideBar />
       <EditContainer>
-        <EditHeader />
+        <ProfileHeader />
         <ProfileCartegory text={`Settings`} />
         <EditBoxContainer>
           <h2>Edit your profile</h2>

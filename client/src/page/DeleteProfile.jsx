@@ -3,10 +3,10 @@ import { styled } from 'styled-components';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import SideBar from '../component/SideBar';
-import EditHeader from '../component/user/EditHeader';
 import ProfileCartegory from '../component/user/ProfileCategory';
 import { fetchDeleteUser } from '../api/deleteUser';
 import { resetUser } from '../store/userSlice';
+import ProfileHeader from '../component/user/ProfileHeader';
 
 const DelePageContainer = styled.div`
   max-width: 1264px;
@@ -76,6 +76,7 @@ function DeleteProfile() {
   const memberId = path.slice(path.lastIndexOf("/") + 1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const admin = useSelector(state => state.user.data.admin)
 
   const handleCheckBoxChange = () => {
     setIsChecked(!isChecked);
@@ -84,10 +85,12 @@ function DeleteProfile() {
   const handleDeleteProfile = async () => {
     await dispatch(fetchDeleteUser({ memberId }))
     .then(() => {
-      localStorage.removeItem('jwtToken');
-      localStorage.removeItem('refreshToken');
-      localStorage.removeItem('memberId');
-      dispatch(resetUser());
+      if(!admin){
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('memberId');
+        dispatch(resetUser());
+      }
       navigate('/');
     })
     .catch((error) => {
@@ -99,7 +102,7 @@ function DeleteProfile() {
     <DelePageContainer>
       <SideBar />
       <DeleContainer>
-        <EditHeader />
+        <ProfileHeader />
         <ProfileCartegory text={`Settings`} />
         <h2>Delete Profile</h2>
         <DeleBoxContainer>

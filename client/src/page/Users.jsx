@@ -7,6 +7,8 @@ import UserItem from '../component/user/users/UserItem';
 import Pagination from '../ui/Pagination';
 import Loader from '../ui/Loader';
 import { fetchAllUser } from '../api/getAllUser';
+import {fetchDeleteAllUser} from '../api/AllUserDelete'
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   max-width: 1264px;
@@ -38,12 +40,27 @@ const UserGrid = styled.div`
   gap: 1rem 1rem;
 `;
 
+const DeleteBtn = styled.div`
+   padding: 10px;
+   width: 120px;
+   height: 40px;
+  margin-left: 20px;
+  color: var(--white);
+  border-radius: 5px;
+  background-color: var(--red-600);
+  &:hover{
+    background-color: var(--red-300);
+  }
+`
+
 function Users() {
   const { status, users } = useSelector((state) => state.alluser);
+  const admin = useSelector(state => state.user.data.admin)
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
   const [searchText, setSearchText] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchAllUser({ currentPage, postsPerPage }));
@@ -79,6 +96,8 @@ function Users() {
 
   const onPaginate = (pageNum) => setCurrentPage(pageNum);
 
+  
+  
   return (
     <Container>
       <SideBar />
@@ -91,6 +110,18 @@ function Users() {
         >
           searchBar
         </SearchBar>
+        {admin
+        ?(
+          <DeleteBtn onClick={() => {
+            dispatch(fetchDeleteAllUser())
+            localStorage.removeItem('jwtToken');
+            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('memberId');
+            navigate('/')
+            }}>User All Delete</DeleteBtn>
+        )
+        : null}
+
         <GridContainer>
           <UserGrid>
             {status === 'loading' && <Loader />}

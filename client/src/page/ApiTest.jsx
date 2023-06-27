@@ -5,7 +5,7 @@ function ApiTest() {
 
   const on1_3 = async () => {
     await axios
-    .patch('/users/3',{mamberId: 3, name: "이지효", password: 1234}, {headers: {Authorization: jwt} })
+    .patch('/users/7',{mamberId: 7, name: "장장원영", password: 1234}, {headers: {Authorization: jwt} })
     .then(respone => console.log(respone.data))
   } 
 
