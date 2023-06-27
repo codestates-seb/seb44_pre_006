@@ -9,12 +9,12 @@
 - **팀 명 :** 🌙 낭만코더 
 - **프로젝트 명 :** Stackoverflow
 - **프로젝트 기간 :** 2023.06.9 - 2023.06.27
-- **배포링크 :** [배포링크]()
-- **노션링크 :** [노션 바로가기](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350)
+- **배포링크 :** [✈︎ 배포링크]()
+- **노션링크 :** [✈︎ 노션 바로가기](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350)
 
 <br/>
 
-## 팀 소개
+## 🌟 팀 소개
 
 | ![한원영](https://avatars.githubusercontent.com/u/85989215?v=4) | ![김형일](https://avatars.githubusercontent.com/u/124700383?v=4) | ![이지효](https://avatars.githubusercontent.com/u/91511828?v=4) | ![박지인](https://avatars.githubusercontent.com/u/96341808?v=4) | ![김어진](https://avatars.githubusercontent.com/u/124785394?v=4) | ![이지윤](https://avatars.githubusercontent.com/u/121713161?v=4) | ![최서우](https://avatars.githubusercontent.com/u/119303663?v=4) |
 | :-------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------------: | :------------------------------------------------------------------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
@@ -104,16 +104,10 @@
  <br>
 
  **`이지윤`**
-
-- 기능 외
-
-  - 기능 외1
-  - 기능 외2
  
+- 답변
+  - 답변 작성, 수정, 삭제, 조회 기능
 
-- 기능
-  - 기능1
-  - 기능2
  
  <br>
 
@@ -136,7 +130,7 @@
 
 <br/>
 
-## Stacks
+## 🛠️ Stacks
 
 ### <span style=""> **Tools** </span>
 |                            Github                            |                           Discord                            |                            Notion                            |                              Jira                         |                              Zoom                         |
@@ -153,16 +147,17 @@
 <br/>
 
 ### <span style=""> **Back-end** </span>
-|                             Java                             |                            Spring                            |                        Spring<br>Boot                        |                            mySQL                             |                             AWS                              |                             JWT                              |                             Oauth2                              |                             Postman                              |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/java-icon.svg" alt="icon" width="65" height="65" /></div> | <img alt="spring logo" src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" height="50" width="50" > | <img alt="spring-boot logo" src="https://t1.daumcdn.net/cfile/tistory/27034D4F58E660F616" width="65" height="65" > | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="icon" width="65" height="65" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="icon" width="65" height="65" /></div> | <img alt="jwt logo" src="https://i.ibb.co/xzJ0tYJ/jwt-logo.png" width="65" height="65" > | <img alt="oauth2 logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Oauth_logo.svg" width="65" height="65"/></div> | <img alt="postman logo" src="https://i.ibb.co/jMMf3Fw/postman-icon.png" width="65" height="65"/></div> |
-
-
-## Service 
+|                             Java                             |                            Spring                            |                        Spring<br>Boot                        |                            mySQL                             |                             AWS                              |                             JWT                              |                             Oauth2                              |  
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/java-icon.svg" alt="icon" width="65" height="65" /></div> | <img alt="spring logo" src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" height="50" width="50" > | <img alt="spring-boot logo" src="https://t1.daumcdn.net/cfile/tistory/27034D4F58E660F616" width="65" height="65" > | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="icon" width="65" height="65" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="icon" width="65" height="65" /></div> | <img alt="jwt logo" src="https://i.ibb.co/xzJ0tYJ/jwt-logo.png" width="65" height="65" > | <img alt="oauth2 logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Oauth_logo.svg" width="65" height="65"/></div> | 
 
 <br/>
 
-## Documents
+## 🚀 Service 
+
+<br/>
+
+## 💻 Documents
 ### [사용자요구사항 정의서](https://www.notion.so/codestates/afe3b397714a49dfba59090ac8095406?pvs=4)
 ### [테이블 명세서](https://www.notion.so/codestates/e7400232f43a4ab186c29b00b1e77118)
 ### ERD
@@ -170,19 +165,20 @@
 ### [화면정의서](https://file.notion.so/f/s/067948eb-87e8-4e50-91a0-20fd916462da/0ee2b19e-b34b-48e3-8b95-57d61c1e14fe___%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A5.pdf?id=e9a666c5-1e03-4689-b460-522e137d5507&table=block&spaceId=82d63a72-8254-4cde-bf1e-b2597b7c099c&expirationTimestamp=1687846624368&signature=2nnLSwdwhRCXaTZKTr8uExB4wVitzCvkz6Vm9Z1gEtc&downloadName=%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A5.pdf)
 ### [테스트 체크리스트](https://www.notion.so/b3393093fc964a9b9bacba77af78cce0?v=5efb0b75679c4f15929a48be59bc142b)
 
-## 프로젝트 관리
-#### Github의 칸반 보드를 사용하여 전체 업무 흐름 관리 및 업무 개선
+<br/>
+
+## ✨ 프로젝트 관리
+#### ✔︎ Github의 칸반 보드를 사용하여 전체 업무 흐름 관리 및 업무 개선
 <img width="1430" alt="스크린샷 2023-06-26 오후 8 32 22" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/a16aceca-635d-4e85-87e4-19e94a330223">
 
-#### Zoom, Discord를 활용한 데일리 칸반 회의 및 주간 보충 회의 진행
+#### ✔︎ Zoom, Discord를 활용한 데일리 칸반 회의 및 주간 보충 회의 진행
 <img width="208" alt="스크린샷 2023-06-26 오후 8 55 31" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/d724b2b1-a019-41f3-a566-a25be0599ed9">
 
-#### 팀 노션을 활용한 이슈 및 문서관리
+#### ✔︎ 팀 노션을 활용한 이슈 및 문서관리
+<img width="763" alt="스크린샷 2023-06-26 오후 10 49 37" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/375a1e82-b06d-4d5e-b39d-973beb0181bb">
+<img width="761" alt="스크린샷 2023-06-26 오후 11 04 50" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/effcf463-bde8-4bb7-9a16-a9c8d03e202f">
 
-<img width="594" alt="스크린샷 2023-06-26 오후 8 57 46" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/c86c0e09-c026-4960-bfa8-30267d4dc618">
-<img width="769" alt="스크린샷 2023-06-26 오후 8 58 34" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/e904c901-5430-4d42-89d7-32aa4461a016">
-
-#### Coz'Git flow 사용한 버전 관리
+#### ✔︎ Coz'Git flow 사용한 버전 관리
 |  Message   | 설명                                                  |
 | :--------: | :---------------------------------------------------- |
 |   [feat]   | 새로운 기능 추가    |
