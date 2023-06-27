@@ -133,7 +133,7 @@ function Nav() {
       <div className="imgDiv">
         <LogoImag src={SOF} onClick={() => navigate("/home")} />
       </div>
-      <NavLink onClick={() => navigate()}>About</NavLink>
+      <NavLink onClick={() => navigate('/about')}>About</NavLink>
       <NavSreachBar>
         <button>
           <img src={searchLogo} alt="sreachLogo" />
