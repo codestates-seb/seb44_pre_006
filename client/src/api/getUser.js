@@ -4,7 +4,7 @@ import axios from 'axios';
 const URL = process.env.REACT_APP_EC2_URL;
 
 export  const fetchUser = createAsyncThunk('users/fetchUser', async (memberId) => {
-  const url = `${URL}/users/${memberId}`;
+  const url = `/users/${memberId}`;
   const token = localStorage.getItem('jwtToken');
 
   const response = await axios.get(url, {

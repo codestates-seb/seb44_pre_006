@@ -4,7 +4,7 @@ import axios from 'axios';
 const URL = process.env.REACT_APP_EC2_URL;
 
 export  const fetchSetAnswer = createAsyncThunk('answer/fetchSetAnswer', async ({questionId,answerContent}) => {
-  const url = `${URL}/answers/${questionId}`;
+  const url = `/answers/${questionId}`;
   const token = localStorage.getItem('jwtToken');
 
   const response = await axios.post(url, 

@@ -6,7 +6,7 @@ const URL = process.env.REACT_APP_EC2_URL;
 export const fetchDeleteAllUser = createAsyncThunk(
   'user/fetchDeleteAllUser',
   async (_, { rejectWithValue }) => {
-    const url = `${URL}/users`;
+    const url = `/users`;
     const token = localStorage.getItem('jwtToken');
 
     const response = await axios.delete(url, {

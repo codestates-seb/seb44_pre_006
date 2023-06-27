@@ -6,7 +6,7 @@ const URL = process.env.REACT_APP_EC2_URL;
 export const fetchAllQuestions = createAsyncThunk(
   `question/fetchAllQuestions`,
   async ({currentPage, postsPerPage}, { rejectWithValue }) => {
-    const url = `${URL}/questions?size=100&page=${currentPage}`;
+    const url = `/questions?size=100&page=${currentPage}`;
     const response = await axios.get(url);
 
     try {
