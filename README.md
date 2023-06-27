@@ -68,15 +68,49 @@
 
 **`이지효`**
 
-- 기능 외
+1) components or modules
 
-  - 기능 외1
-  - 기능 외2
- 
+  - Footer
+  - Router
+  - Loader
+  - Pagination
 
-- 기능
-  - 기능1
-  - 기능2
+2) api
+
+  - 1.6. 전체 회원 정보 조회 - getAllUser
+  - 1.7. 회원 탈퇴 - deleteUser
+  - 2.3. 질문 삭제  - deleteQuestion
+  - 2.5. 전체 질문 조회 - allQuestion
+  - 3.2. 답변 수정 - editAnswer
+  - 3.5. 답변 삭제 - deleteAnswer
+
+ 3) page
+
+  - 홈 - Home(TopQuestion)
+    - 질문 작성 버튼
+      - 버튼 클릭 시, 로그인을 하지 않으면 로그인 화면으로 이동
+      - 버튼 클릭 시, 로그인 되어 있으면 질문 등록 페이지로 이동
+    - 질문 아이템 구현
+      - title, content, viewCount, answerCount, avatar, createBy, createAt, modifiedAt 요소 구현
+        - title 클릭 시, 작성된 질문 페이지로 이동
+        - avatar, createAt 클릭 시, 해당 유저 프로필로 이동
+  - 질문 게시판 - Questions(AllQuestion)
+    - 구조는 홈과 비슷, 아래는 추가 구현 기능 설명
+    - 필터링 버튼 구현
+      - Newest 클릭 시, 최근에 업데이트 된 질문 순으로 정렬
+      - Unanswered 클릭 시, answerCount가 적은 순으로 정렬
+    - 페이지네이션 구현
+  - 유저 목록 - Users
+    - 필터링 유저 검색창 구현
+    - 페이지네이션 구현
+  - 답변 수정 - EditAnswer
+    - 구조 수정 및 api 추가 구현
+  - 유저 프로필 삭제 - DeleteProfile
+    - 체크 박스 확인 후, 삭제 가능
+  - 에러 페이지 - NotFound
+    - 잘못된 URI 접근 시, 화면에 노출
+  - 팀 소개 - About
+    - 팀명 및 팀원 이름과 각 개인의 GitHub 주소 소개 
  
 <br>
 
