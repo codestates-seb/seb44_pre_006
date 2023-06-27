@@ -169,7 +169,6 @@ function AskQuestion() {
     const titles = titleref.current.value;
     dispatch(fetchAskQuestions({ titles, contents }));
     navigate("/question");
-    window.location.reload();
   };
 
   return (
