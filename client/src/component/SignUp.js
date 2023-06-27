@@ -13,6 +13,7 @@ function SignUp() {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const URL = process.env.REACT_APP_EC2_URL;
 
   const onSignUpHandler = async () => {
     const name = nameRef.current.value;
@@ -20,7 +21,7 @@ function SignUp() {
     const password = passwordRef.current.value;
 
     await axios
-      .post('/users/signup', { email: email, password: password, name: name })
+      .post(`${URL}/users/signup`, { email: email, password: password, name: name })
       .then(response => {
         console.log(response);
         navigate('/user/login');
