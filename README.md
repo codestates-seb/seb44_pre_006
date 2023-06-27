@@ -9,7 +9,7 @@
 - **팀 명 :** 🌙 낭만코더 
 - **프로젝트 명 :** Stackoverflow
 - **프로젝트 기간 :** 2023.06.9 - 2023.06.27
-- **배포링크 :** [✈︎ 배포링크]()
+- **배포링크 :** [✈︎ 배포링크](http://mytodoawsbucket.s3-website.ap-northeast-2.amazonaws.com)
 - **노션링크 :** [✈︎ 노션 바로가기](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350)
 
 <br/>
@@ -111,10 +111,18 @@
 
  **`이지윤`**
  
-- 답변
-  - 답변 작성, 수정, 삭제, 조회 기능
-
- 
+- 답변 작성
+  - 로그인한 회원만 작성
+- 답변 수정
+  - 로그인한 회원만 수정
+  - 해당 답변의 작성자만 수정
+- 답변 삭제
+  - 로그인한 회원만 수정
+  - 해당 답변을 작성한 회원만 삭제 가능
+- 답변 조회
+  - 전제 답변 조회
+  - 질문 내용에 속한 답변 모두 조회
+  
  <br>
 
  **`최서우`**
@@ -164,9 +172,9 @@
 <br/>
 
 ## 💻 Documents
+### ERD![seb44_pre_006](https://github.com/codestates-seb/seb44_pre_006/assets/121713161/789f2d57-cf54-4cf3-8c6d-d5abdd9ba45e)
 ### [사용자요구사항 정의서](https://www.notion.so/codestates/afe3b397714a49dfba59090ac8095406?pvs=4)
 ### [테이블 명세서](https://www.notion.so/codestates/e7400232f43a4ab186c29b00b1e77118)
-### ERD
 ### [API 명세서](https://younihi.github.io/api/#_membercontroller)
 ### [화면정의서](https://file.notion.so/f/s/067948eb-87e8-4e50-91a0-20fd916462da/0ee2b19e-b34b-48e3-8b95-57d61c1e14fe___%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A5.pdf?id=e9a666c5-1e03-4689-b460-522e137d5507&table=block&spaceId=82d63a72-8254-4cde-bf1e-b2597b7c099c&expirationTimestamp=1687846624368&signature=2nnLSwdwhRCXaTZKTr8uExB4wVitzCvkz6Vm9Z1gEtc&downloadName=%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A5.pdf)
 ### [테스트 체크리스트](https://www.notion.so/b3393093fc964a9b9bacba77af78cce0?v=5efb0b75679c4f15929a48be59bc142b)
