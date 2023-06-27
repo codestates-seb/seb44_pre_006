@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.13327019.css",
+    "main.js": "/static/js/main.1c62da85.js",
+    "static/js/496.e8eee70e.chunk.js": "/static/js/496.e8eee70e.chunk.js",
+    "static/media/index.cjs": "/static/media/index.c05687ef19f5bac24939.cjs",
+    "static/media/fe-1.jpeg": "/static/media/fe-1.a1f01791c27d36248539.jpeg",
+    "static/media/writing_img.png": "/static/media/writing_img.cd4a78c4c1c528e52306.png",
+    "static/media/be-1.jpeg": "/static/media/be-1.71df66b26679d75d0441.jpeg",
+    "static/media/SOF_Logo.png": "/static/media/SOF_Logo.57dade260bb1e01483b2.png",
+    "static/media/fe-3.jpeg": "/static/media/fe-3.0cc17c23263d32472fc1.jpeg",
+    "static/media/fe-2.jpeg": "/static/media/fe-2.5025e08a99c5640fe740.jpeg",
+    "static/media/page-not-found.svg": "/static/media/page-not-found.a37bfb6fb8486c68fadd2ff9d9563b05.svg",
+    "static/media/search_logo.svg": "/static/media/search_logo.0dab6a5aa188e251eed4f4c3a829a287.svg",
+    "index.html": "/index.html",
+    "static/media/question.svg": "/static/media/question.8a756f61e279635ff32404882213e37b.svg",
+    "main.13327019.css.map": "/static/css/main.13327019.css.map",
+    "main.1c62da85.js.map": "/static/js/main.1c62da85.js.map",
+    "496.e8eee70e.chunk.js.map": "/static/js/496.e8eee70e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.13327019.css",
+    "static/js/main.1c62da85.js"
+  ]
+}
