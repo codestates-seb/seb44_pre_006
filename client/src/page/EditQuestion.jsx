@@ -134,6 +134,7 @@ function EditQuestion() {
     const titles = titleRef.current.value;
     dispatch(fetchEditQuestion({ questionId, titles, content }));
     navigate(`/question/${questionId}`);
+    window.location.reload();
   };
 
   const onCancleHandler = async () => {
@@ -149,6 +150,7 @@ function EditQuestion() {
       .then(() => {
         localStorage.removeItem("questionId");
         navigate("/question");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
