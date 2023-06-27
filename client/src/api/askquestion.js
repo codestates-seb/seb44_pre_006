@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_EC2_URL;
+const URL = process.env.REACT_APP_EC2_URL;
 
 export const fetchAskQuestions = createAsyncThunk(
   "questions/fetchAskQuestions",
