@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+POST /answers/1 HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~
+Content-Length: 27
+Host: localhost:8080
+
+{
+  "content" : "answer1"
+}
+----

@@ -1,0 +1,20 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Object+`
+|결과 데이터
+
+|`+data.memberId+`
+|`+Number+`
+|회원 식별자
+
+|`+data.email+`
+|`+String+`
+|이메일
+
+|`+data.name+`
+|`+String+`
+|이름
+
+|===

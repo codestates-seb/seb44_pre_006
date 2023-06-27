@@ -1,0 +1,7 @@
+|===
+|Name|Description
+
+|`+Location+`
+|리다이렉트 URL /question/{questionId}
+
+|===

@@ -1,0 +1,8 @@
+.+/answers/{question-id}+
+|===
+|Parameter|Description
+
+|`+question-id+`
+|질문 식별자 ID
+
+|===

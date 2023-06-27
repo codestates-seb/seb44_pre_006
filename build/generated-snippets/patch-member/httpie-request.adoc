@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ echo '{
+  "memberId" : 1,
+  "name" : "jeein Park",
+  "password" : "1234"
+}' | http PATCH 'http://localhost:8080/users/1' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Accept:application/json' \
+    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~'
+----

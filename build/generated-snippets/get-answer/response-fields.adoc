@@ -1,0 +1,28 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Object+`
+|답변 내용
+
+|`+data.answerId+`
+|`+Number+`
+|답변 식별자 ID
+
+|`+data.content+`
+|`+String+`
+|답변 내용
+
+|`+data.createdAt+`
+|`+String+`
+|답변 생성 시간
+
+|`+data.modifiedAt+`
+|`+String+`
+|답변 수정 시간
+
+|`+data.createdBy+`
+|`+String+`
+|답변 작성자
+
+|===

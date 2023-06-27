@@ -1,0 +1,7 @@
+[source,http,options="nowrap"]
+----
+DELETE /users HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~
+Host: localhost:8080
+
+----

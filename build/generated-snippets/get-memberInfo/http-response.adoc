@@ -1,0 +1,36 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 302 Found
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json;charset=UTF-8
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: SAMEORIGIN
+Content-Length: 506
+
+{
+  "data" : {
+    "questions" : [ {
+      "id" : 1,
+      "title" : "question1",
+      "content" : "question1",
+      "createdAt" : "2023-06-22T11:23:04.530564",
+      "modifiedAt" : "2023-06-22T11:23:04.530565",
+      "viewCount" : 1,
+      "createdBy" : "jeein@gmail.com"
+    } ],
+    "answers" : [ {
+      "answerId" : 1,
+      "content" : "answer1",
+      "createdAt" : "2023-06-22T11:23:04.53058",
+      "modifiedAt" : "2023-06-22T11:23:04.530583",
+      "createdBy" : "jeein@gmail.com"
+    } ]
+  }
+}
+----

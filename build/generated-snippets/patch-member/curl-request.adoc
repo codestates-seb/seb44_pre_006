@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/users/1' -i -X PATCH \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Accept: application/json' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~' \
+    -d '{
+  "memberId" : 1,
+  "name" : "jeein Park",
+  "password" : "1234"
+}'
+----

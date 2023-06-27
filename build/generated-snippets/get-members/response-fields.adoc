@@ -1,0 +1,40 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Array+`
+|결과 데이터
+
+|`+data[].memberId+`
+|`+Number+`
+|회원 식별자
+
+|`+data[].email+`
+|`+String+`
+|이메일
+
+|`+data[].name+`
+|`+String+`
+|이름
+
+|`+pageInfo+`
+|`+Object+`
+|페이지 정보
+
+|`+pageInfo.page+`
+|`+Number+`
+|페이지 번호
+
+|`+pageInfo.size+`
+|`+Number+`
+|페이지 사이즈
+
+|`+pageInfo.totalElements+`
+|`+Number+`
+|전체 건 수
+
+|`+pageInfo.totalPages+`
+|`+Number+`
+|전체 페이지 수
+
+|===

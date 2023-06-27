@@ -1,0 +1,10 @@
+|===
+|Parameter|Description
+
+|`+page+`
+|Page 번호
+
+|`+size+`
+|Page Size
+
+|===

@@ -1,0 +1,20 @@
+[source,options="nowrap"]
+----
+{
+  "data" : [ {
+    "memberId" : 1,
+    "email" : "jeein1@gmail.com",
+    "name" : "Jeein Park1"
+  }, {
+    "memberId" : 2,
+    "email" : "jeein2@gmail.com",
+    "name" : "Jeein Park2"
+  } ],
+  "pageInfo" : {
+    "page" : 1,
+    "size" : 10,
+    "totalElements" : 2,
+    "totalPages" : 1
+  }
+}
+----

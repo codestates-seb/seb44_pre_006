@@ -1,0 +1,24 @@
+[source,options="nowrap"]
+----
+{
+  "data" : [ {
+    "answerId" : 1,
+    "content" : "answer1",
+    "createdAt" : "2023-06-22T11:23:02.996512",
+    "modifiedAt" : "2023-06-22T11:23:02.996525",
+    "createdBy" : "a@gmail.com"
+  }, {
+    "answerId" : 2,
+    "content" : "answer2",
+    "createdAt" : "2023-06-22T11:23:02.996533",
+    "modifiedAt" : "2023-06-22T11:23:02.996535",
+    "createdBy" : "b@gmail.com"
+  } ],
+  "pageInfo" : {
+    "page" : 1,
+    "size" : 10,
+    "totalElements" : 2,
+    "totalPages" : 1
+  }
+}
+----

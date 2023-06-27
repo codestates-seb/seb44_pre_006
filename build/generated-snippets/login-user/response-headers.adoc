@@ -1,0 +1,7 @@
+|===
+|Name|Description
+
+|`+Authorization+`
+|발급된 JWT
+
+|===

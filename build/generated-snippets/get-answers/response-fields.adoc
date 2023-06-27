@@ -1,0 +1,48 @@
+|===
+|Path|Type|Description
+
+|`+data+`
+|`+Array+`
+|답변 리스트
+
+|`+data[].answerId+`
+|`+Number+`
+|답변 식별자 ID
+
+|`+data[].content+`
+|`+String+`
+|답변 내용
+
+|`+data[].createdAt+`
+|`+String+`
+|답변 생성 시간
+
+|`+data[].modifiedAt+`
+|`+String+`
+|답변 수정 시간
+
+|`+data[].createdBy+`
+|`+String+`
+|답변 작성자
+
+|`+pageInfo+`
+|`+Object+`
+|페이지 정보
+
+|`+pageInfo.page+`
+|`+Number+`
+|현재 페이지 번호
+
+|`+pageInfo.size+`
+|`+Number+`
+|페이지 사이즈
+
+|`+pageInfo.totalElements+`
+|`+Number+`
+|전체 질문 갯수
+
+|`+pageInfo.totalPages+`
+|`+Number+`
+|전체 페이지 수
+
+|===

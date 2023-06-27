@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+
+|`+name+`
+|`+String+`
+|회원 이름
+
+|`+memberId+`
+|`+String+`
+|회원 번호
+
+|===

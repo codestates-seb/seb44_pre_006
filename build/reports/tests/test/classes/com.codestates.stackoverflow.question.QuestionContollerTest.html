@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - QuestionContollerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>QuestionContollerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.codestates.stackoverflow.question.html">com.codestates.stackoverflow.question</a> &gt; QuestionContollerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">6</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.066s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">createQuestion Test</td>
+<td class="success">createQuestion()</td>
+<td class="success">0.013s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteQuestion Test</td>
+<td class="success">deleteQuestion()</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getQuestion Test</td>
+<td class="success">getQuestion()</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getQuestions Test</td>
+<td class="success">getQuestions()</td>
+<td class="success">0.017s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">patchQuestion Test</td>
+<td class="success">patchQuestion()</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">searchQuestions Test</td>
+<td class="success">searchQuestions()</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>?[2m2023-06-22 11:23:04.572?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36m.b.t.c.SpringBootTestContextBootstrapper?[0;39m ?[2m:?[0;39m Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.codestates.stackoverflow.question.QuestionContollerTest], using SpringBootContextLoader
+?[2m2023-06-22 11:23:04.572?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mo.s.t.c.support.AbstractContextLoader   ?[0;39m ?[2m:?[0;39m Could not detect default resource locations for test class [com.codestates.stackoverflow.question.QuestionContollerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+?[2m2023-06-22 11:23:04.572?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mt.c.s.AnnotationConfigContextLoaderUtils?[0;39m ?[2m:?[0;39m Could not detect default configuration classes for test class [com.codestates.stackoverflow.question.QuestionContollerTest]: QuestionContollerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+?[2m2023-06-22 11:23:04.574?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36m.b.t.c.SpringBootTestContextBootstrapper?[0;39m ?[2m:?[0;39m Found @SpringBootConfiguration com.codestates.stackoverflow.StackoverflowApplication for test class com.codestates.stackoverflow.question.QuestionContollerTest
+?[2m2023-06-22 11:23:04.575?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36m.b.t.c.SpringBootTestContextBootstrapper?[0;39m ?[2m:?[0;39m Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+?[2m2023-06-22 11:23:04.575?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36m.b.t.c.SpringBootTestContextBootstrapper?[0;39m ?[2m:?[0;39m Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5f0d1a0d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@579c24c2, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6497bc28, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@21e470cc, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@160ecb8f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@200257b8, org.springframework.test.context.transaction.TransactionalTestExecutionListener@79add96c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7b4db485, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@1bff5ad0, org.springframework.test.context.event.EventPublishingTestExecutionListener@29726180, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@3e83ab7b, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@287cd9b2, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@49342fb7, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@73703970, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@508b9c16, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1ef46efc, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7655a302]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+?[32m :: Spring Boot :: ?[39m             ?[2m (v2.7.12)?[0;39m
+
+?[2m2023-06-22 11:23:04.583?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mc.c.s.question.QuestionContollerTest    ?[0;39m ?[2m:?[0;39m Starting QuestionContollerTest using Java 11.0.19 on Jiinui-MacBookPro.local with PID 3356 (started by jiinpark in /Users/jiinpark/Dev/Projects/pre-project/stackoverflow)
+?[2m2023-06-22 11:23:04.584?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mc.c.s.question.QuestionContollerTest    ?[0;39m ?[2m:?[0;39m No active profile set, falling back to 1 default profile: &quot;default&quot;
+?[2m2023-06-22 11:23:04.644?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36m.s.d.r.c.RepositoryConfigurationDelegate?[0;39m ?[2m:?[0;39m Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+?[2m2023-06-22 11:23:04.652?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36m.s.d.r.c.RepositoryConfigurationDelegate?[0;39m ?[2m:?[0;39m Finished Spring Data repository scanning in 7 ms. Found 3 JPA repository interfaces.
+?[2m2023-06-22 11:23:04.720?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mo.hibernate.jpa.internal.util.LogHelper ?[0;39m ?[2m:?[0;39m HHH000204: Processing PersistenceUnitInfo [name: default]
+?[2m2023-06-22 11:23:04.722?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mcom.zaxxer.hikari.HikariDataSource      ?[0;39m ?[2m:?[0;39m HikariPool-5 - Starting...
+?[2m2023-06-22 11:23:04.723?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mcom.zaxxer.hikari.HikariDataSource      ?[0;39m ?[2m:?[0;39m HikariPool-5 - Start completed.
+?[2m2023-06-22 11:23:04.727?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36morg.hibernate.dialect.Dialect           ?[0;39m ?[2m:?[0;39m HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+?[35m[Hibernate]?[0m 
+    
+    ?[34mdrop?[0m ?[34mtable?[0m ?[34mif?[0m ?[34mexists?[0m answer ?[34mCASCADE?[0m 
+?[35m[Hibernate]?[0m 
+    
+    ?[34mdrop?[0m ?[34mtable?[0m ?[34mif?[0m ?[34mexists?[0m ?[34mmember?[0m ?[34mCASCADE?[0m 
+?[35m[Hibernate]?[0m 
+    
+    ?[34mdrop?[0m ?[34mtable?[0m ?[34mif?[0m ?[34mexists?[0m member_roles ?[34mCASCADE?[0m 
+?[35m[Hibernate]?[0m 
+    
+    ?[34mdrop?[0m ?[34mtable?[0m ?[34mif?[0m ?[34mexists?[0m question ?[34mCASCADE?[0m 
+?[35m[Hibernate]?[0m 
+    
+    ?[34mcreate?[0m ?[34mtable?[0m answer (
+       answer_id ?[34mbigint?[0m generated ?[34mby?[0m ?[34mdefault?[0m ?[34mas?[0m ?[34midentity?[0m,
+        created_at DATETIME(0),
+        created_by ?[34mvarchar?[0m(255),
+        last_modified_at DATETIME(0),
+        content ?[34mvarchar?[0m(255) ?[34mnot?[0m ?[34mnull?[0m,
+        member_id ?[34mbigint?[0m,
+        question_id ?[34mbigint?[0m,
+        ?[34mprimary?[0m ?[34mkey?[0m (answer_id)
+    )
+?[35m[Hibernate]?[0m 
+    
+    ?[34mcreate?[0m ?[34mtable?[0m ?[34mmember?[0m (
+       member_id ?[34mbigint?[0m generated ?[34mby?[0m ?[34mdefault?[0m ?[34mas?[0m ?[34midentity?[0m,
+        created_at DATETIME(0) ?[34mnot?[0m ?[34mnull?[0m,
+        email ?[34mvarchar?[0m(255) ?[34mnot?[0m ?[34mnull?[0m,
+        modified_at DATETIME(0) ?[34mnot?[0m ?[34mnull?[0m,
+        name ?[34mvarchar?[0m(100) ?[34mnot?[0m ?[34mnull?[0m,
+        password ?[34mvarchar?[0m(100) ?[34mnot?[0m ?[34mnull?[0m,
+        ?[34mprimary?[0m ?[34mkey?[0m (member_id)
+    )
+?[35m[Hibernate]?[0m 
+    
+    ?[34mcreate?[0m ?[34mtable?[0m member_roles (
+       member_member_id ?[34mbigint?[0m ?[34mnot?[0m ?[34mnull?[0m,
+        roles ?[34mvarchar?[0m(255)
+    )
+?[35m[Hibernate]?[0m 
+    
+    ?[34mcreate?[0m ?[34mtable?[0m question (
+       id ?[34mbigint?[0m generated ?[34mby?[0m ?[34mdefault?[0m ?[34mas?[0m ?[34midentity?[0m,
+        content TEXT ?[34mnot?[0m ?[34mnull?[0m,
+        create_by ?[34mvarchar?[0m(255),
+        created_at DATETIME(0) ?[34mnot?[0m ?[34mnull?[0m,
+        modified_at DATETIME(0) ?[34mnot?[0m ?[34mnull?[0m,
+        title ?[34mvarchar?[0m(150) ?[34mnot?[0m ?[34mnull?[0m,
+        view_count ?[34mbigint?[0m ?[34mnot?[0m ?[34mnull?[0m,
+        member_id ?[34mbigint?[0m,
+        ?[34mprimary?[0m ?[34mkey?[0m (id)
+    )
+?[35m[Hibernate]?[0m 
+    
+    ?[34malter?[0m ?[34mtable?[0m ?[34mmember?[0m 
+       ?[34madd?[0m ?[34mconstraint?[0m UK_mbmcqelty0fbrvxp1q58dn57t ?[34munique?[0m (email)
+?[35m[Hibernate]?[0m 
+    
+    ?[34malter?[0m ?[34mtable?[0m answer 
+       ?[34madd?[0m ?[34mconstraint?[0m FKn2sp5pa6h0u2kixjl2r4vfluf 
+       ?[34mforeign?[0m ?[34mkey?[0m (member_id) 
+       ?[34mreferences?[0m ?[34mmember?[0m
+?[35m[Hibernate]?[0m 
+    
+    ?[34malter?[0m ?[34mtable?[0m answer 
+       ?[34madd?[0m ?[34mconstraint?[0m FK8frr4bcabmmeyyu60qt7iiblo 
+       ?[34mforeign?[0m ?[34mkey?[0m (question_id) 
+       ?[34mreferences?[0m question
+?[35m[Hibernate]?[0m 
+    
+    ?[34malter?[0m ?[34mtable?[0m member_roles 
+       ?[34madd?[0m ?[34mconstraint?[0m FKruptm2dtwl95mfks4bnhv828k 
+       ?[34mforeign?[0m ?[34mkey?[0m (member_member_id) 
+       ?[34mreferences?[0m ?[34mmember?[0m
+?[35m[Hibernate]?[0m 
+    
+    ?[34malter?[0m ?[34mtable?[0m question 
+       ?[34madd?[0m ?[34mconstraint?[0m FK1nuuke7olg7b9fkyp2ba9d5bx 
+       ?[34mforeign?[0m ?[34mkey?[0m (member_id) 
+       ?[34mreferences?[0m ?[34mmember?[0m
+?[2m2023-06-22 11:23:04.755?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mo.h.e.t.j.p.i.JtaPlatformInitiator      ?[0;39m ?[2m:?[0;39m HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+?[2m2023-06-22 11:23:04.755?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mj.LocalContainerEntityManagerFactoryBean?[0;39m ?[2m:?[0;39m Initialized JPA EntityManagerFactory for persistence unit 'default'
+?[2m2023-06-22 11:23:04.826?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mo.s.s.web.DefaultSecurityFilterChain    ?[0;39m ?[2m:?[0;39m Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@36e7a455, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@627ceaf, org.springframework.security.web.context.SecurityContextPersistenceFilter@48e13ec9, org.springframework.security.web.header.HeaderWriterFilter@767f03c5, org.springframework.web.filter.CorsFilter@2f738b8, org.springframework.security.web.authentication.logout.LogoutFilter@1b7708d9, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@1d033ae1, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@5de4f44e, com.codestates.stackoverflow.auth.filter.JwtAuthenticationFilter@784bea2c, com.codestates.stackoverflow.auth.filter.JwtVerificationFilter@73852c7c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4bc2cb11, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@452d9887, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b6fc615, org.springframework.security.web.session.SessionManagementFilter@58d8e971, org.springframework.security.web.access.ExceptionTranslationFilter@7408c08, org.springframework.security.web.access.intercept.AuthorizationFilter@3e11cc3a]
+?[2m2023-06-22 11:23:04.830?[0;39m ?[33m WARN?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mo.s.s.c.a.web.builders.WebSecurity      ?[0;39m ?[2m:?[0;39m 
+
+********************************************************************
+**********        Security debugging is enabled.       *************
+**********    This may include sensitive information.  *************
+**********      Do not use in a production system!     *************
+********************************************************************
+
+
+?[2m2023-06-22 11:23:04.862?[0;39m ?[33m WARN?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mJpaBaseConfiguration$JpaWebConfiguration?[0;39m ?[2m:?[0;39m spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+?[2m2023-06-22 11:23:04.904?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mo.s.b.a.h2.H2ConsoleAutoConfiguration   ?[0;39m ?[2m:?[0;39m H2 console available at '/h2'. Database available at 'jdbc:h2:mem:test'
+?[2m2023-06-22 11:23:04.970?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mo.s.b.t.m.w.SpringBootMockServletContext?[0;39m ?[2m:?[0;39m Initializing Spring TestDispatcherServlet ''
+?[2m2023-06-22 11:23:04.970?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Initializing Servlet ''
+?[2m2023-06-22 11:23:04.970?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mo.s.t.web.servlet.TestDispatcherServlet ?[0;39m ?[2m:?[0;39m Completed initialization in 0 ms
+?[2m2023-06-22 11:23:04.973?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mc.c.s.question.QuestionContollerTest    ?[0;39m ?[2m:?[0;39m Started QuestionContollerTest in 0.397 seconds (JVM running for 5.376)
+?[2m2023-06-22 11:23:04.979?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mSpring Security Debugger                ?[0;39m ?[2m:?[0;39m 
+
+************************************************************
+
+Request received for GET '/questions':
+
+org.springframework.mock.web.MockHttpServletRequest@1bd7bdf
+
+servletPath:
+pathInfo:/questions
+headers: 
+Content-Type: application/json;charset=UTF-8
+
+
+Security filter chain: [
+  DisableEncodeUrlFilter
+  WebAsyncManagerIntegrationFilter
+  SecurityContextPersistenceFilter
+  HeaderWriterFilter
+  CorsFilter
+  LogoutFilter
+  OAuth2AuthorizationRequestRedirectFilter
+  OAuth2LoginAuthenticationFilter
+  JwtAuthenticationFilter
+  JwtVerificationFilter
+  RequestCacheAwareFilter
+  SecurityContextHolderAwareRequestFilter
+  AnonymousAuthenticationFilter
+  SessionManagementFilter
+  ExceptionTranslationFilter
+  AuthorizationFilter
+]
+
+
+************************************************************
+
+
+question : com.codestates.stackoverflow.question.entity.Question@4f407424
+?[2m2023-06-22 11:23:04.994?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mSpring Security Debugger                ?[0;39m ?[2m:?[0;39m 
+
+************************************************************
+
+Request received for POST '/questions/ask':
+
+org.springframework.mock.web.MockHttpServletRequest@304a2c8a
+
+servletPath:
+pathInfo:/questions/ask
+headers: 
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~
+Content-Length: 42
+
+
+Security filter chain: [
+  DisableEncodeUrlFilter
+  WebAsyncManagerIntegrationFilter
+  SecurityContextPersistenceFilter
+  HeaderWriterFilter
+  CorsFilter
+  LogoutFilter
+  OAuth2AuthorizationRequestRedirectFilter
+  OAuth2LoginAuthenticationFilter
+  JwtAuthenticationFilter
+  JwtVerificationFilter
+  RequestCacheAwareFilter
+  SecurityContextHolderAwareRequestFilter
+  AnonymousAuthenticationFilter
+  SessionManagementFilter
+  ExceptionTranslationFilter
+  AuthorizationFilter
+]
+
+
+************************************************************
+
+
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /questions/ask
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;, Authorization:&quot;Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~&quot;, Content-Length:&quot;42&quot;]
+             Body = {&quot;title&quot;:&quot;hello&quot;,&quot;content&quot;:&quot;Hello World!&quot;}
+    Session Attrs = {SPRING_SECURITY_CONTEXT=SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_USER]]]}
+
+Handler:
+             Type = com.codestates.stackoverflow.question.controller.QuestionContoller
+           Method = com.codestates.stackoverflow.question.controller.QuestionContoller#postQuestion(PostRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 201
+    Error message = null
+          Headers = [Vary:&quot;Origin&quot;, &quot;Access-Control-Request-Method&quot;, &quot;Access-Control-Request-Headers&quot;, Location:&quot;/questions/1&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;1; mode=block&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;SAMEORIGIN&quot;]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = /questions/1
+          Cookies = []
+?[2m2023-06-22 11:23:05.006?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mSpring Security Debugger                ?[0;39m ?[2m:?[0;39m 
+
+************************************************************
+
+Request received for GET '/questions/search':
+
+org.springframework.mock.web.MockHttpServletRequest@37a26221
+
+servletPath:
+pathInfo:/questions/search
+headers: 
+Content-Type: application/json;charset=UTF-8
+
+
+Security filter chain: [
+  DisableEncodeUrlFilter
+  WebAsyncManagerIntegrationFilter
+  SecurityContextPersistenceFilter
+  HeaderWriterFilter
+  CorsFilter
+  LogoutFilter
+  OAuth2AuthorizationRequestRedirectFilter
+  OAuth2LoginAuthenticationFilter
+  JwtAuthenticationFilter
+  JwtVerificationFilter
+  RequestCacheAwareFilter
+  SecurityContextHolderAwareRequestFilter
+  AnonymousAuthenticationFilter
+  SessionManagementFilter
+  ExceptionTranslationFilter
+  AuthorizationFilter
+]
+
+
+************************************************************
+
+
+question : com.codestates.stackoverflow.question.entity.Question@6a6b4536
+?[2m2023-06-22 11:23:05.019?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mSpring Security Debugger                ?[0;39m ?[2m:?[0;39m 
+
+************************************************************
+
+Request received for PATCH '/questions/posts/1/edit':
+
+org.springframework.mock.web.MockHttpServletRequest@16224bd8
+
+servletPath:
+pathInfo:/questions/posts/1/edit
+headers: 
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~
+Content-Length: 42
+
+
+Security filter chain: [
+  DisableEncodeUrlFilter
+  WebAsyncManagerIntegrationFilter
+  SecurityContextPersistenceFilter
+  HeaderWriterFilter
+  CorsFilter
+  LogoutFilter
+  OAuth2AuthorizationRequestRedirectFilter
+  OAuth2LoginAuthenticationFilter
+  JwtAuthenticationFilter
+  JwtVerificationFilter
+  RequestCacheAwareFilter
+  SecurityContextHolderAwareRequestFilter
+  AnonymousAuthenticationFilter
+  SessionManagementFilter
+  ExceptionTranslationFilter
+  AuthorizationFilter
+]
+
+
+************************************************************
+
+
+question : com.codestates.stackoverflow.question.entity.Question@6c5abd8f
+?[2m2023-06-22 11:23:05.027?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mSpring Security Debugger                ?[0;39m ?[2m:?[0;39m 
+
+************************************************************
+
+Request received for GET '/questions/1':
+
+org.springframework.mock.web.MockHttpServletRequest@7aeb4c8a
+
+servletPath:
+pathInfo:/questions/1
+headers: 
+Content-Type: application/json;charset=UTF-8
+
+
+Security filter chain: [
+  DisableEncodeUrlFilter
+  WebAsyncManagerIntegrationFilter
+  SecurityContextPersistenceFilter
+  HeaderWriterFilter
+  CorsFilter
+  LogoutFilter
+  OAuth2AuthorizationRequestRedirectFilter
+  OAuth2LoginAuthenticationFilter
+  JwtAuthenticationFilter
+  JwtVerificationFilter
+  RequestCacheAwareFilter
+  SecurityContextHolderAwareRequestFilter
+  AnonymousAuthenticationFilter
+  SessionManagementFilter
+  ExceptionTranslationFilter
+  AuthorizationFilter
+]
+
+
+************************************************************
+
+
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /questions/1
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.codestates.stackoverflow.question.controller.QuestionContoller
+           Method = com.codestates.stackoverflow.question.controller.QuestionContoller#getQuestion(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:&quot;Origin&quot;, &quot;Access-Control-Request-Method&quot;, &quot;Access-Control-Request-Headers&quot;, Content-Type:&quot;application/json;charset=UTF-8&quot;, X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;1; mode=block&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;, X-Frame-Options:&quot;SAMEORIGIN&quot;]
+     Content type = application/json;charset=UTF-8
+             Body = {&quot;data&quot;:{&quot;id&quot;:1,&quot;title&quot;:&quot;Title&quot;,&quot;content&quot;:&quot;Content&quot;,&quot;createdAt&quot;:&quot;2023-06-22T11:23:05&quot;,&quot;modifiedAt&quot;:&quot;2023-06-22T11:23:05&quot;,&quot;viewCount&quot;:0,&quot;createBy&quot;:&quot;user@gmail.com&quot;,&quot;answers&quot;:[{&quot;answerId&quot;:1,&quot;content&quot;:&quot;body&quot;,&quot;createdAt&quot;:&quot;2023-06-22T11:23:05&quot;,&quot;modifiedAt&quot;:&quot;2023-06-22T11:23:05&quot;,&quot;createdBy&quot;:&quot;kevin@gmail.com&quot;}]}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+?[2m2023-06-22 11:23:05.036?[0;39m ?[32m INFO?[0;39m ?[35m3356?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[36mSpring Security Debugger                ?[0;39m ?[2m:?[0;39m 
+
+************************************************************
+
+Request received for DELETE '/questions/1':
+
+org.springframework.mock.web.MockHttpServletRequest@776dd64b
+
+servletPath:
+pathInfo:/questions/1
+headers: 
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~
+
+
+Security filter chain: [
+  DisableEncodeUrlFilter
+  WebAsyncManagerIntegrationFilter
+  SecurityContextPersistenceFilter
+  HeaderWriterFilter
+  CorsFilter
+  LogoutFilter
+  OAuth2AuthorizationRequestRedirectFilter
+  OAuth2LoginAuthenticationFilter
+  JwtAuthenticationFilter
+  JwtVerificationFilter
+  RequestCacheAwareFilter
+  SecurityContextHolderAwareRequestFilter
+  AnonymousAuthenticationFilter
+  SessionManagementFilter
+  ExceptionTranslationFilter
+  AuthorizationFilter
+]
+
+
+************************************************************
+
+
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.6.1</a> at Jun 22, 2023, 11:23:05 AM</p>
+</div>
+</div>
+</body>
+</html>

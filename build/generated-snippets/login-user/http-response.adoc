@@ -1,0 +1,22 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZXJuYW1lIjoiamVlaW5AZ21haWwuY29tIiwic3ViIjoiamVlaW5AZ21haWwuY29tIiwiaWF0IjoxNjg3NDAwNTg0LCJleHAiOjE2ODc0MDIzODR9.MjfD4Rjs5oQNacjcaoOQPRpsV0t6ZKTNs6e6Jl0-QIU
+Refresh: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWVpbkBnbWFpbC5jb20iLCJpYXQiOjE2ODc0MDA1ODQsImV4cCI6MTY4NzQyNTc4NH0.LzcZ_zEfP7XaD5ApVD2cKj4S0JUgfivHX7KY6dK4Xuo
+Content-Type: application/json;charset=UTF-8
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: SAMEORIGIN
+Content-Length: 47
+
+{
+  "name" : "jeein Park",
+  "memberId" : "1"
+}
+----

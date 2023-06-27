@@ -1,0 +1,7 @@
+|===
+|Name|Description
+
+|`+Location+`
+|Location header. 등록된 리소스의 URI
+
+|===

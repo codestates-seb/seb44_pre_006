@@ -1,0 +1,9 @@
+[source,bash]
+----
+$ echo '{
+  "answerId" : 1,
+  "content" : "answer1"
+}' | http PATCH 'http://localhost:8080/answers/1' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInVzZ~'
+----
