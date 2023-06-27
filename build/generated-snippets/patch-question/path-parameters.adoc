@@ -1,8 +1,0 @@
-.+/questions/posts/{question-id}/edit+
-|===
-|Parameter|Description
-
-|`+question-id+`
-|질문 식별자 ID
-
-|===
