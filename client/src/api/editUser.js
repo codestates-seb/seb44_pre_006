@@ -6,7 +6,7 @@ const URL = process.env.REACT_APP_EC2_URL;
 export const fetchEditUser = createAsyncThunk(
   "users/fetchEditUser",
   async ({ memberId, names, passwords }) => {
-    const url = `/users/${memberId}`;
+    const url = `${URL}/users/${memberId}`;
     const token = localStorage.getItem("jwtToken");
 
     const response = await axios.patch(

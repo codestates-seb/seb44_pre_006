@@ -6,7 +6,7 @@ const BASE_URL = process.env.REACT_APP_EC2_URL;
 export const fetchAskQuestions = createAsyncThunk(
   "questions/fetchAskQuestions",
   async ({titles, contents}) => {
-    const url = `/questions/ask`;
+    const url = `${URL}/questions/ask`;
     const token = localStorage.getItem("jwtToken");
 
     const response = await axios

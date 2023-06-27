@@ -60,14 +60,14 @@ function Login () {
     const navigate = useNavigate();
     const nameRef = useRef(null);
     const passwordRef = useRef(null);
-    
+    const BASE_URL = process.env.REACT_APP_EC2_URL;
 
     const onLogInHandler = async () => {
         const name = nameRef.current.value;
         const password = passwordRef.current.value;
 
         await axios
-            .post('/users/login', {  password: password, username: name })
+            .post(`${BASE_URL}/users/login`, {  password: password, username: name })
             .then(response => {
                 console.log(response);
                 localStorage.setItem("jwtToken", response.headers.authorization);

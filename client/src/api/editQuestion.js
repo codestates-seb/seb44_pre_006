@@ -7,7 +7,7 @@ const URL = process.env.REACT_APP_EC2_URL;
 export const fetchEditQuestion = createAsyncThunk(
   "question/fetchEditQuestion",
   async ({ questionId, titles, content }) => {
-    const url = `/questions/posts/${questionId}/edit`;
+    const url = `${URL}/questions/posts/${questionId}/edit`;
     const token = localStorage.getItem("jwtToken");
 
     const response = await axios.patch(

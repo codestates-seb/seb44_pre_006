@@ -6,7 +6,7 @@ const URL = process.env.REACT_APP_EC2_URL;
 export const fetchAllUser = createAsyncThunk(
   `user/fetchAllUser`,
   async ({ currentPage, postsPerPage }, { rejectWithValue }) => {
-    const url = `/users?page=${currentPage}&size=100`;
+    const url = `${URL}/users?page=${currentPage}&size=100`;
     const response = await axios.get(url);
 
     try {

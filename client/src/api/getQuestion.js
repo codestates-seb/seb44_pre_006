@@ -4,7 +4,7 @@ import axios from 'axios';
 const URL = process.env.REACT_APP_EC2_URL;
 
 const fetchGetQuestion = createAsyncThunk('question/fetchGetQuestion', async (questionId) => {
-  const url = `/questions/${questionId}`;
+  const url = `${URL}/questions/${questionId}`;
   const response = await axios.get(url)
   
   try {

@@ -6,7 +6,7 @@ const BASE_URL = process.env.REACT_APP_EC2_URL;
 export const fetchTopQuestions = createAsyncThunk(
   `question/fetchTopQuestions`,
   async (_, { rejectWithValue }) => {
-    const url = `/questions?size=100&page=1`;
+    const url = `${URL}/questions?size=100&page=1`;
     const response = await axios.get(url);
 
     try {
