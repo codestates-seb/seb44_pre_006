@@ -231,47 +231,57 @@
 ## 🚀 Service 
 
 1. Stackoverflow 메인 페이지
-  ![스크린샷 2023-06-27 오후 2.44.25.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_xd60Um%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%202.44.25.png)
+  <img width="1440" alt="스크린샷 2023-06-27 오후 6 57 27" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/b9a56747-5dcc-4095-baf0-3453a08302b8">
   <br/>
   <br/>
+
 2. 회원 가입 기능
-  ![스크린샷 2023-06-27 오후 2.45.20.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_y5HeJE%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%202.45.20.png)
+  <img width="1438" alt="스크린샷 2023-06-27 오후 6 29 00" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/f55b6602-a01e-44e2-b176-a350c7687ef5">
   <br/>
   <br/>
+  
 3. 로그인 기능
-   ![스크린샷 2023-06-27 오후 2.48.52.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_3bTk2k%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%202.48.52.png)
+<img width="1326" alt="스크린샷 2023-06-27 오후 6 57 44" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/5addc40b-45c5-4612-a6e0-4fff06317b32">
    <br/>
    <br/>
+   
 4. 로그인 후 전체 사용자 질문 확인 기능
-  ![스크린샷 2023-06-27 오후 2.49.28.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_a6Zur6%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%202.49.28.png)
+<img width="1439" alt="스크린샷 2023-06-27 오후 6 30 24" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/65a517ee-88a4-4054-a1b8-4598e4f66fb4">
    <br/>
    <br/>
+
 5. 전체 Question 중에서 키워드로 질문 검색 기능
-  ![스크린샷 2023-06-27 오후 2.51.25.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_CFI0Xl%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%202.51.25.png)
+  <img width="1440" alt="스크린샷 2023-06-27 오후 7 00 53" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/96a5e1ff-55d7-4316-bf12-4f5c69bdf7eb">
    <br/>
    <br/>
+   
 6. Ask Question 버튼 눌러서 질문 등록 기능
-  ![스크린샷 2023-06-27 오후 2.54.26.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_V5hDqh%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%202.54.26.png)
+<img width="1439" alt="스크린샷 2023-06-27 오후 6 33 36" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/43609d40-b95e-48bd-8622-9c4e5beb7567">
    <br/>
    <br/>
-7. 등록한 질문 확인 기능
-   ![스크린샷 2023-06-27 오후 2.55.13.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_P5h9Ox%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%202.55.13.png)
+   
+7. 등록한 질문과 댓글 확인 기능
+<img width="1440" alt="스크린샷 2023-06-27 오후 6 41 04" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/26e11b0f-d103-4c63-9299-ec2555dab083">
    <br/>
    <br/>
+   
 8. 다른 사용자의 질문에 댓글 등록 기능
-  ![스크린샷 2023-06-27 오후 2.56.45.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_4wMapY%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%202.56.45.png)
+ <img width="1438" alt="스크린샷 2023-06-27 오후 6 34 15" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/cc8e6a88-9c58-43df-bda9-8d753d82746d">
    <br/>
    <br/>
+   
 9. 전체 사용자 조회 기능
-   ![스크린샷 2023-06-27 오후 2.57.33.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_2MWXJZ%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%202.57.33.png)
+  <img width="1439" alt="스크린샷 2023-06-27 오후 7 03 42" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/4de09825-af13-468f-a8cf-d9a6366921f5">
    <br/>
    <br/>
+   
 10. 사용자 정보 수정 기능
-   ![스크린샷 2023-06-27 오후 4.20.07.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_9Xuqfh%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%204.20.07.png)
+  <img width="1440" alt="스크린샷 2023-06-27 오후 6 55 31" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/53308e5f-db71-44eb-825f-8938dc46fab2">
    <br/>
    <br/>
+   
 11. 사용자 계정 삭제 기능
-    ![스크린샷 2023-06-27 오후 4.21.25.png](..%2F..%2F..%2Fvar%2Ffolders%2Ff2%2Fbpg8wqt12tsbnpx88l8vn__r0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_mpBRck%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-06-27%20%EC%98%A4%ED%9B%84%204.21.25.png)
+  <img width="1439" alt="스크린샷 2023-06-27 오후 6 56 03" src="https://github.com/codestates-seb/seb44_pre_006/assets/121713161/a836fc51-f476-4e80-9ca5-363f975a9a4a">
     <br/>
     <br/>
 <br/>
