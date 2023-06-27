@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import UserItem from '../component/user/users/UserItem';
+import AboutItem from '../component/user/users/AboutItem';
 
 const Container = styled.div`
   max-width: 1264px;
@@ -39,7 +39,7 @@ function About() {
         <Headline>About Teams: 🌙 낭만코더</Headline>
         <GridContainer>
           <UserGrid>
-            <UserItem>asd</UserItem>
+            <AboutItem />
           </UserGrid>
         </GridContainer>
       </Content>
