@@ -119,7 +119,6 @@ function EditAnswer() {
   const onSaveHandler = async () => {
     dispatch(fetchEditAnswer({ answerId, content }));
     navigate(-1);
-    window.location.reload();
   };
 
   const onCancleHandler = async () => {
@@ -128,7 +127,6 @@ function EditAnswer() {
   const onDeleteHandler = async () => {
     dispatch(fetchDeleteAnswer({answerId}));
     navigate(-1);
-    window.location.reload();
   };
 
   return (
