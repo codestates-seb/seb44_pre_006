@@ -1,0 +1,277 @@
+= Stackoverflow Application
+:sectnums:
+:toc: left
+:toclevels: 4
+:toc-title: Table of Contents
+:source-highlighter: prettify
+
+Writer : nmcoder - be
+
+v1.0.0. 2023.06.14
+
+***
+== MemberController
+=== 회원 가입
+
+.http-request
+include::{snippets}/post-member/http-request.adoc[]
+
+.request-fields
+include::{snippets}/post-member/request-fields.adoc[]
+
+
+.http-response
+include::{snippets}/post-member/http-response.adoc[]
+
+.response-headers
+include::{snippets}/post-member/response-headers.adoc[]
+
+=== 회원 로그인
+
+.http-request
+include::{snippets}/login-user/http-request.adoc[]
+
+.request-fields
+include::{snippets}/login-user/request-fields.adoc[]
+
+.http-response
+include::{snippets}/login-user/http-response.adoc[]
+
+.response-headers
+include::{snippets}/login-user/response-headers.adoc[]
+
+.response-fields
+include::{snippets}/login-user/response-fields.adoc[]
+
+
+=== 회원 정보 수정
+
+.http-request
+include::{snippets}/patch-member/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/patch-member/path-parameters.adoc[]
+
+.request-fields
+include::{snippets}/patch-member/request-fields.adoc[]
+
+.http-response
+include::{snippets}/patch-member/http-response.adoc[]
+
+
+=== 회원 정보 조회
+
+.http-request
+include::{snippets}/get-member/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/get-member/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-member/http-response.adoc[]
+
+=== 회원 질문, 답변 정보 조회
+
+.http-request
+include::{snippets}/get-memberInfo/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/get-memberInfo/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-memberInfo/http-response.adoc[]
+
+
+=== 전체 회원 정보 조회
+
+.http-request
+include::{snippets}/get-members/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-members/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-members/http-response.adoc[]
+
+
+=== 회원 탈퇴
+
+.http-request
+include::{snippets}/delete-member/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-member/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/delete-member/http-response.adoc[]
+
+
+=== 전체 회원 삭제
+
+
+.http-request
+include::{snippets}/delete-members/http-request.adoc[]
+
+.http-response
+include::{snippets}/delete-members/http-response.adoc[]
+
+
+
+== Question Controller
+=== 질문 등록
+.http-request
+include::{snippets}/post-question/http-request.adoc[]
+
+.request-body
+include::{snippets}/post-question/request-body.adoc[]
+
+.request-fields
+include::{snippets}/post-question/request-fields.adoc[]
+
+.http-response
+include::{snippets}/post-question/http-response.adoc[]
+
+.response-fields
+include::{snippets}/post-question/response-headers.adoc[]
+
+=== 질문 수정
+.http-request
+include::{snippets}/patch-question/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/patch-question/path-parameters.adoc[]
+
+.request-body
+include::{snippets}/patch-question/request-body.adoc[]
+
+.request-fields
+include::{snippets}/patch-question/request-fields.adoc[]
+
+.http-response
+include::{snippets}/patch-question/http-response.adoc[]
+
+.response-fields
+include::{snippets}/patch-question/response-headers.adoc[]
+
+=== 질문 삭제
+.http-request
+include::{snippets}/delete-question/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-question/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/delete-question/http-response.adoc[]
+
+
+=== 단일 질문 조회
+.http-request
+include::{snippets}/get-question/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/get-question/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-question/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-question/response-fields.adoc[]
+
+
+=== 전체 질문 조회
+.http-request
+include::{snippets}/get-questions/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-questions/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-questions/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-questions/response-fields.adoc[]
+
+=== 제목 검색
+.http-request
+include::{snippets}/get-search/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-search/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-search/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-search/response-fields.adoc[]
+
+
+***
+== AnswerController
+=== 답변 등록
+
+.http-request
+include::{snippets}/post-answer/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/post-answer/path-parameters.adoc[]
+
+.request-fields
+include::{snippets}/post-answer/request-fields.adoc[]
+
+.http-response
+include::{snippets}/post-answer/http-response.adoc[]
+
+.response-headers
+include::{snippets}/post-answer/response-headers.adoc[]
+
+
+=== 답변 수정
+
+.http-request
+include::{snippets}/patch-answer/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/patch-answer/path-parameters.adoc[]
+
+.request-fields
+include::{snippets}/patch-answer/request-fields.adoc[]
+
+.http-response
+include::{snippets}/patch-answer/http-response.adoc[]
+
+
+=== 답변 조회
+
+.http-request
+include::{snippets}/get-answer/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/get-answer/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-answer/http-response.adoc[]
+
+
+=== 전체 답변 조회
+
+.http-request
+include::{snippets}/get-answers/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-answers/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-answers/http-response.adoc[]
+
+
+=== 답변 삭제
+
+.http-request
+include::{snippets}/delete-answer/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-answer/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/delete-answer/http-response.adoc[]
+
