@@ -20,7 +20,9 @@
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +43,8 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "web-vitals": "^3.3.2"
-  }
+  },
+  "homepage": "http://qpwoei0123.github.io/StackOverflow/"
 }
