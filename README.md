@@ -9,7 +9,7 @@
 - **팀 명 :** 🌙 낭만코더 
 - **프로젝트 명 :** Stackoverflow
 - **프로젝트 기간 :** 2023.06.9 - 2023.06.27
-- **배포링크 :** [✈︎ 배포링크](http://mytodoawsbucket.s3-website.ap-northeast-2.amazonaws.com)
+- **배포링크 :** [✈︎ 배포링크](http://sofcloneproject.s3-website-ap-northeast-1.amazonaws.com/)
 - **노션링크 :** [✈︎ 노션 바로가기](https://www.notion.so/codestates/5bc39b81d1eb40068f77fd253580350)
 
 <br/>
